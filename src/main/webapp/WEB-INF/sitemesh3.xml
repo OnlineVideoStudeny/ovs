@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh defaultdir="" >
+<!--  -->
+	<mime-type>text/html</mime-type>
+    <mime-type>application/vnd.wap.xhtml+xml</mime-type>
+    <mime-type>application/xhtml+xml</mime-type>
+
+	<mapping decorator="/layouts/main.jsp"/>
+
+	<mapping path="/static/*" exclude="true"/>
+    <mapping path="/temp/*" exclude="true"/>
+    <mapping path="/login*" exclude="true"/>
+
+    <content-processor>
+        <tag-rule-bundle class="stu.ovs.controller.DecoratorTag" />
+    </content-processor>
+</sitemesh>

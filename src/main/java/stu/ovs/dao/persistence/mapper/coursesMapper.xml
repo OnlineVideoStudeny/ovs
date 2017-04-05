@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stu.ovs.dao.persistence.CoursesDao">
+
+	<resultMap id="BaseResultMap" type="stu.ovs.dao.entity.Courses">
+		<id column="id" property="id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="description" property="description" jdbcType="VARCHAR" />
+        <result column="img" property="img" jdbcType="VARCHAR" />
+        <result column="attention" property="attention" jdbcType="BIGINT" />
+        <result column="collect" property="collect" jdbcType="BIGINT" />
+	</resultMap>
+
+    <select id="findById" parameterType="string" resultMap="BaseResultMap">
+        SELECT * FROM courses c WHERE c.id = #{id}
+    </select>
+
+    <!-- TODO 关联查询 -->
+    <select id="findByContents" parameterType="string" resultMap="BaseResultMap">
+        SELECT * FROM courses c WHERE c.id = #{id}
+    </select>
+
+    <select id="findByPagination" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT * FROM courses
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT * FROM courses
+    </select>
+
+    <insert id="add" parameterType="stu.ovs.dao.entity.Courses" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO courses(name, description, img, attention, collect)
+        VALUE (#{name}, #{description}, #{img}, #{attention}, #{collect})
+    </insert>
+
+    <delete id="delete" parameterType="string">
+        DELETE FROM courses u WHERE u.id = #{id}
+    </delete>
+
+    <update id="update" parameterType="stu.ovs.dao.entity.Courses">
+        UPDATE courses SET name = #{name}, description = #{description}, img = #{img}, attention = #{attention}, collect = #{collect}
+    </update>
+
+</mapper>
