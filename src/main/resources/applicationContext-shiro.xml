@@ -16,8 +16,8 @@
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/member/login.admin" />
-		<property name="successUrl" value="/index.admin" />
+		<property name="loginUrl" value="/login.html" />
+		<property name="successUrl" value="/index.html" />
 		<property name="filterChainDefinitions">
 			<value>
 				<!-- 需要过滤的url配置 -->

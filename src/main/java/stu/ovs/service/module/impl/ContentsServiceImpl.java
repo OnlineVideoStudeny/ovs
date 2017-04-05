@@ -2,6 +2,7 @@ package stu.ovs.service.module.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import stu.ovs.dao.entity.Contents;
 import stu.ovs.dao.entity.User;
 import stu.ovs.service.module.ContentsService;
 
@@ -21,7 +22,15 @@ public class ContentsServiceImpl implements ContentsService{
         return null;
     }
 
-    public void delete(Object id) {
+    public void delete(Contents id) {
+
+    }
+
+    public void update(Contents contents) {
+
+    }
+
+    public void add(Contents contents) {
 
     }
 }

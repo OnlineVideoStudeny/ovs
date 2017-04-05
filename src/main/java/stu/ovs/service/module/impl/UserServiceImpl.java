@@ -43,7 +43,15 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
-    public void add(User user){
+    public void delete(User id) {
+        userDao.delete(id.toString());
+    }
+
+    public void update(User user) {
+
+    }
+
+    public void add(User user) {
         String salt = EncryptUtil.encodeHex(EncryptUtil.salt(8));
         SimpleHash simpleHash = new SimpleHash("SHA-1",user.getPassword(),salt,1024);
         user.setSalt(salt);
@@ -51,7 +59,4 @@ public class UserServiceImpl implements UserService{
         userDao.save(user);
     }
 
-    public void delete(Object id) {
-        userDao.delete(id.toString());
-    }
 }

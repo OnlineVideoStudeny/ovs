@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import stu.ovs.dao.entity.Courses;
 import stu.ovs.dao.entity.User;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.service.module.VideoProcessService;
@@ -26,6 +27,7 @@ public class CoursesServiceImpl implements CoursesService{
     @Autowired
     private CoursesService coursesService;
 
+
     public User findOne(Object id) {
         return null;
     }
@@ -34,7 +36,15 @@ public class CoursesServiceImpl implements CoursesService{
         return null;
     }
 
-    public void delete(Object id) {
+    public void delete(Courses id) {
+
+    }
+
+    public void update(Courses courses) {
+
+    }
+
+    public void add(Courses courses) {
 
     }
 }

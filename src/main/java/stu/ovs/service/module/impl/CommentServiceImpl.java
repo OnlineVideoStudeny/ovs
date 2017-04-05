@@ -2,6 +2,7 @@ package stu.ovs.service.module.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import stu.ovs.dao.entity.Comment;
 import stu.ovs.dao.entity.User;
 import stu.ovs.service.module.CommentService;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Service
 @Transactional
 public class CommentServiceImpl implements CommentService{
+
     public User findOne(Object id) {
         return null;
     }
@@ -21,7 +23,15 @@ public class CommentServiceImpl implements CommentService{
         return null;
     }
 
-    public void delete(Object id) {
+    public void delete(Comment id) {
+
+    }
+
+    public void update(Comment comment) {
+
+    }
+
+    public void add(Comment comment) {
 
     }
 }

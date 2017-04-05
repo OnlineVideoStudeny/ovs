@@ -75,8 +75,8 @@ public class CoursesController {
      * @param parent_id
      * @return
      */
-    @RequestMapping(value = "/create/contents", method = RequestMethod.POST)
-    public String add_contents(Integer parent_id){
+    @RequestMapping(value = "/contents/create", method = RequestMethod.POST)
+    public String addContents(Integer parent_id){
         return "";
     }
 
@@ -85,8 +85,8 @@ public class CoursesController {
      * @param parent_id
      * @return
      */
-    @RequestMapping(value = "/delete/contents", method = RequestMethod.POST)
-    public String delete_contents(Integer parent_id){
+    @RequestMapping(value = "/contents/delete", method = RequestMethod.POST)
+    public String deleteContents(Integer parent_id){
         return "";
     }
 
@@ -94,8 +94,8 @@ public class CoursesController {
      * 上传课程视频
      * @return
      */
-    @RequestMapping(value = "/add/video", method = RequestMethod.POST)
-    public String add_video(){
+    @RequestMapping(value = "/video/add", method = RequestMethod.POST)
+    public String addVideo(){
         return "";
     }
 
