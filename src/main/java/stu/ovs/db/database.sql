@@ -62,5 +62,6 @@ CREATE TABLE comment(
   create_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   disagree INT NOT NULL DEFAULT '0',
   agree INT NOT NULL DEFAULT '0' ,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id) ,
+  FOREIGN KEY (comment_target) REFERENCES courses(id)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
