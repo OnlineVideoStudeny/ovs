@@ -26,6 +26,15 @@ CREATE TABLE courses(
   PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE courses_rel(
+  id INT NOT NULL ,
+  courses_id INT NOT NULL ,
+  user_id VARCHAR(32) NOT NULL ,
+  FOREIGN KEY (courses_id) REFERENCES courses(id),
+  FOREIGN KEY (user_id) REFERENCES user(id),
+  PRIMARY KEY (id)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE contents(
   id INT NOT NULL ,
   name VARCHAR(32) NOT NULL ,
