@@ -3,14 +3,14 @@ package stu.ovs.dao.persistence;
 /**
  * Created by Alcott Hawk on 4/3/2017.
  */
-public interface BaseDao {
+public interface BaseDao<T> {
 
-    <T> T findById(Integer id);
+    <T> T findById(Object id);
 
-    void save(Class<?> arg);
+    void save(T arg);
 
-    void delete(String id);
+    void delete(Object id);
 
-    void update(Class<?> arg);
+    void update(T arg);
 
 }

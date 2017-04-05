@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface Service<T> {
 
-    User findOne(Object id);
+    T findOne(Object id);
 
-    List<? extends Class> findAll();
+    List<T> findAll();
 
     void delete(T id);
 

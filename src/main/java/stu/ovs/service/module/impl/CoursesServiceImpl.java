@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import stu.ovs.dao.entity.Courses;
 import stu.ovs.dao.entity.User;
+import stu.ovs.dao.persistence.CoursesDao;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.service.module.VideoProcessService;
 
@@ -25,14 +26,15 @@ public class CoursesServiceImpl implements CoursesService{
     private VideoProcessService videoProcessService;
 
     @Autowired
-    private CoursesService coursesService;
+    private CoursesDao coursesDao;
 
 
-    public User findOne(Object id) {
+    public Courses findOne(Object id) {
+        coursesDao.findById(id);
         return null;
     }
 
-    public List<? extends Class> findAll() {
+    public List<Courses> findAll() {
         return null;
     }
 

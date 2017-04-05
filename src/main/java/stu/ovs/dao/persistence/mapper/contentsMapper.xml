@@ -12,15 +12,28 @@
 		<result column="contents_type" property="contentsType" jdbcType="VARCHAR" />
 	</resultMap>
 
-    <select id="findById" parameterType="string" resultMap="BaseResultMap">
+    <select id="findById" parameterType="int" resultMap="BaseResultMap">
         SELECT * FROM contents c WHERE c.id = #{id}
     </select>
 
-    <select id="findByPagination" parameterType="java.util.Map" resultMap="BaseResultMap">
+    <!--<select id="findByPagination" parameterType="java.util.Map" resultMap="BaseResultMap">
         SELECT * FROM contents
+    </select>-->
+
+    <!--<select id="findAll" resultMap="BaseResultMap">
+        SELECT * FROM contents
+    </select>-->
+
+    <select id="findByContentsType" parameterType="string" resultMap="BaseResultMap">
+        SELECT * FROM contents c WHERE c.contents_type = #{type}
     </select>
 
-    <select id="findAll" resultMap="BaseResultMap">
+    <!-- TODO 还没想好怎么做 -->
+    <select id="findByCourses" parameterType="int" resultMap="BaseResultMap">
+        SELECT * FROM contents c WHERE c.
+    </select>
+
+    <select id="findByParentId" parameterType="int" resultMap="BaseResultMap">
         SELECT * FROM contents
     </select>
 
@@ -29,7 +42,7 @@
         VALUE (#{name}, #{description}, #{parentId}, #{path}, #{contentsType})
     </insert>
 
-    <delete id="delete" parameterType="string">
+    <delete id="delete" parameterType="int">
         DELETE FROM contents u WHERE u.id = #{id}
     </delete>
 

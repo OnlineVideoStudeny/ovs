@@ -10,6 +10,8 @@ public class Contents {
     private String name;
     private String description;
     private Integer parentId;
+    private boolean isTop;
+    private Integer topid;
     private String path;
     private String contentsType;
 
@@ -43,6 +45,22 @@ public class Contents {
 
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
+    }
+
+    public boolean isTop() {
+        return isTop;
+    }
+
+    public void setTop(boolean top) {
+        isTop = top;
+    }
+
+    public Integer getTopid() {
+        return topid;
+    }
+
+    public void setTopid(Integer topid) {
+        this.topid = topid;
     }
 
     public String getPath() {

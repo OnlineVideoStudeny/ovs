@@ -16,18 +16,13 @@
         SELECT * FROM courses c WHERE c.id = #{id}
     </select>
 
-    <!-- TODO 关联查询 -->
     <select id="findByContents" parameterType="string" resultMap="BaseResultMap">
-        SELECT * FROM courses c WHERE c.id = #{id}
+        SELECT * FROM courses c WHERE c.id IN (SELECT courses_id FROM courses_index WHERE contents_id = #{id})
     </select>
 
-    <select id="findByPagination" parameterType="java.util.Map" resultMap="BaseResultMap">
+    <!--<select id="findAll" resultMap="BaseResultMap">
         SELECT * FROM courses
-    </select>
-
-    <select id="findAll" resultMap="BaseResultMap">
-        SELECT * FROM courses
-    </select>
+    </select>-->
 
     <insert id="add" parameterType="stu.ovs.dao.entity.Courses" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO courses(name, description, img, attention, collect)

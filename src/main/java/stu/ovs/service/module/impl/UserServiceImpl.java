@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
-    public List<? extends Class> findAll() {
+    public List<User> findAll() {
         return null;
     }
 

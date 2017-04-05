@@ -21,6 +21,7 @@ CREATE TABLE courses(
   name VARCHAR(32) NOT NULL ,
   description VARCHAR(255) DEFAULT '',
   img VARCHAR(100) DEFAULT '',
+  contents_id INT NOT NULL ,
   attention INT NOT NULL DEFAULT '0',
   collect INT NOT NULL DEFAULT '0',
   PRIMARY KEY (id)
@@ -40,6 +41,7 @@ CREATE TABLE contents(
   name VARCHAR(32) NOT NULL ,
   description VARCHAR(255) DEFAULT '',
   parent_id INT NOT NULL ,
+  is_top TINYINT NOT NULL DEFAULT 0,
   path VARCHAR(50) NOT NULL ,
   contents_type VARCHAR(10) NOT NULL,
   PRIMARY KEY (id)

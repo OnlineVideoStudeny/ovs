@@ -10,6 +10,7 @@ public class Courses {
     private String name;
     private String description;
     private String img;
+    private Integer contentsId;
     private Integer attention;
     private Integer collect;
 
@@ -43,6 +44,14 @@ public class Courses {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public Integer getContentsId() {
+        return contentsId;
+    }
+
+    public void setContentsId(Integer contentsId) {
+        this.contentsId = contentsId;
     }
 
     public Integer getAttention() {

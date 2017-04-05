@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Alcott Hawk on 4/2/2017.
  */
 @Component
-public interface CoursesDao extends BaseDao{
+public interface CoursesDao extends BaseDao<Courses>{
 
     List<Courses> findByContents(Integer id);
 

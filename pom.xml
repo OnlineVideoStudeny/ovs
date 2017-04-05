@@ -211,6 +211,7 @@
               <directory>src/main/resources</directory>
               <includes>
                   <include>**/*.xml</include>
+                  <include>**/*.exe</include>
                   <include>**/*.properties</include>
               </includes>
           </resource>
