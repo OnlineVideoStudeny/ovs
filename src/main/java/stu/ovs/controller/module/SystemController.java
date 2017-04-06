@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import stu.ovs.dao.entity.Contents;
 import stu.ovs.service.module.ContentsService;
 
+import java.util.List;
+
 /**
  * Created by Alcott Hawk on 4/5/2017.
  */
@@ -23,10 +25,10 @@ public class SystemController {
         return "";
     }
 
-    @RequestMapping(value = "/category/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/category/get")
     @ResponseBody
     public Object getCategory(){
-        return null;
+        return contentsService.findCategory();
     }
 
     @RequestMapping(value = "/category/add", method = RequestMethod.POST)

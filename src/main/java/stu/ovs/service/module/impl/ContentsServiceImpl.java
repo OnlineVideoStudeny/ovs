@@ -79,7 +79,7 @@ public class ContentsServiceImpl implements ContentsService{
         for (Contents contents : contentsList){
             if (contents.getParentId() == 0){
                 List children = findChildren(contentsList,contents.getId());
-                this.loadData(menuList, children);
+                this.loadData(menuList, contents, children);
             }
         }
         return menuList;
@@ -97,7 +97,7 @@ public class ContentsServiceImpl implements ContentsService{
         for (Contents contents : contentsList){
             if (contents.isTop()){
                 List children = findChildren(contentsList,contents.getId());
-                this.loadData(menuList, children);
+                this.loadData(menuList, contents, children);
             }
         }
         return menuList;
@@ -144,7 +144,7 @@ public class ContentsServiceImpl implements ContentsService{
         for(Contents contents : contentsList){
             if (contents.getParentId() == id){
                 List children = findChildren(contentsList,contents.getId());
-                this.loadData(menuList, children);
+                this.loadData(menuList, contents, children);
             }
         }
         return menuList;
@@ -155,8 +155,10 @@ public class ContentsServiceImpl implements ContentsService{
      * @param menuList 分类目标集合
      * @param children 子分类
      */
-    private void loadData(List<Map> menuList, List children){
+    private void loadData(List<Map> menuList, Contents contents, List children){
         Map map = new HashMap();
+        map.put("name",contents.getName());
+        map.put("id",contents.getId());
         map.put("children",children);
         menuList.add(map);
     }

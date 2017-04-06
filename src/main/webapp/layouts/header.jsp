@@ -13,5 +13,7 @@
       rel="shortcut icon">
 <link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/bootstrap-theme.min.css"/>
-<link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/js/bootstrap.min.js" />
+<link rel="stylesheet" href="${ctx}/static/font-awesome/font-awesome.css" >
 <script src="${ctx}/static/jquery/jquery.min.js"></script>
+<script src="${ctx}/static/bootstrap-3.3.7/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="${ctx}/static/google-maps.js"></script>

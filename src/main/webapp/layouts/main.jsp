@@ -18,16 +18,14 @@
         516516
     </div>
 </header>
-<div class="container-fluid row">
-    <div class="col-md-2">
-        <ul>
-            <li>
-                62
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-10">
-        <sitemesh:write property='body' />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <%@ include file="/layouts/sidebar.jsp"%>
+        </div>
+        <div class="col-md-10">
+            <sitemesh:write property='body' />
+        </div>
     </div>
 </div>
 </body>
