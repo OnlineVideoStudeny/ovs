@@ -12,8 +12,7 @@
 <div class="kePublic">
     <div class="content">
         <ul class="vertical-nav dark red">
-            <li><a href="http://www.internetke.com/"></i>服务
-                <span class="submenu-icon"></span></a>
+            <li><a href="http://www.internetke.com/"></i>服务<span class="submenu-icon"></span></a>
                 <ul>
                     <li><a href="http://www.internetke.com/">二级导航</a></li>
                     <li><a href="http://www.internetke.com/">二级导航</a></li>
@@ -23,25 +22,24 @@
                     <li><a href="http://www.internetke.com/">二级导航</a></li>
                 </ul>
             </li>
-            <li><a href="http://www.internetke.com/"></i>产品
-                <span class="submenu-icon"></span></a>
+            <li><a href="http://www.internetke.com/"></i>产品<span class="submenu-icon"></span></a>
                 <ul>
                     <li><a href="http://www.internetke.com/">二级导航</a></li>
                     <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航<span class="submenu-icon"></span></a><ul>
-                        <li><a href="http://www.internetke.com/">三级导航</a></li>
-                        <li><a href="http://www.internetke.com/">三级导航</a></li>
-                        <li><a href="http://www.internetke.com/">三级导航 <span class="submenu-icon"></span>
-                        </a>
-                            <ul>
-                                <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                <li><a href="http://www.internetke.com/">四级导航</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="http://www.internetke.com/">三级导航</a></li>
-                    </ul>
+                    <li><a href="http://www.internetke.com/">二级导航<span class="submenu-icon"></span></a>
+                        <ul>
+                            <li><a href="http://www.internetke.com/">三级导航</a></li>
+                            <li><a href="http://www.internetke.com/">三级导航</a></li>
+                            <li><a href="http://www.internetke.com/">三级导航 <span class="submenu-icon"></span></a>
+                                <ul>
+                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
+                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
+                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
+                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="http://www.internetke.com/">三级导航</a></li>
+                        </ul>
                     </li>
                     <li><a href="http://www.internetke.com/">二级导航</a></li>
                     <li><a href="http://www.internetke.com/">二级导航</a></li>
@@ -53,11 +51,50 @@
     <js>
         <script>
             $(document).ready(function () {
-                var data;
                 $.getJSON("${ctx}/system/category/get", function(json){
-                    data = json;
+                    var parent = $(".vertical-nav");
+                    process(json, parent)
                 });
             })
+
+            function process(json, parentEle) {
+                $.each(json, function (i, v) {
+                    var ue = $("<ul>")
+                    var lie = $("<li/>");
+                    var ae = $("<a/>");
+                    var spane = $("<span/>");
+                    if (v.children.size() > 0){
+                        spane.css("submenu-icon");
+                        lie.appendChild(ae);
+                        lie.appendChild(spane);
+                        process(v.children);
+                    } else {
+                        ae.attr("href","");
+                        lie.appendChild(ae);
+                    }
+                    ue.appendChild(lie);
+                });
+            }
+
+            function createEle(json, parent) {
+                $.each(json, function (i, v) {
+                    var ue = $("<ul>")
+                    var lie = $("<li/>");
+                    var ae = $("<a/>");
+                    var spane = $("<span/>");
+                    if (v.children.size() > 0){
+                        spane.css("submenu-icon");
+                        lie.appendChild(ae);
+                        lie.appendChild(spane);
+                        ue.appendChild(lie);
+                    } else {
+                        ae.attr("href","");
+                        lie.appendChild(ae);
+                    }
+                    parent.appendChild(lie);
+                });
+
+            }
         </script>    
     </js>
 </div>
