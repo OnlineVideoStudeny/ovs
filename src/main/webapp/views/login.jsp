@@ -13,7 +13,7 @@
         }
     </style>
 </head>
-<body style="background:url('../static/images/timg.jpg')">
+<body style="background:url('./static/images/timg.jpg')">
 <%
     String msg = "";
     msg = (String) request.getAttribute("msg");
