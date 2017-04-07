@@ -11,7 +11,7 @@
 	<mapping path="/static/*" exclude="true"/>
     <mapping path="/temp/*" exclude="true"/>
     <mapping path="/login*" exclude="true"/>
-    <mapping path="/regoster*" exclude="true"/>
+    <mapping path="/registered*" exclude="true"/>
     <mapping path="/user/*" exclude="true"/>
 
     <content-processor>

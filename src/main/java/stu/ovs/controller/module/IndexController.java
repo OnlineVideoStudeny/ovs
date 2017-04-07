@@ -30,6 +30,12 @@ public class IndexController {
     public String login(){
         return "login";
     }
+    
+    @RequestMapping(value = "/registered", method = RequestMethod.GET)
+    public String registered(){
+        return "registered";
+    }
+
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String userName, Model model){
