@@ -17,7 +17,7 @@ CREATE TABLE user(
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE courses(
-  id INT NOT NULL ,
+  id INT NOT NULL AUTO_INCREMENT ,
   name VARCHAR(32) NOT NULL ,
   description VARCHAR(255) DEFAULT '',
   img VARCHAR(100) DEFAULT '',
@@ -28,7 +28,7 @@ CREATE TABLE courses(
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE courses_rel(
-  id INT NOT NULL ,
+  id INT NOT NULL AUTO_INCREMENT ,
   courses_id INT NOT NULL ,
   user_id VARCHAR(32) NOT NULL ,
   FOREIGN KEY (courses_id) REFERENCES courses(id),
@@ -37,7 +37,7 @@ CREATE TABLE courses_rel(
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE contents(
-  id INT NOT NULL ,
+  id INT NOT NULL AUTO_INCREMENT ,
   name VARCHAR(32) NOT NULL ,
   description VARCHAR(255) DEFAULT '',
   parent_id INT NOT NULL ,
@@ -48,7 +48,7 @@ CREATE TABLE contents(
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE courses_index(
-  id INT NOT NULL ,
+  id INT NOT NULL AUTO_INCREMENT ,
   courses_id INT NOT NULL ,
   contents_id INT NOT NULL ,
   PRIMARY KEY (id),
@@ -57,7 +57,7 @@ CREATE TABLE courses_index(
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE comment(
-  id INT NOT NULL ,
+  id INT NOT NULL AUTO_INCREMENT ,
   commentator VARCHAR(32) NOT NULL ,
   comment_target INT NOT NULL ,
   content VARCHAR(255) DEFAULT NULL ,

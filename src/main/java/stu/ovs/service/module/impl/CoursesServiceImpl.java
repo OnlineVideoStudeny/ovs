@@ -11,7 +11,9 @@ import stu.ovs.dao.persistence.CoursesDao;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.service.module.VideoProcessService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Alcott Hawk on 4/2/2017.
@@ -47,6 +49,11 @@ public class CoursesServiceImpl implements CoursesService{
     }
 
     public void add(Courses courses) {
-
+        coursesDao.save(courses);
+        courses.getId();
+        Map arg = new HashMap();
+        arg.put("coursesId", courses.getId());
+        arg.put("contentsId", courses.getContentsId());
+        coursesDao.addCoursesIndex(arg);
     }
 }

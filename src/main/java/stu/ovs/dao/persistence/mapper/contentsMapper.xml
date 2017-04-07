@@ -28,9 +28,8 @@
         SELECT * FROM contents c WHERE c.contents_type = #{type}
     </select>
 
-    <!-- TODO 还没想好怎么做 -->
     <select id="findByCourses" parameterType="int" resultMap="BaseResultMap">
-        SELECT * FROM contents c WHERE c.
+        SELECT c.* FROM contents c INNER JOIN courses cc ON cc.contents_id = c.id WHERE c.id = #{id}
     </select>
 
     <select id="findByParentId" parameterType="int" resultMap="BaseResultMap">

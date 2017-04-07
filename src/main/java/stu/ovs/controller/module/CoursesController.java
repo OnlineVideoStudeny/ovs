@@ -1,9 +1,13 @@
 package stu.ovs.controller.module;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import stu.ovs.dao.entity.Courses;
+import stu.ovs.service.module.CoursesService;
+import stu.ovs.util.FileUtil;
 
 /**
  * Created by Alcott Hawk on 4/3/2017.
@@ -11,6 +15,9 @@ import stu.ovs.dao.entity.Courses;
 @Controller
 @RequestMapping(value = "/courses")
 public class CoursesController {
+
+    @Autowired
+    private CoursesService coursesService;
 
     /**
      * 课程首页
@@ -95,7 +102,11 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/video/add", method = RequestMethod.POST)
-    public String addVideo(){
+    public String addVideo(Courses courses, MultipartFile file){
+        if (FileUtil.save(file, "c://file")){
+            courses.setImg(file.getOriginalFilename());
+            coursesService.add(courses);
+        }
         return "";
     }
 

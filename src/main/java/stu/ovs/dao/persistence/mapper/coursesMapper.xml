@@ -25,8 +25,13 @@
     </select>-->
 
     <insert id="add" parameterType="stu.ovs.dao.entity.Courses" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO courses(name, description, img, attention, collect)
-        VALUE (#{name}, #{description}, #{img}, #{attention}, #{collect})
+        INSERT INTO courses(name, description, img, contents_id, attention, collect)
+        VALUE (#{name}, #{description}, #{img}, #{ contents_id}, #{attention}, #{collect});
+    </insert>
+
+    <insert id="addCoursesIndex" parameterType="String.util.Map" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO courses_index(courses_id, contents_id)
+        VALUE (#{coursesId}, #{contentsId});
     </insert>
 
     <delete id="delete" parameterType="string">
