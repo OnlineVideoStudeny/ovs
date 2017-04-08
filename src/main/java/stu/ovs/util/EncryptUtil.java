@@ -9,7 +9,7 @@ import java.security.SecureRandom;
 /**
  * 加密工具类
  */
-public class EncryptUtil extends HashKit{
+public class EncryptUtil {
 
     private static SecureRandom random = new SecureRandom();
 
@@ -23,28 +23,6 @@ public class EncryptUtil extends HashKit{
         byte[] bytes = new byte[byteSize];
         random.nextBytes(bytes);
         return bytes;
-    }
-
-    /**
-     * Hex解码
-     * @param input 输入字符串
-     * @return byte[] 解码后的字节数组
-     */
-    public static byte[] decodeHex(String input) {
-        try {
-            return Hex.decodeHex(input.toCharArray());
-        } catch (DecoderException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**
-     * Hex编码
-     * @param input 输入字字节数组
-     * @return String Hex编码后的字符串
-     */
-    public static String encodeHex(byte[] input) {
-        return Hex.encodeHexString(input);
     }
 
 }

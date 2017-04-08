@@ -25,13 +25,17 @@
 		SELECT * FROM user WHERE id = #{id}
 	</select>
 
+    <select id="findByNickName" parameterType="string" resultMap="BaseResultMap">
+        SELECT u.* FROM user u WHERE u.nick_name = #{nickname}
+    </select>
+
 	<select id="findAll" resultMap="BaseResultMap">
 		SELECT * FROM user
 	</select>
 
-    <insert id="add" parameterType="stu.ovs.dao.entity.User" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO user(name, nick_name, password, salt, phone, email, gender, age, avatars)
-                    VALUE (#{name}, #{nickName}, #{password}, #{salt}, #{phone}, #{email}, #{gender}, #{age}, #{avatars})
+    <insert id="save" parameterType="stu.ovs.dao.entity.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(id, name, nick_name, password, salt, phone, email, gender, avatars)
+                    VALUE (#{id}, #{name}, #{nickName}, #{password}, #{salt}, #{phone}, #{email}, #{gender}, #{avatars})
     </insert>
 
     <delete id="delete" parameterType="string">

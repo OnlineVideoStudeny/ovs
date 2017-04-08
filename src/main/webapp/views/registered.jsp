@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>注册界面</title>
@@ -19,7 +20,7 @@ body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
 	margin: 0;
-	background:url('./static/images/regis.jpg');
+	background:url('${ctx}/static/images/regis.jpg');
 	background-repeat:no-repeat;
 	background-size:100%;
 }
@@ -84,12 +85,12 @@ input {
 
 	<div id="regis">
 	<h3>欢迎注册</h3>
-		<form action="/login.jsp" method="post" onsubmit="return regis();">
-			<input type="text" id="username" name="username" placeholder="用户名"/> <span
+		<form action="${ctx}/user/add" method="post" onsubmit="return regis();">
+			<input type="text" id="username" name="nickName" placeholder="用户名"/> <span
 				id="userPmg"></span> <br> <br>
 			<input type="password"
 				id="password" name="password" placeholder="密码"/> <span id="pwd"></span><br><br>
-			<input type="password" id="repwd" name="password" placeholder="确认密码"/> <span
+			<input type="password" id="repwd" name="repeatPassword" placeholder="确认密码"/> <span
 				id="pwdmeg"></span><br> <br> <input type="submit"
 				class="reg" value="注册"> <br>
 		</form>

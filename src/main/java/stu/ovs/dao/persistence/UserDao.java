@@ -10,4 +10,7 @@ import java.util.List;
  */
 @Component
 public interface UserDao extends BaseDao<User>{
+
+    User findByNickName(String nickname);
+
 }

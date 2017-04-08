@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>登陆界面</title>
@@ -20,7 +21,7 @@ body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
 	margin: 0;
-	background:url('./static/images/login.jpg');
+	background:url('${ctx}/static/images/login.jpg');
 	background-repeat:no-repeat;
 	background-size:100%;
 }
@@ -91,9 +92,7 @@ margin-left:50px;
 	%>
 	<div id="login">
 		<h3>欢迎登陆跟谁学视频网站</h3>
-		<form action="/index.html"
-			" "src/main/webapp/views/login.jsp" method="post"
-			onsubmit="return check();">
+		<form action="${ctx}/login" method="post" onsubmit="return check();">
 			<input type="text" id="username" name="username" placeholder="用户名" /><br>
 			<span id="userPmg"></span><br> <br> <input type="password"
 				id="password" name="password" placeholder="密码" /> <br><span id="pwd"></span><br>
@@ -102,8 +101,6 @@ margin-left:50px;
 
 	</div>
 </body>
-
-
 <js> <script type="text/javascript">
 	function check() {
 		var flag = true;

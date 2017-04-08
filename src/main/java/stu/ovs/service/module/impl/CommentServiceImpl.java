@@ -50,7 +50,7 @@ public class CommentServiceImpl implements CommentService{
 
     public void add(Comment comment) {
         ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
-        comment.setCommentator(shiroUser.getId());
+        comment.setCommentator(shiroUser.id);
         commentDao.save(comment);
     }
 

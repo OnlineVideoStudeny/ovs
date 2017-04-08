@@ -22,7 +22,7 @@ public class SystemController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(){
-        return "";
+        return "system/index";
     }
 
     @RequestMapping(value = "/category/get")
@@ -39,6 +39,11 @@ public class SystemController {
     @RequestMapping(value = "/category/delete", method = RequestMethod.POST)
     public String deleteCategory(){
         return "";
+    }
+
+    @RequestMapping(value = "/registered", method = RequestMethod.GET)
+    public String registered(){
+        return "registered";
     }
 
 }

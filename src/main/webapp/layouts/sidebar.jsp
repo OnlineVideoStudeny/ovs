@@ -9,7 +9,7 @@
 <script>$(document).ready(function(){$(".vertical-nav").verticalnav({speed: 400,align: "left"});});</script>
 <div style="clear:both;">
 </div>
-<div class="kePublic">
+<div class="kePublic" style="min-height: 500px">
     <div class="content">
         <ul class="vertical-nav dark red">
             <li><a href="http://www.internetke.com/"></i>服务<span class="submenu-icon"></span></a>

@@ -9,4 +9,6 @@ public interface UserService extends Service<User>{
 
     User login(String user);
 
+    boolean regiter(User user);
+
 }

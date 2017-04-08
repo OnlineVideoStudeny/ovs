@@ -29,7 +29,7 @@
         SELECT * FROM comment c WHERE c.comment_target = #{id}
     </select>
 
-    <insert id="add" parameterType="stu.ovs.dao.entity.Comment" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="stu.ovs.dao.entity.Comment" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO comment(commentator, comment_target, content)
         VALUE (#{commentator}, #{commentTarget}, #{content})
     </insert>

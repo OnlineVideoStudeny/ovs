@@ -1,15 +1,24 @@
 package stu.ovs.dao.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 用户实体
  * Created by Alcott Hawk on 4/2/2017.
  */
-public class User {
+public class User implements Serializable{
 
-    public static String MAN = "M";
-    public static String WOMAN = "W";
+    public final static String MAN = "M";
+    public final static String WOMAN = "W";
+
+    public User(){
+    }
+
+    public User(String username, String password){
+        this.password = password;
+        this.name  = username;
+    }
 
     private String id;
     private String name;

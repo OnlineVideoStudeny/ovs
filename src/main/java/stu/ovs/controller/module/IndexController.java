@@ -1,5 +1,8 @@
 package stu.ovs.controller.module;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,22 +29,9 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(){
-        return "login";
-    }
-    
     @RequestMapping(value = "/registered", method = RequestMethod.GET)
     public String registered(){
         return "registered";
-    }
-
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String userName, Model model){
-        model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
-        model.addAttribute("fail", "用户名或密码错误");
-        return "login";
     }
 
 }
