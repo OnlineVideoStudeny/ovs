@@ -31,12 +31,18 @@ public class SystemController {
         return contentsService.findCategory();
     }
 
-    @RequestMapping(value = "/category/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/category/add", method = RequestMethod.GET)
     public String createCategory(){
-        return "";
+        return "system/add-category";
+    }
+
+    @RequestMapping(value = "/category/add", method = RequestMethod.POST)
+    public String createCategory(Contents contents){
+        return "system/index";
     }
 
     @RequestMapping(value = "/category/delete", method = RequestMethod.POST)
+    @ResponseBody
     public String deleteCategory(){
         return "";
     }

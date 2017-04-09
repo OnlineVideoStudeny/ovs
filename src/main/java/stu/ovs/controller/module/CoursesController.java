@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import stu.ovs.dao.entity.Courses;
 import stu.ovs.service.module.CoursesService;
@@ -25,16 +26,29 @@ public class CoursesController {
      */
     @RequestMapping(value = "/index")
     public String index(){
-        return "";
+        return "courses/index";
     }
 
     /**
      * 课程添加
      * @return
      */
-    @RequestMapping(value = "/add")
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(Courses courses){
-        return "";
+        return "courses/add-courses";
+    }
+
+    /**
+     * 上传课程视频
+     * @return
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addVideo(Courses courses, MultipartFile file){
+        if (FileUtil.save(file, "c://file")){
+            courses.setImg(file.getOriginalFilename());
+            coursesService.add(courses);
+        }
+        return "system/index";
     }
 
     /**
@@ -43,8 +57,9 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/delete")
+    @ResponseBody
     public Object delete(Integer id){
-        return "";
+        return "ok";
     }
 
     /**
@@ -53,6 +68,7 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/agree")
+    @ResponseBody
     public Object agree(Integer id){
         return "";
     }
@@ -63,6 +79,7 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/disagree")
+    @ResponseBody
     public Object disagree(Integer id){
         return "";
     }
@@ -73,6 +90,7 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/collect")
+    @ResponseBody
     public Object collect(Integer id){
         return "";
     }
@@ -93,20 +111,8 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/contents/delete", method = RequestMethod.POST)
+    @ResponseBody
     public String deleteContents(Integer parent_id){
-        return "";
-    }
-
-    /**
-     * 上传课程视频
-     * @return
-     */
-    @RequestMapping(value = "/video/add", method = RequestMethod.POST)
-    public String addVideo(Courses courses, MultipartFile file){
-        if (FileUtil.save(file, "c://file")){
-            courses.setImg(file.getOriginalFilename());
-            coursesService.add(courses);
-        }
         return "";
     }
 

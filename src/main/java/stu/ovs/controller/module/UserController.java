@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import stu.ovs.dao.entity.User;
 import stu.ovs.service.module.UserService;
 
@@ -38,13 +39,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/delete")
+    @ResponseBody
     public String delete(String id){
         return "";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(User user){
-        return "";
+        return "user/index";
     }
 
 }
