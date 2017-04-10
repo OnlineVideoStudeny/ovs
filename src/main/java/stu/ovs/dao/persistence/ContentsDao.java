@@ -1,9 +1,10 @@
 package stu.ovs.dao.persistence;
 
-import org.springframework.stereotype.Component;
-import stu.ovs.dao.entity.Contents;
-
 import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+import stu.ovs.dao.entity.Contents;
 
 /**
  * Created by Alcott Hawk on 4/2/2017.

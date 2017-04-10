@@ -5,7 +5,8 @@ package stu.ovs.dao.persistence;
  */
 public interface BaseDao<T> {
 
-    <T> T findById(Object id);
+    @SuppressWarnings("hiding")
+	<T> T findById(Object id);
 
     void save(T arg);
 
