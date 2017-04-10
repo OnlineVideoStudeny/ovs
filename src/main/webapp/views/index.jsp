@@ -10,7 +10,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <title>Title</title>
 <body>
-    <div>
+    <div class="row">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -47,6 +47,70 @@
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <hr class="html-editor-hr"/>
+            <h3>热门课程</h3>
+        </div>
+        <div>
+            <span>
+                <a href="#">
+                    <img src="${ctx}/static/images/regis.jpg">
+                <label>
+                    description
+                </label>
+                </a>
+            </span>
+            <span>
+                <a href="#">
+                    <img src="${ctx}/static/images/regis.jpg">
+                <label>
+                    description
+                </label>
+                </a>
+            </span>
+            <span>
+                <a href="#">
+                    <img src="${ctx}/static/images/regis.jpg">
+                <label>
+                    description
+                </label>
+                </a>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <hr class="html-editor-hr"/>
+            <h3>最新课程</h3>
+        </div>
+        <div>
+            <span>
+                <a href="#">
+                    <img src="${ctx}/static/images/regis.jpg">
+                <label>
+                    description
+                </label>
+                </a>
+            </span>
+            <span>
+                <a href="#">
+                    <img src="${ctx}/static/images/regis.jpg">
+                <label>
+                    description
+                </label>
+                </a>
+            </span>
+            <span>
+                <a href="#">
+                    <img src="${ctx}/static/images/regis.jpg">
+                <label>
+                    description
+                </label>
+                </a>
+            </span>
         </div>
     </div>
 <js>
