@@ -24,6 +24,8 @@ CREATE TABLE courses(
   contents_id INT NOT NULL ,
   attention INT NOT NULL DEFAULT '0',
   collect INT NOT NULL DEFAULT '0',
+  disagree INT NOT NULL DEFAULT '0',
+  agree INT NOT NULL DEFAULT '0' ,
   PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 

@@ -32,20 +32,23 @@ public class CoursesServiceImpl implements CoursesService{
 
 
     public Courses findOne(Object id) {
-        coursesDao.findById(id);
-        return null;
+        Courses courses = coursesDao.findById(id);
+        if (null != courses){
+            return courses;
+        }
+        return new Courses();
     }
 
     public List<Courses> findAll() {
-        return null;
+        return coursesDao.findAll();
     }
 
-    public void delete(Courses id) {
-
+    public void delete(Courses courses) {
+        coursesDao.delete(courses);
     }
 
     public void update(Courses courses) {
-
+        coursesDao.update(courses);
     }
 
     public void add(Courses courses) {

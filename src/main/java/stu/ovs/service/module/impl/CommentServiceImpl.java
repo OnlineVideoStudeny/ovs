@@ -37,7 +37,7 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public void delete(Integer id) {
-
+        commentDao.delete(id);
     }
 
     @Deprecated
@@ -45,7 +45,7 @@ public class CommentServiceImpl implements CommentService{
     }
 
     public void update(Comment comment) {
-
+        commentDao.update(comment);
     }
 
     public void add(Comment comment) {

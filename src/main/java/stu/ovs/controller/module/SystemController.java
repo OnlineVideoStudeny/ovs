@@ -2,6 +2,7 @@ package stu.ovs.controller.module;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,24 +33,22 @@ public class SystemController {
     }
 
     @RequestMapping(value = "/category/add", method = RequestMethod.GET)
-    public String createCategory(){
+    public String createCategory(Model model){
+        model.addAttribute("category",contentsService.findCategory());
         return "system/add-category";
     }
 
     @RequestMapping(value = "/category/add", method = RequestMethod.POST)
-    public String createCategory(Contents contents){
-        return "system/index";
+    public String createCategory(Contents contents, Model model){
+        contentsService.addCategory(contents);
+        model.addAttribute("category",contentsService.findCategory());
+        return "system/add-category";
     }
 
     @RequestMapping(value = "/category/delete", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteCategory(){
-        return "";
-    }
-
-    @RequestMapping(value = "/registered", method = RequestMethod.GET)
-    public String registered(){
-        return "registered";
+    public Object deleteCategory(Integer id){
+        return contentsService.delete(id);
     }
 
 }

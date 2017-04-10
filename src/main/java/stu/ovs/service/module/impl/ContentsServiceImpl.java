@@ -30,7 +30,7 @@ public class ContentsServiceImpl implements ContentsService{
     private ContentsDao contentsDao;
 
     public Contents findOne(Object id) {
-        return null;
+        return (Contents) contentsDao.findById(id);
     }
 
     public List<Contents> findAll() {
@@ -52,12 +52,12 @@ public class ContentsServiceImpl implements ContentsService{
     public void delete(Contents id) {
         Contents target = (Contents) contentsDao.findById(id);
         if ( null != contentsDao.findByParentId(target.getId())){
-
+            contentsDao.delete(target.getId());
         }
     }
 
     public void update(Contents contents) {
-
+        contentsDao.update(contents);
     }
 
     /**

@@ -11,6 +11,8 @@ import java.util.List;
 @Component
 public interface UserDao extends BaseDao<User>{
 
+    List<User> findAll();
+
     User findByNickName(String nickname);
 
 }

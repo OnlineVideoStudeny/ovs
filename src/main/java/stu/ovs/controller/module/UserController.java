@@ -41,11 +41,17 @@ public class UserController {
     @RequestMapping(value = "/delete")
     @ResponseBody
     public String delete(String id){
-        return "";
+        User user = userService.findOne(id);
+        if (null != user){
+            userService.delete(user);
+            return "ok";
+        }
+        return "error";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(User user){
+        userService.update(user);
         return "user/index";
     }
 
