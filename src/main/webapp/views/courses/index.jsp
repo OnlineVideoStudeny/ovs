@@ -8,7 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <title>index</title>
 <body>
-    <div>
-
+    <div class="row">
+        <video></video>
+    </div>
+    <div class="row">
+        <a href="#"><img src=""></a>
+        <span>
+            <p>
+                description
+            </p>
+        </span>
     </div>
 </body>

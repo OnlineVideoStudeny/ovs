@@ -8,54 +8,69 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <title>课程添加</title>
-<section>
-    <h3>
-        课程目录
-    </h3>
-</section>
+<div class="row">
+    <div class="col-md-2">
+        <div>
+            <a href="#contentsCreateModal" role="button" class="btn" data-toggle="modal">
+                添加目录
+            </a>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div>
+            <a href="#coursesCreateModal" role="button" class="btn" data-toggle="modal">
+                添加课程
+            </a>
+        </div>
+    </div>
+</div>
 <section>
     <div style="float: right">
         <a class="button">添加目录</a>
     </div>
 </section>
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="contentsCreateModal" tabindex="-1" role="dialog" aria-labelledby="contentsCreateLable" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">选择组</h4>
+                <h4 class="modal-title" id="contentsCreateLable">新建课程目录</h4>
             </div>
             <div class="modal-body content">
                 <div class="row content border">
-                    <form id="addUserForm" method="post" class="form-horizontal" role="form" action="${ctx}/user/manager/add">
+                    <form id="addUserForm" method="post" class="form-horizontal" role="form" action="${ctx}/courses/contents/create">
+                        <input name="contentsType" value="courses_contents" type="hidden">
                         <div class="container-fluid content-item">
                             <div class="row form">
                                 <div class="col-md-3 info">
-                                    <label class="dinosaurOA-lable" for="nameInput">用户名:</label>
+                                    <label for="nameInput">名称</label>
                                 </div>
                                 <div class="col-md-9">
                                     <div>
-                                        <input class="input form-control" name="name" id="nameInput" type="text" required placeholder="请输入用户名">
+                                        <input name="description" id="nameInput" class="input form-control"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="row form">
                                 <div class="col-md-3 info">
-                                    <label class="dinosaurOA-lable" for="phoneInput">电话号码:</label>
+                                    <label for="contentsDescriptionInput">描述</label>
                                 </div>
                                 <div class="col-md-9">
                                     <div>
-                                        <input class="input form-control" name="phone" id="phoneInput" type="text" required placeholder="请输入电话号码">
+
+                                        <textarea name="description" id="contentsDescriptionInput" class="input form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row form">
                                 <div class="col-md-3 info">
-                                    <label class="dinosaurOA-lable" for="passwordInput">密码:</label>
+                                    <label for="parentInput">上级目录</label>
                                 </div>
                                 <div class="col-md-9">
                                     <div>
-                                        <input class="input form-control" name="password" id="passwordInput" type="text" required placeholder="请输入">
+                                        <select id="parentInput" name="parentId">
+                                            <option>选择上级分类目录</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -64,21 +79,59 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="createUserSubmit" type="button" class="btn btn-primary" onclick="submit()">create</button>
+                <button id="addSubmit" type="button" class="btn btn-primary">create</button>
                 <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="coursesCreateModal" tabindex="-1" role="dialog" aria-labelledby="coursesCreateLable" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">选择组</h4>
+                <h4 class="modal-title" id="coursesCreateLable">添加课程</h4>
             </div>
             <div class="modal-body">
-                <p>no content</p>
+                <div class="row content border">
+                    <form id="addCoursesForm" method="post" class="form-horizontal" role="form" action="${ctx}/courses/add">
+                        <div class="container-fluid content-item">
+                            <div class="row form">
+                                <div class="col-md-3 info">
+                                    <label for="contentsInput">目录节点</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <select id="contentsInput" name="contentsId">
+                                            <option>153</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form">
+                                <div class="col-md-3 info">
+                                    <label for="videoDescriptionInput">描述</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+
+                                        <textarea name="description" id="videoDescriptionInput" class="input form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form">
+                                <div class="col-md-3 info">
+                                    <label for="videoInput">上传课程视频</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <input class="input form-control" name="file" id="videoInput" type="file">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="modal-footer">
                 <button id="editSubmit" type="button" class="btn btn-primary">save</button>

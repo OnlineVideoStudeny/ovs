@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import stu.ovs.dao.entity.Contents;
 import stu.ovs.dao.entity.Courses;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.util.FileUtil;
@@ -101,7 +102,7 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/contents/create", method = RequestMethod.POST)
-    public String addContents(Integer parent_id){
+    public String addContents(Contents contents){
         return "";
     }
 
