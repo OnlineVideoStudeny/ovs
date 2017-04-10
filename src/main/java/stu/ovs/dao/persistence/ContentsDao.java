@@ -10,7 +10,7 @@ import stu.ovs.dao.entity.Contents;
  * Created by Alcott Hawk on 4/2/2017.
  */
 @Component
-public interface ContentsDao extends BaseDao{
+public interface ContentsDao extends BaseDao<Contents>{
 
     List<Contents> findByContentsType(String type);
 
