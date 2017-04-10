@@ -54,7 +54,7 @@
     <!-- 视频缩略图处理配置 -->
     <bean class="stu.ovs.service.module.VideoProcessService">
         <property name="CUT_TIME" value="1"/>
-        <property name="FFMPEG_PATH" value=""/>
+        <property name="FFMPEG_PATH" value="D:\ffmpeg.exe"/>
         <property name="SCREN_SIZE" value="350*350"/>
     </bean>
 

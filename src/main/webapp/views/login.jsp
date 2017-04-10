@@ -92,7 +92,7 @@ margin-left:50px;
 	%>
 	<div id="login">
 		<h3>欢迎登陆跟谁学视频网站</h3>
-		<form action="${ctx}/login" method="post" onsubmit="return check();">
+		<form action="${ctx}/index" method="post" onsubmit="return check();">
 			<input type="text" id="username" name="username" placeholder="用户名" /><br>
 			<span id="userPmg"></span><br> <br> <input type="password"
 				id="password" name="password" placeholder="密码" /> <br><span id="pwd"></span><br>

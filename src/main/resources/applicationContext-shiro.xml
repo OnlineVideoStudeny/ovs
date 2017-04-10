@@ -27,6 +27,7 @@
                 /static/** = anon
                 /registered = anon
                 /user/add = anon
+                 /index = anon
                 /** = user
             </value>
         </property>

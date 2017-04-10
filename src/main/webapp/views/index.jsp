@@ -20,19 +20,19 @@
 
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="${ctx}/static/images/login.jpg"/>
+                     <img src="${ctx}/static/images/lf.jpg"/> 
                     <div class="carousel-caption">
                         测试0
                     </div>
                 </div>
                 <div class="item">
-                    <img src="${ctx}/static/images/login.jpg"/>
+                    <img src="${ctx}/static/images/top2.jpg"/>
                     <div class="carousel-caption">
                         测试1
                     </div>
                 </div>
                 <div class="item">
-                    <img src="${ctx}/static/images/regis.jpg"/>
+                    <img src="${ctx}/static/images/lf2.jpg"/>
                     <div class="carousel-caption">
                         测试2
                     </div>
