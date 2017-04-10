@@ -13,6 +13,8 @@ public class Courses {
     private Integer contentsId;//内容id
     private Integer attention;
     private Integer collect;
+    private Integer disagree;
+    private Integer agree;
 
     public Integer getId() {
         return id;
@@ -68,5 +70,21 @@ public class Courses {
 
     public void setCollect(Integer collect) {
         this.collect = collect;
+    }
+
+    public Integer getDisagree() {
+        return disagree;
+    }
+
+    public void setDisagree(Integer disagree) {
+        this.disagree = disagree;
+    }
+
+    public Integer getAgree() {
+        return agree;
+    }
+
+    public void setAgree(Integer agree) {
+        this.agree = agree;
     }
 }

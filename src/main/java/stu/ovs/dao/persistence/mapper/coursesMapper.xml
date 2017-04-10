@@ -20,9 +20,9 @@
         SELECT * FROM courses c WHERE c.id IN (SELECT courses_id FROM courses_index WHERE contents_id = #{id})
     </select>
 
-    <!--<select id="findAll" resultMap="BaseResultMap">
+    <select id="findAll" resultMap="BaseResultMap">
         SELECT * FROM courses
-    </select>-->
+    </select>
 
     <insert id="save" parameterType="stu.ovs.dao.entity.Courses" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO courses(name, description, img, contents_id, attention, collect)

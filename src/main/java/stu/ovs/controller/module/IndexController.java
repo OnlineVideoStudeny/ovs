@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import stu.ovs.dao.entity.User;
 import stu.ovs.dao.persistence.UserDao;
+import stu.ovs.service.module.ContentsService;
+
+import java.util.List;
 
 /**
  * Created by Alcott Hawk on 4/3/2017.
@@ -15,12 +18,12 @@ import stu.ovs.dao.persistence.UserDao;
 public class IndexController {
 
     @Autowired
-    private UserDao userDao;
+    private ContentsService contentsService;
 
     @RequestMapping(value = "/index")
-    public String index(){
-        User user = userDao.findById("55");
-        System.out.println(user);
+    public String index(Model model){
+        List category = contentsService.findCategory();
+        model.addAttribute("categoryList",category);
         return "index";
     }
 

@@ -1,9 +1,5 @@
 package stu.ovs.service.module.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,18 +35,28 @@ public class CoursesServiceImpl implements CoursesService {
 		return coursesDao.findById(id);
 
 	}
+    public Courses findOne(Object id) {
+        Courses courses = coursesDao.findById(id);
+        if (null != courses){
+            return courses;
+        }
+        return new Courses();
+    }
 
 	public List<Courses> findAll() {
 		
 		return null;
 	}
+    public List<Courses> findAll() {
+        return coursesDao.findAll();
+    }
 
 	public void delete(Courses id) {
 
 	}
 
 	public void update(Courses courses) {
-
+        coursesDao.update(courses);
 	}
 
 	public void add(Courses courses) {

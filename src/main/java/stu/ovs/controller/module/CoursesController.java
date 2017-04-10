@@ -2,13 +2,20 @@ package stu.ovs.controller.module;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import stu.ovs.dao.entity.Comment;
+import stu.ovs.dao.entity.Contents;
 import stu.ovs.dao.entity.Courses;
+import stu.ovs.service.module.CommentService;
+import stu.ovs.service.module.ContentsService;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.util.FileUtil;
+
+import java.util.List;
 
 /**
  * Created by Alcott Hawk on 4/3/2017.
@@ -20,12 +27,22 @@ public class CoursesController {
     @Autowired
     private CoursesService coursesService;
 
+    @Autowired
+    private CommentService commentService;
+
+    @Autowired
+    private ContentsService contentsService;
+
     /**
      * 课程首页
      * @return
      */
     @RequestMapping(value = "/index")
-    public String index(){
+    public String index(Integer id, Model model){
+        Courses courses = coursesService.findOne(id);
+        model.addAttribute("courses", courses);
+        List<Comment> comment = commentService.findByCourses(id);
+        model.addAttribute("comment", comment);
         return "courses/index";
     }
 
@@ -43,10 +60,11 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addVideo(Courses courses, MultipartFile file){
+    public String addVideo(Courses courses, MultipartFile file, Model model){
         if (FileUtil.save(file, "c://file")){
             courses.setImg(file.getOriginalFilename());
             coursesService.add(courses);
+            //TODO 查找目录
         }
         return "system/index";
     }
@@ -59,7 +77,12 @@ public class CoursesController {
     @RequestMapping(value = "/delete")
     @ResponseBody
     public Object delete(Integer id){
-        return "ok";
+        Courses courses = coursesService.findOne(id);
+        if (null != courses){
+            coursesService.delete(courses);
+            return "ok";
+        }
+        return "error";
     }
 
     /**
@@ -70,7 +93,13 @@ public class CoursesController {
     @RequestMapping(value = "/agree")
     @ResponseBody
     public Object agree(Integer id){
-        return "";
+        Courses courses = coursesService.findOne(id);
+        if (null != courses){
+            courses.setAgree(courses.getAgree()+1);
+            coursesService.update(courses);
+            return courses.getAgree();
+        }
+        return "error";
     }
 
     /**
@@ -81,7 +110,13 @@ public class CoursesController {
     @RequestMapping(value = "/disagree")
     @ResponseBody
     public Object disagree(Integer id){
-        return "";
+        Courses courses = coursesService.findOne(id);
+        if (null != courses){
+            courses.setAgree(courses.getAgree()+1);
+            coursesService.update(courses);
+            return courses.getAgree();
+        }
+        return "error";
     }
 
     /**
@@ -92,7 +127,13 @@ public class CoursesController {
     @RequestMapping(value = "/collect")
     @ResponseBody
     public Object collect(Integer id){
-        return "";
+        Courses courses = coursesService.findOne(id);
+        if (null != courses){
+            courses.setAgree(courses.getCollect()+1);
+            coursesService.update(courses);
+            return courses.getCollect();
+        }
+        return "error";
     }
 
     /**
@@ -101,8 +142,9 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/contents/create", method = RequestMethod.POST)
-    public String addContents(Integer parent_id){
-        return "";
+    public String addContents(Contents contents,Model model){
+        contentsService.addContents(contents);
+        return "courses/add-courses";
     }
 
     /**
@@ -112,8 +154,13 @@ public class CoursesController {
      */
     @RequestMapping(value = "/contents/delete", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteContents(Integer parent_id){
-        return "";
+    public Object deleteContents(Integer id){
+        Courses courses = coursesService.findOne(id);
+        if (null != courses){
+            contentsService.delete(id);
+            return "ok";
+        }
+        return "error";
     }
 
 }
