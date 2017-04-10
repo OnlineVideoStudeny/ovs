@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService{
     }
 
     public List<User> findAll() {
-        return null;
+        return userDao.findAll();
     }
 
     public void delete(User id) {
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService{
     }
 
     public void update(User user) {
-
+        userDao.update(user);
     }
 
     public void add(User user) {

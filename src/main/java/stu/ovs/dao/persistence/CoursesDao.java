@@ -12,6 +12,8 @@ import java.util.Map;
 @Component
 public interface CoursesDao extends BaseDao<Courses>{
 
+    List<Courses> findAll();
+
     List<Courses> findByContents(Integer id);
 
     void addCoursesIndex(Map arg);

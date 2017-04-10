@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 影响处理类
  * Created by Alcott Hawk on 4/4/2017.
  */
 public class VideoProcessService {

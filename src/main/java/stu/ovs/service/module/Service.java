@@ -1,7 +1,5 @@
 package stu.ovs.service.module;
 
-import stu.ovs.dao.entity.User;
-
 import java.util.List;
 
 /**

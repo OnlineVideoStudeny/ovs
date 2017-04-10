@@ -10,7 +10,7 @@ public class Courses {
     private String name;
     private String description;
     private String img;
-    private Integer contentsId;
+    private Integer contentsId;//内容id
     private Integer attention;
     private Integer collect;
 
