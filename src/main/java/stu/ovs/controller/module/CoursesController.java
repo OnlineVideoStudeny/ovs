@@ -138,7 +138,8 @@ public class CoursesController {
 
     /**
      * 添加课程目录
-     * @param parent_id
+     * @param contents
+     * @param model
      * @return
      */
     @RequestMapping(value = "/contents/create", method = RequestMethod.POST)

@@ -2,11 +2,10 @@ package stu.ovs.controller.module;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import stu.ovs.dao.entity.User;
-import stu.ovs.dao.persistence.UserDao;
 import stu.ovs.service.module.ContentsService;
 
 import java.util.List;

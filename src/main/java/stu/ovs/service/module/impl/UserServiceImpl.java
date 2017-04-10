@@ -2,16 +2,12 @@ package stu.ovs.service.module.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.codec.Hex;
-import org.apache.shiro.crypto.hash.Md5Hash;
-import org.apache.shiro.crypto.hash.Sha1Hash;
 import org.apache.shiro.crypto.hash.SimpleHash;
-import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ObjectUtils;
 import stu.ovs.dao.entity.User;
 import stu.ovs.dao.persistence.UserDao;
 import stu.ovs.service.module.UserService;

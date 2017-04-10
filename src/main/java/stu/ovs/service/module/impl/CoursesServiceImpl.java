@@ -11,6 +11,10 @@ import stu.ovs.dao.persistence.CoursesDao;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.service.module.VideoProcessService;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Alcott Hawk on 4/2/2017.
  */
@@ -18,8 +22,7 @@ import stu.ovs.service.module.VideoProcessService;
 @Transactional
 public class CoursesServiceImpl implements CoursesService {
 
-	private static Logger logger = LoggerFactory
-			.getLogger(VideoProcessService.class);
+	private static Logger logger = LoggerFactory.getLogger(VideoProcessService.class);
 
 	@Autowired
 	private VideoProcessService videoProcessService;
@@ -30,11 +33,6 @@ public class CoursesServiceImpl implements CoursesService {
 	/**
 	 * 根据课程ID查找某个课程
 	 */
-	public Courses findOne(Object id) {
-
-		return coursesDao.findById(id);
-
-	}
     public Courses findOne(Object id) {
         Courses courses = coursesDao.findById(id);
         if (null != courses){
@@ -43,10 +41,6 @@ public class CoursesServiceImpl implements CoursesService {
         return new Courses();
     }
 
-	public List<Courses> findAll() {
-		
-		return null;
-	}
     public List<Courses> findAll() {
         return coursesDao.findAll();
     }
