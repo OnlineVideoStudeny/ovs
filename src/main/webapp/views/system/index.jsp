@@ -71,16 +71,7 @@
 			
 		</div>
 	</div>
-	   <div class="index-right">
-		<div class="row">
-			<div class="col-md-2">
-				<%@ include file="/layouts/sidebar.jsp"%>
-			</div>
-			<div class="col-md-10">
-				<sitemesh:write property='body' />
-			</div>
-		</div>
-	</div>
+	  
 </body>
   
 </html>

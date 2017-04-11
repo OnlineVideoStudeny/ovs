@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%--
   Created by IntelliJ IDEA.
   User: Developer
@@ -7,7 +9,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<head>
+<title><sitemesh:write property='title' /></title>
+<%@ include file="/layouts/header.jsp"%>
+</head>
+
 <title>课程添加</title>
+
 <div class="row">
     <div class="col-md-2">
         <div>
@@ -24,6 +32,29 @@
         </div>
     </div>
 </div>
+
+<!-- 显示课程目录 -->
+   <table class="table">
+		<tr>
+			<td>名称</td>
+			<td>描述</td>
+			<td>上级分类目录</td>
+			
+		</tr>
+		
+		<c:forEach var="Contents" items="${Contents}">
+					<tr>
+						<td>${Contents.id}</td>
+						<td>${Contents.name}</td>
+						<td>${Contents.description}</td>	
+						<td>${Contents.parentId}</td>
+						<a href="" class="tablelink"> 更新 &nbsp;</a>
+						<a href="" class="tablelink"> 删除</a></td>
+					</tr>
+	</c:forEach>
+	</table>
+
+
 <!-- <section>
     <div style="float: right">
         <a class="button">添加目录</a>
@@ -79,7 +110,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="addSubmit" type="button" class="btn btn-primary">create</button>
+                <button id="addSubmit" type="submit" class="btn btn-primary">create</button>
                 <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -140,3 +171,4 @@
         </div>
     </div>
 </div>
+

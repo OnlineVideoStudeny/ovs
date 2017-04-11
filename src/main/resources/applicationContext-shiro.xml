@@ -28,7 +28,7 @@
                 /registered = anon
                 /user/add = anon
                  /index = anon
-                /** = user
+                /** = anon
             </value>
         </property>
     </bean>

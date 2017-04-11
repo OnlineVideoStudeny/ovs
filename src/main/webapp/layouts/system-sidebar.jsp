@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script>$(document).ready(function(){$(".vertical-nav").verticalnav({speed: 400,align: "left"});});</script>
-<div style="clear:both;">
+<!-- <div style="clear:both;">
 </div>
-<div class="kePublic">
-    <div class="content">
+<div class="kePublic"> -->
+    <!-- <div class="content">
         <ul class="vertical-nav dark red">
             <li><a href="http://www.internetke.com/"></i>服务<span class="submenu-icon"></span></a>
                 <ul>
@@ -81,4 +81,4 @@
             }
         </script>
     </js>
-</div>
+</div> -->
