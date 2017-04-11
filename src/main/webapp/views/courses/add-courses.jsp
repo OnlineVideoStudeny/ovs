@@ -24,11 +24,11 @@
         </div>
     </div>
 </div>
-<section>
+<!-- <section>
     <div style="float: right">
         <a class="button">添加目录</a>
     </div>
-</section>
+</section> -->
 <div class="modal fade" id="contentsCreateModal" tabindex="-1" role="dialog" aria-labelledby="contentsCreateLable" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -55,7 +55,7 @@
 						<div>
                             <li><a href="#" class="navbar-div-1"><b>欢迎<shiro:principal/>登陆</b></a></li>
 						</div>
-						<div>
+						<div >
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">个人中心 <span class="caret"></span></a>

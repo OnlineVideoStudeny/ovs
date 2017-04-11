@@ -13,6 +13,7 @@
     <mapping path="/login*" exclude="true"/>
     <mapping path="/registered*" exclude="true"/>
     <mapping path="/user/*" exclude="true"/>
+    <mapping path="/system/*" exclude="true"/>
 
     <content-processor>
         <tag-rule-bundle class="stu.ovs.controller.DecoratorTag" />

@@ -12,6 +12,7 @@
 <link type="image/x-icon" href="${ctx}/static/images/favicon.ico"
       rel="shortcut icon">
 <link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/main.css"/>
+<link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/index.css"/>
 <link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" href="${ctx}/static/font-awesome/font-awesome.css" >
