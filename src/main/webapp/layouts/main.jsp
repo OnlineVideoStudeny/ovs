@@ -51,10 +51,9 @@
 						<li><a href="${ctx}/registered" class="navbar-div-1"><b>注册</b></a></li>
 						<li><a href="${ctx}/login" class="navbar-div-2"><b>登陆</b></a></li>
 					</shiro:guest>
-					<%-- <shiro:user>
+					 <shiro:user>
 						<div>
-							欢迎
-							<shiro:principal property="name">登陆</shiro:principal>
+                            <li><a href="#" class="navbar-div-1"><b>欢迎<shiro:principal/>登陆</b></a></li>
 						</div>
 						<div>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -68,7 +67,7 @@
 									<li><a href="#">Separated link</a></li>
 								</ul></li>
 						</div>
-					</shiro:user> --%>
+					</shiro:user>
 
 				</ul>
 			</div>
