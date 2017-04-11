@@ -1,12 +1,36 @@
 @CHARSET "UTF-8";
-.navbar-gen{
-	margin-top:10px;
+.gen{
+	margin-top:12px;
 	font-size: 30px;
 	color:#ff0000;
+	line-height:18px;
 }
-.navbar-shui{
-	margin-top:15px;
-	margin-left:15px;
+.shui{
+	margin:0px 10px 20px 17px;
+	line-height:normal;
 	font-size: 15px;
 	color:#ffffff;
+}
+.navbar-div-1{
+	margin:-40px 0px 0px 150px;
+	color:#ffffff;
+}
+.navbar-div-2{
+	color:#ffffff;
+	margin:-40px 0px 0px 30px;
+}
+.naviga-bar{
+	margin:20px 0px 0px 100px;
+	
+}
+.nav-dao li {
+	display:inline;
+	color:#ffffff;
+	margin:20px 0px 50px 17px;
+	font-size: 20px;
+	
+}
+.nav-hang{
+	color:#ffffff;
+	margin-left:30px;
 }

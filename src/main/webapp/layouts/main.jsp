@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,22 +28,35 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-gen" href="#">跟谁学习网</a> <br>
-				<span class="navbar-shui">GenShuiXue.com</span>
+				<div class="gen">跟谁学习网</div>
+				<br> <span class="shui">GenShuiXue.com</span>
+			</div>
+
+
+			<div class="naviga-bar">
+				<ul class="nav-dao">
+
+					<li><a href="${ctx}/index" class="nav-hang">首页</a></li>
+					<li><a href="http://www.baidu.com" class="nav-hang">在线视频</a></li>
+					<li><a href="#" class="nav-hang">加入收藏</a></li>
+					<li><a href="#" class="nav-hang">关于我们</a></li>
+
+				</ul>
 			</div>
 
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<c:choose>
-
-						<c:when test="${sessionScope.username==null }">
-							<li><a href="${ctx}/registered"><b>注册</b></a></li>
-							<li><a href="${ctx}/login"><b>登陆</b></a></li>
-						</c:when>
-						<c:otherwise>
-						欢迎 ${sessionScope.name}登陆|<a href="${ctx}/login">退出</a>
-
+					<shiro:guest>
+						<li><a href="${ctx}/registered" class="navbar-div-1"><b>注册</b></a></li>
+						<li><a href="${ctx}/login" class="navbar-div-2"><b>登陆</b></a></li>
+					</shiro:guest>
+					<shiro:user>
+						<div>
+							欢迎
+							<shiro:principal property="name">登陆</shiro:principal>
+						</div>
+						<div>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">个人中心 <span class="caret"></span></a>
@@ -53,9 +67,9 @@
 									<li role="separator" class="divider"></li>
 									<li><a href="#">Separated link</a></li>
 								</ul></li>
+						</div>
+					</shiro:user>
 
-						</c:otherwise>
-					</c:choose>
 				</ul>
 			</div>
 		</div>
