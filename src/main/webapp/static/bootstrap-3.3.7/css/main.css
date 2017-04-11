@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+.navbar-gen{
+	margin-top:10px;
+	font-size: 30px;
+	color:#ff0000;
+}
+.navbar-shui{
+	margin-top:15px;
+	margin-left:15px;
+	font-size: 15px;
+	color:#ffffff;
+}
