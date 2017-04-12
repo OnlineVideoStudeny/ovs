@@ -74,7 +74,7 @@ public class CoursesController {
             coursesService.add(courses);
             //TODO 查找目录
         }
-        return "system/index";
+        return "redirect:/courses/add";
     }
 
     /**

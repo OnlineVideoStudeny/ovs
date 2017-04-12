@@ -43,7 +43,7 @@ public class SystemController {
         contents.setContentsType(ContentsServiceImpl.SYSTEM_CATEGRY);
         contentsService.addCategory(contents);
         model.addAttribute("category",contentsService.findCategory());
-        return "system/add-category";
+        return "redirect:/system/category/add";
     }
 
     @RequestMapping(value = "/category/delete", method = RequestMethod.POST)
