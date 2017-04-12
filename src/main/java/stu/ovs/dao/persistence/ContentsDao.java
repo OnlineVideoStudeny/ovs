@@ -1,10 +1,9 @@
 package stu.ovs.dao.persistence;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
-
 import stu.ovs.dao.entity.Contents;
+
+import java.util.List;
 
 /**
  * Created by Alcott Hawk on 4/2/2017.
@@ -14,8 +13,10 @@ public interface ContentsDao extends BaseDao<Contents>{
 
     List<Contents> findByContentsType(String type);
 
-    List<Contents> findByCourses(Integer id);
+    List<Contents> findByCourses(Integer id, String type);
 
-    Contents findByParentId(Integer id);
+    List<Contents> findByTopId(Integer id, String type);
+
+    List<Contents> findByParentId(Integer id);
 
 }

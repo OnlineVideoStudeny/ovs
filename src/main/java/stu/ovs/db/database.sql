@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS ovs;
 CREATE DATABASE ovs;
 USE ovs;
 
@@ -44,6 +45,7 @@ CREATE TABLE contents(
   description VARCHAR(255) DEFAULT '',
   parent_id INT NOT NULL ,
   is_top TINYINT NOT NULL DEFAULT 0,
+  top_id INT NOT NULL DEFAULT 0 ,
   path VARCHAR(50) NOT NULL ,
   contents_type VARCHAR(10) NOT NULL,
   PRIMARY KEY (id)

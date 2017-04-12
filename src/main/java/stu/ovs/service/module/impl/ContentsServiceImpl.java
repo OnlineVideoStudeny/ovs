@@ -1,18 +1,17 @@
 package stu.ovs.service.module.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import stu.ovs.dao.entity.Contents;
 import stu.ovs.dao.persistence.ContentsDao;
 import stu.ovs.service.module.ContentsService;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 目录service
@@ -91,15 +90,19 @@ public class ContentsServiceImpl implements ContentsService{
      */
     @Override
     public List<Map> findContents(Integer id) {
-        List<Contents> contentsList = contentsDao.findByCourses(id);
-        List<Map> menuList = new ArrayList<Map>();
-        for (Contents contents : contentsList){
-            if (contents.isTop()){
-                List children = findChildren(contentsList,contents.getId());
-                this.loadData(menuList, contents, children);
-            }
-        }
-        return menuList;
+        List<Contents> contentsList = contentsDao.findByCourses(id, COURSES_CONTENTS);
+        return doProcess(contentsList);
+    }
+
+    @Override
+    public List<Contents> findNext(Integer id) {
+        return contentsDao.findByParentId(id);
+    }
+
+    @Override
+    public List<Map> findByTopId(Integer id) {
+        List<Contents> contentsList = contentsDao.findByTopId(id, COURSES_CONTENTS);
+        return doProcess(contentsList);
     }
 
     @Override
@@ -160,5 +163,21 @@ public class ContentsServiceImpl implements ContentsService{
         map.put("id",contents.getId());
         map.put("children",children);
         menuList.add(map);
+    }
+
+    /**
+     * 处理集合，封装出适合使用的json数据
+     * @param contentsList
+     * @return
+     */
+    private List<Map> doProcess(List<Contents> contentsList){
+        List<Map> menuList = new ArrayList<Map>();
+        for (Contents contents : contentsList){
+            if (contents.isTop()){
+                List children = findChildren(contentsList,contents.getId());
+                this.loadData(menuList, contents, children);
+            }
+        }
+        return menuList;
     }
 }

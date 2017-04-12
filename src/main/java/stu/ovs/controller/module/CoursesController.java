@@ -145,6 +145,7 @@ public class CoursesController {
     @RequestMapping(value = "/contents/create", method = RequestMethod.POST)
     public String addContents(Contents contents,Model model){
         contentsService.addContents(contents);
+        model.addAttribute("contents","");
         return "courses/add-courses";
     }
 
