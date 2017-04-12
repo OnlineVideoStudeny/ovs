@@ -112,7 +112,7 @@ public class ContentsServiceImpl implements ContentsService{
             contents.setParentId(0);
         } else {
             Contents contentsParent = (Contents) contentsDao.findById(contents.getParentId());
-            contents.setPath(contentsParent.getPath() + "|");
+            contents.setPath("|" + contentsParent.getParentId());
         }
         add(contents);
     }
@@ -123,7 +123,7 @@ public class ContentsServiceImpl implements ContentsService{
             contents.setPath("|");
         } else {
             Contents contentsParent = (Contents) contentsDao.findById(contents.getParentId());
-            contents.setPath(contentsParent.getPath() + "|");
+            contents.setPath("|" + contentsParent.getParentId());
             contents.setTop(false);
             if (StringUtils.isBlank(contentsParent.getTopid().toString())){
                 contents.setTopid(contentsParent.getParentId());
