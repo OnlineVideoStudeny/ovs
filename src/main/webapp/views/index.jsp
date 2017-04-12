@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <title>Title</title>
+
 <body>
     <div class="row">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -50,19 +51,20 @@
         </div>
     </div>
     <div class="row">
-        <div>
+        <div class="navg-small">
             <hr class="html-editor-hr"/>
             <h3>热门课程</h3>
         </div>
         <div>
             <span>
-                <a href="#">
+                <a href="#" class="">
                     <img src="${ctx}/static/images/regis.jpg">
-                <label>
+                <label class="">
                     description
                 </label>
                 </a>
             </span>
+            
             <span>
                 <a href="#">
                     <img src="${ctx}/static/images/regis.jpg">
@@ -72,6 +74,14 @@
                 </a>
             </span>
             <span>
+                <a href="#">
+                    <img src="${ctx}/static/images/regis.jpg">
+                <label>
+                    description
+                </label>
+                </a>
+            </span>
+             <span>
                 <a href="#">
                     <img src="${ctx}/static/images/regis.jpg">
                 <label>

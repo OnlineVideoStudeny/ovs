@@ -22,31 +22,33 @@
 			<a href="#categoryCreateModal" role="button" class="btn"
 				data-toggle="modal"> 添加分类 </a>
 		</section>
-		
-		<!-- 显示分类 -->
-   <table class="table">
-		<tr>
-			<td>名称</td>
-			<td>描述</td>
-			<td>上级分类目录</td>
-			
-		</tr>
-		
-		<c:forEach var="Contents" items="${Contents}">
-					<tr>
-						<td>${Contents.id}</td>
-						<td>${Contents.name}</td>
-						<td>${Contents.description}</td>	
-						<td>${Contents.parentId}</td>
-						<a href="" class="tablelink"> 更新 &nbsp;</a>
-						<a href="" class="tablelink"> 删除</a></td>
-					</tr>
-	</c:forEach>
-	</table>
 
-		
-		
+		<!-- 显示分类 -->
+		<table class="table">
+			<tr>
+				<td>名称</td>
+				<td>描述</td>
+				<td>上级分类目录</td>
+
+			</tr>
+
+			<c:forEach var="Contents" items="${Contents}">
+				<tr>
+					<td>${Contents.id}</td>
+					<td>${Contents.name}</td>
+					<td>${Contents.description}</td>
+					<td>${Contents.parentId}</td>
+					<a href="" class="tablelink"> 更新 &nbsp;</a>
+					<a href="" class="tablelink"> 删除</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+
+
+
 	</div>
+
 	<div class="modal fade" id="categoryCreateModal" tabindex="-1"
 		role="dialog" aria-labelledby="categoryCreateLable" aria-hidden="true">
 		<div class="modal-dialog">
@@ -65,18 +67,18 @@
 							<div class="container-fluid content-item">
 								<div class="row form">
 									<div class="col-md-3 info">
-										<label for="nameInput">名称</label>
+										<label for="nameInput" id="name">名称</label>
 									</div>
 									<div class="col-md-9">
 										<div>
-											<input name="description" id="nameInput"
+											<input name="name" id="nameInput"
 												class="input form-control" />
 										</div>
 									</div>
 								</div>
 								<div class="row form">
 									<div class="col-md-3 info">
-										<label for="contentsDescriptionInput">描述</label>
+										<label for="contentsDescriptionInput" id="description">描述</label>
 									</div>
 									<div class="col-md-9">
 										<div>
@@ -94,6 +96,7 @@
 										<div>
 											<select id="parentInput" name="parentId">
 												<option>选择上级分类目录</option>
+
 											</select>
 										</div>
 									</div>
@@ -109,5 +112,30 @@
 			</div>
 		</div>
 	</div>
+
+
+
 </body>
+<js> <script type="text/javascript">
+	/* function getTree() {
+	 return data;
+	}
+	$('#tree').treeview({data: getTree()}); */
+
+	$(function() {
+		$("#addSubmit").click(
+				function() {
+					var nameInput = $("#nameInput").val();
+					var contentsDescriptionInput = $(
+							"#contentsDescriptionInput").val();
+					if (nameInput == null || nameInput == "") {
+						alert("不能为空");
+					} else {
+						$("#addUserForm").submit();
+						
+					}
+				})
+
+	})
+</script> </js>
 </html>

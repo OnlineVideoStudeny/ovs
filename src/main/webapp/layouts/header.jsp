@@ -12,6 +12,7 @@
 <link type="image/x-icon" href="${ctx}/static/images/favicon.ico"
       rel="shortcut icon">
 <link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/main.css"/>
+<link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/bootstrap-treeview.css"/>
 <link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/index.css"/>
 <link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="${ctx}/static/bootstrap-3.3.7/css/bootstrap-theme.min.css"/>
@@ -19,4 +20,5 @@
 
 <script src="${ctx}/static/jquery/jquery.min.js"></script>
 <script src="${ctx}/static/bootstrap-3.3.7/js/bootstrap.min.js" ></script>
+<script src="${ctx}/static/bootstrap-3.3.7/js/bootstrap-treeview.js" ></script>
 <script type="text/javascript" src="${ctx}/static/google-maps.js"></script>
