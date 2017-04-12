@@ -30,9 +30,9 @@
 				<td>描述</td>
 				<td>上级分类目录</td>
 			</tr>
-            <c:set var="index" value="0" scope="request" />
-            <c:set var="level" value="0" scope="request" />
-            <c:import url="_r.jsp" />
+			<c:set var="index" value="0" scope="request" />
+			<c:set var="level" value="0" scope="request" />
+			<c:import url="_r.jsp" />
 		</table>
 	</div>
 
@@ -58,8 +58,7 @@
 									</div>
 									<div class="col-md-9">
 										<div>
-											<input name="name" id="nameInput"
-												class="input form-control" />
+											<input name="name" id="nameInput" class="input form-control" />
 										</div>
 									</div>
 								</div>
@@ -109,17 +108,19 @@
 	$('#tree').treeview({data: getTree()}); */
 
 	$(function() {
-		$("#addSubmit").click(
-				function() {
-					var nameInput = $("#nameInput").val();
-					var contentsDescriptionInput = $(
-							"#contentsDescriptionInput").val();
-					if (nameInput == null || nameInput == "") {
-						alert("不能为空");
-					} else {
-						$("#addUserForm").submit();
-					}
-				})
+		$("#addSubmit")
+				.click(
+						function() {
+							var nameInput = $("#nameInput").val();
+							var contentsDescriptionInput = $(
+									"#contentsDescriptionInput").val();
+							if ((nameInput == null || nameInput == "")
+									&& (contentsDescriptionInput == null || contentsDescriptionInput == "")) {
+								alert("名称或描述不能为空");
+							} else {
+								$("#addUserForm").submit();
+							}
+						})
 
 	})
 </script> </js>

@@ -53,5 +53,6 @@
     </div>
 </div>
 </body>
+<sitemesh:write property=js />
 <%@ include file="/layouts/system-footer.jsp"%>
 </html>
