@@ -41,7 +41,7 @@
     </select>
 
     <insert id="save" parameterType="stu.ovs.dao.entity.Contents" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO contents(name, description, parent_d, path, contents_type)
+        INSERT INTO contents(name, description, parent_id, path, contents_type)
         VALUE (#{name}, #{description}, #{parentId}, #{path}, #{contentsType})
     </insert>
 

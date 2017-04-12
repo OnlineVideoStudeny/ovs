@@ -29,24 +29,11 @@
 				<td>名称</td>
 				<td>描述</td>
 				<td>上级分类目录</td>
-
 			</tr>
-
-			<c:forEach var="Contents" items="${Contents}">
-				<tr>
-					<td>${Contents.id}</td>
-					<td>${Contents.name}</td>
-					<td>${Contents.description}</td>
-					<td>${Contents.parentId}</td>
-					<a href="" class="tablelink"> 更新 &nbsp;</a>
-					<a href="" class="tablelink"> 删除</a>
-					</td>
-				</tr>
-			</c:forEach>
+            <c:set var="index" value="0" scope="request" />
+            <c:set var="level" value="0" scope="request" />
+            <c:import url="_r.jsp" />
 		</table>
-
-
-
 	</div>
 
 	<div class="modal fade" id="categoryCreateModal" tabindex="-1"
@@ -62,7 +49,7 @@
 				<div class="modal-body content">
 					<div class="row content border">
 						<form id="addUserForm" method="post" class="form-horizontal"
-							role="form" action="${ctx}/courses/contents/create">
+							role="form" action="${ctx}/system/category/add">
 							<input name="contentsType" value="system_category" type="hidden">
 							<div class="container-fluid content-item">
 								<div class="row form">
@@ -95,8 +82,7 @@
 									<div class="col-md-9">
 										<div>
 											<select id="parentInput" name="parentId">
-												<option>选择上级分类目录</option>
-
+												<option value="">选择上级分类目录</option>
 											</select>
 										</div>
 									</div>
@@ -132,7 +118,6 @@
 						alert("不能为空");
 					} else {
 						$("#addUserForm").submit();
-						
 					}
 				})
 

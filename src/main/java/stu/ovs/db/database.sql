@@ -47,7 +47,7 @@ CREATE TABLE contents(
   is_top TINYINT NOT NULL DEFAULT 0,
   top_id INT NOT NULL DEFAULT 0 ,
   path VARCHAR(50) NOT NULL ,
-  contents_type VARCHAR(10) NOT NULL,
+  contents_type VARCHAR(30) NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 

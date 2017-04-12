@@ -121,7 +121,6 @@ public class ContentsServiceImpl implements ContentsService{
     public void addContents(Contents contents) {
         if (null == contents.getParentId()){
             contents.setPath("|");
-            contents.setParentId(0);
         } else {
             Contents contentsParent = (Contents) contentsDao.findById(contents.getParentId());
             contents.setPath(contentsParent.getPath() + "|");
