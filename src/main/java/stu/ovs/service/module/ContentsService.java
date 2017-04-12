@@ -28,7 +28,7 @@ public interface ContentsService extends Service<Contents>{
      * @param id
      * @return
      */
-    List<Contents> findNext(Integer id);
+    List<Contents> findNext(Integer id, String type);
 
     /**
      * 查找顶级结点下的信息
@@ -36,6 +36,8 @@ public interface ContentsService extends Service<Contents>{
      * @return
      */
     List<Map> findByTopId(Integer id);
+
+    List<Contents> findTopCategory();
 
     /**
      * 添加分类

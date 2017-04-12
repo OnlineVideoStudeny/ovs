@@ -11,6 +11,9 @@ import stu.ovs.dao.entity.Contents;
 import stu.ovs.service.module.ContentsService;
 import stu.ovs.service.module.impl.ContentsServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Alcott Hawk on 4/5/2017.
  */
@@ -35,6 +38,7 @@ public class SystemController {
     @RequestMapping(value = "/category/add", method = RequestMethod.GET)
     public String createCategory(Model model){
         model.addAttribute("category",contentsService.findCategory());
+        model.addAttribute("parentCategory", contentsService.findTopCategory());
         return "system/add-category";
     }
 
@@ -44,6 +48,16 @@ public class SystemController {
         contentsService.addCategory(contents);
         model.addAttribute("category",contentsService.findCategory());
         return "redirect:/system/category/add";
+    }
+
+    @RequestMapping(value = "/getNext", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Contents> getNext(Integer id){
+        List next = contentsService.findNext(id, ContentsServiceImpl.SYSTEM_CATEGRY);
+        if (null != next){
+            return next;
+        }
+        return new ArrayList<>();
     }
 
     @RequestMapping(value = "/category/delete", method = RequestMethod.POST)

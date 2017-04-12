@@ -95,14 +95,23 @@ public class ContentsServiceImpl implements ContentsService{
     }
 
     @Override
-    public List<Contents> findNext(Integer id) {
-        return contentsDao.findByParentId(id);
+    public List<Contents> findNext(Integer id, String type) {
+        return contentsDao.findByParentId(id, type);
     }
 
     @Override
     public List<Map> findByTopId(Integer id) {
         List<Contents> contentsList = contentsDao.findByTopId(id, COURSES_CONTENTS);
         return doProcess(contentsList);
+    }
+
+    @Override
+    public List<Contents> findTopCategory() {
+        List<Contents> contentsList = contentsDao.findByParentId(0, ContentsServiceImpl.SYSTEM_CATEGRY);
+        if (null != contentsList){
+            return contentsList;
+        }
+        return new ArrayList<>();
     }
 
     @Override

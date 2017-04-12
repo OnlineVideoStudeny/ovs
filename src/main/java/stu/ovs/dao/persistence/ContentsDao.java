@@ -1,5 +1,6 @@
 package stu.ovs.dao.persistence;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 import stu.ovs.dao.entity.Contents;
 
@@ -15,7 +16,9 @@ public interface ContentsDao extends BaseDao<Contents>{
 
     List<Contents> findByCourses(Integer id, String type);
 
-    List<Contents> findByTopId(Integer id, String type);
+    List<Contents> findByTopId(@Param("id") Integer id, @Param("type") String type);
+
+    List<Contents> findByParentId(@Param("id") Integer id, @Param("type") String type);
 
     List<Contents> findByParentId(Integer id);
 

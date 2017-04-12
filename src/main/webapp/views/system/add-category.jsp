@@ -79,9 +79,12 @@
 										<label for="parentInput">上级目录</label>
 									</div>
 									<div class="col-md-9">
-										<div>
+										<div id="parentChose">
 											<select id="parentInput" name="parentId">
 												<option value="">选择上级分类目录</option>
+                                                <c:forEach items="${parentCategory}" var="category">
+                                                    <option value="${category.id}">${category.name}</option>
+                                                </c:forEach>
 											</select>
 										</div>
 									</div>
@@ -101,27 +104,44 @@
 
 
 </body>
-<js> <script type="text/javascript">
+<js>
+    <script type="text/javascript">
+
 	/* function getTree() {
 	 return data;
 	}
 	$('#tree').treeview({data: getTree()}); */
 
-	$(function() {
-		$("#addSubmit")
-				.click(
-						function() {
-							var nameInput = $("#nameInput").val();
-							var contentsDescriptionInput = $(
-									"#contentsDescriptionInput").val();
-							if ((nameInput == null || nameInput == "")
-									&& (contentsDescriptionInput == null || contentsDescriptionInput == "")) {
-								alert("名称或描述不能为空");
-							} else {
-								$("#addUserForm").submit();
-							}
-						})
+        $(function() {
+            $("#addSubmit").click(function() {
+                var nameInput = $("#nameInput").val();
+                var contentsDescriptionInput = $(
+                        "#contentsDescriptionInput").val();
+                if ((nameInput == null || nameInput == "")
+                        && (contentsDescriptionInput == null || contentsDescriptionInput == "")) {
+                    alert("名称或描述不能为空");
+                } else {
+                    $("#addUserForm").submit();
+                }
+            })
+        })
 
-	})
-</script> </js>
+        $("#parentInput").change(function () {
+            $.getJSON("${ctx}/system/getNext?id="+$(this).val(), function (data) {
+                if (null != data && data.length > 0){
+                    var selectEle = $("<select id='parentInput' name='parentId' />")
+                    $.each(data, function () {
+                        var optionEle = $("<option/>")
+                        optionEle.val(this.id);
+                        optionEle.html(this.name);
+                        optionEle.appendTo(selectEle);
+                    })
+                    selectEle.appendTo($("#parentChose"));
+                    $(this).remove("name");
+                    $(this).remove("id");
+                }
+            })
+        })
+    </script>
+</js>
 </html>

@@ -33,7 +33,7 @@
     </select>
 
     <select id="findByTopId" resultMap="BaseResultMap">
-        SELECT c.* FROM contents c WHERE c.top_id = #{id} OR c.id = #{id} AND c.contents_type = #{type}
+        SELECT c.* FROM contents c WHERE c.top_id = #{id} AND c.contents_type = #{type}
     </select>
 
     <select id="findByParentId" parameterType="int" resultMap="BaseResultMap">
