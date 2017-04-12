@@ -12,7 +12,7 @@
         <result column="collect" property="collect" jdbcType="BIGINT" />
 	</resultMap>
 
-    <select id="findById" parameterType="string" resultMap="BaseResultMap">
+    <select id="findById" parameterType="int" resultMap="BaseResultMap">
         SELECT * FROM courses c WHERE c.id = #{id}
     </select>
 

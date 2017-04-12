@@ -12,39 +12,6 @@
 <div class="kePublic" style="min-height: 500px">
     <div class="content">
         <ul class="vertical-nav dark red">
-            <%--<li><a href="http://www.internetke.com/"></i>编程开发<span class="submenu-icon"></span></a>
-                <ul>
-                    <li><a href="http://www.internetke.com/">前端开发</a></li>
-                    <li><a href="http://www.internetke.com/">移动开发</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                </ul>
-            </li>
-            <li><a href="http://www.internetke.com/"></i>办公效率<span class="submenu-icon"></span></a>
-                <ul>
-                    <li><a href="http://www.internetke.com/">PPT</a></li>
-                    <li><a href="http://www.internetke.com/">办公软件</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航<span class="submenu-icon"></span></a>
-                        <!-- <ul>
-                            <li><a href="http://www.internetke.com/">三级导航</a></li>
-                            <li><a href="http://www.internetke.com/">三级导航</a></li>
-                            <li><a href="http://www.internetke.com/">三级导航 <span class="submenu-icon"></span></a>
-                                <ul>
-                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="http://www.internetke.com/">三级导航</a></li>
-                        </ul> -->
-                    </li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                </ul>
-            </li>--%>
             <c:set var="index" value="0" scope="request" />
             <c:set var="level" value="0" scope="request" />
             <c:import url="_r.jsp" />

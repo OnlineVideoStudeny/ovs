@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import stu.ovs.dao.entity.Contents;
 import stu.ovs.dao.entity.Courses;
 import stu.ovs.dao.persistence.CoursesDao;
+import stu.ovs.service.module.ContentsService;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.service.module.VideoProcessService;
 
@@ -27,6 +29,9 @@ public class CoursesServiceImpl implements CoursesService {
 
 	@Autowired
 	private VideoProcessService videoProcessService;
+
+	@Autowired
+	private ContentsService contentsService;
 
 	@Autowired
 	private CoursesDao coursesDao;

@@ -108,11 +108,11 @@ public class ContentsServiceImpl implements ContentsService{
     @Override
     public void addCategory(Contents contents) {
         if (null == contents.getParentId()){
-            contents.setPath("|");
+            contents.setPath("0|");
             contents.setParentId(0);
         } else {
             Contents contentsParent = (Contents) contentsDao.findById(contents.getParentId());
-            contents.setPath("|" + contentsParent.getParentId());
+            contents.setPath(contentsParent.getPath() + contentsParent.getId() + "|");
         }
         add(contents);
     }
@@ -120,10 +120,11 @@ public class ContentsServiceImpl implements ContentsService{
     @Override
     public void addContents(Contents contents) {
         if (null == contents.getParentId()){
-            contents.setPath("|");
+            contents.setPath("0|");
+            contents.setParentId(0);
         } else {
             Contents contentsParent = (Contents) contentsDao.findById(contents.getParentId());
-            contents.setPath("|" + contentsParent.getParentId());
+            contents.setPath(contentsParent.getPath() + contentsParent.getId() + "|");
             contents.setTop(false);
             if (StringUtils.isBlank(contentsParent.getTopid().toString())){
                 contents.setTopid(contentsParent.getParentId());

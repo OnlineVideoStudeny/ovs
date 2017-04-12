@@ -47,7 +47,7 @@ public class CoursesController {
         return "courses/index";
     }
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Integer id, Model model){
         model.addAttribute("coursesList", coursesService.findByCategoryId(id));
         model.addAttribute("categoryList", contentsService.findCategory());
