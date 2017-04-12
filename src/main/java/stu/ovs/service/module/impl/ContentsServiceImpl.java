@@ -21,8 +21,8 @@ import java.util.Map;
 @Transactional
 public class ContentsServiceImpl implements ContentsService{
 
-    private static String SYSTEM_CATEGRY = "system_category";
-    private static String COURSES_CONTENTS = "courses_contents";
+    public static String SYSTEM_CATEGRY = "system_category";
+    public static String COURSES_CONTENTS = "courses_contents";
 
     @Autowired
     private ContentsDao contentsDao;
@@ -119,7 +119,7 @@ public class ContentsServiceImpl implements ContentsService{
 
     @Override
     public void addContents(Contents contents) {
-        if (contents.isTop()){
+        if (null == contents.getParentId()){
             contents.setPath("|");
             contents.setParentId(0);
         } else {

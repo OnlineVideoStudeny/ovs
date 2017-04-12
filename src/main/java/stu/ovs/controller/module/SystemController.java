@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import stu.ovs.dao.entity.Contents;
 import stu.ovs.service.module.ContentsService;
+import stu.ovs.service.module.impl.ContentsServiceImpl;
 
 /**
  * Created by Alcott Hawk on 4/5/2017.
@@ -39,6 +40,7 @@ public class SystemController {
 
     @RequestMapping(value = "/category/add", method = RequestMethod.POST)
     public String createCategory(Contents contents, Model model){
+        contents.setContentsType(ContentsServiceImpl.SYSTEM_CATEGRY);
         contentsService.addCategory(contents);
         model.addAttribute("category",contentsService.findCategory());
         return "system/add-category";

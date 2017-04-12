@@ -13,6 +13,7 @@ import stu.ovs.dao.entity.Courses;
 import stu.ovs.service.module.CommentService;
 import stu.ovs.service.module.ContentsService;
 import stu.ovs.service.module.CoursesService;
+import stu.ovs.service.module.impl.ContentsServiceImpl;
 import stu.ovs.util.FileUtil;
 
 import java.util.List;
@@ -144,6 +145,7 @@ public class CoursesController {
      */
     @RequestMapping(value = "/contents/create", method = RequestMethod.POST)
     public String addContents(Contents contents,Model model){
+        contents.setContentsType(ContentsServiceImpl.COURSES_CONTENTS);
         contentsService.addContents(contents);
         model.addAttribute("contents","");
         return "courses/add-courses";
