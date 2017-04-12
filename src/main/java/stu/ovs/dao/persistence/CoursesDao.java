@@ -16,6 +16,8 @@ public interface CoursesDao extends BaseDao<Courses>{
 
     List<Courses> findByContents(Integer id);
 
+    List<Courses> findByCategory(Integer id);
+
     void addCoursesIndex(Map arg);
 
 }

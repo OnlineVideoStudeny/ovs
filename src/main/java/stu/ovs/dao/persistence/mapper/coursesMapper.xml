@@ -16,8 +16,12 @@
         SELECT * FROM courses c WHERE c.id = #{id}
     </select>
 
-    <select id="findByContents" parameterType="string" resultMap="BaseResultMap">
+    <select id="findByContents" parameterType="int" resultMap="BaseResultMap">
         SELECT * FROM courses c WHERE c.id IN (SELECT courses_id FROM courses_index WHERE contents_id = #{id})
+    </select>
+
+    <select id="findByCategory" parameterType="int" resultMap="BaseResultMap">
+        SELECT * FROM courses c WHERE c.contents_id = #{id}
     </select>
 
     <select id="findAll" resultMap="BaseResultMap">

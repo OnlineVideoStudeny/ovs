@@ -12,7 +12,7 @@
 <div class="kePublic" style="min-height: 500px">
     <div class="content">
         <ul class="vertical-nav dark red">
-            <li><a href="http://www.internetke.com/"></i>编程开发<span class="submenu-icon"></span></a>
+            <%--<li><a href="http://www.internetke.com/"></i>编程开发<span class="submenu-icon"></span></a>
                 <ul>
                     <li><a href="http://www.internetke.com/">前端开发</a></li>
                     <li><a href="http://www.internetke.com/">移动开发</a></li>
@@ -44,12 +44,15 @@
                     <li><a href="http://www.internetke.com/">二级导航</a></li>
                     <li><a href="http://www.internetke.com/">二级导航</a></li>
                 </ul>
-            </li>
+            </li>--%>
+            <c:set var="index" value="0" scope="request" />
+            <c:set var="level" value="0" scope="request" />
+            <c:import url="_r.jsp" />
         </ul>
     </div>
     <div class="clear"></div>
     <js>
-        <script>
+        <%--<script>
             $(document).ready(function () {
                 $.getJSON("${ctx}/system/category/get", function(json){
                     var parent = $(".vertical-nav");
@@ -79,6 +82,6 @@
                     parentEle.appendChild(lie);
                 });
             }
-        </script>
+        </script>--%>
     </js>
 </div>

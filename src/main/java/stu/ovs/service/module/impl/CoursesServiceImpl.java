@@ -11,6 +11,7 @@ import stu.ovs.dao.persistence.CoursesDao;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.service.module.VideoProcessService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,4 +62,12 @@ public class CoursesServiceImpl implements CoursesService {
 		arg.put("contentsId", courses.getContentsId());
 		coursesDao.addCoursesIndex(arg);
 	}
+
+    @Override
+    public List<Courses> findByCategoryId(Integer id) {
+        if (null != id){
+            return coursesDao.findByCategory(id);
+        }
+        return new ArrayList<>();
+    }
 }

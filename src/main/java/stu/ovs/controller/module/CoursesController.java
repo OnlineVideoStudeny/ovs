@@ -47,6 +47,13 @@ public class CoursesController {
         return "courses/index";
     }
 
+    @RequestMapping(value = "/list")
+    public String list(Integer id, Model model){
+        model.addAttribute("coursesList", coursesService.findByCategoryId(id));
+        model.addAttribute("categoryList", contentsService.findCategory());
+        return "courses/list";
+    }
+
     /**
      * 课程添加
      * @return
@@ -153,7 +160,7 @@ public class CoursesController {
 
     /**
      * 删除课程目录
-     * @param parent_id
+     * @param id
      * @return
      */
     @RequestMapping(value = "/contents/delete", method = RequestMethod.POST)
