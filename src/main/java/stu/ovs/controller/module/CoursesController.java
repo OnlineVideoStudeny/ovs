@@ -61,7 +61,7 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String add(Courses courses){
+    public String add(Courses courses, Model model){
         return "courses/add-courses";
     }
 
