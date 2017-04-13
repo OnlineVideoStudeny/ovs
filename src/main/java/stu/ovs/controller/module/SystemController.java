@@ -35,6 +35,11 @@ public class SystemController {
         return contentsService.findCategory();
     }
 
+    /**
+     * 分类的添加
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/category/add", method = RequestMethod.GET)
     public String createCategory(Model model){
         model.addAttribute("category",contentsService.findCategory());

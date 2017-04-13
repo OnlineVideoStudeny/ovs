@@ -11,7 +11,7 @@
 <c:forEach var="cur" items="${category}" varStatus="vs">
     <c:set var="index" value="${index + 1}" scope="request" />
     <tr>
-        <td>${cur.id}</td>
+       <%--  <td>${cur.id}</td> --%>
         <td>${cur.name}</td>
         <td>${cur.description}</td>
         <td>${cur.parentId}</td>

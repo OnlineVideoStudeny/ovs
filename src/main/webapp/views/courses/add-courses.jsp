@@ -10,11 +10,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <head>
-<<title><sitemesh:write property='title' /></title>
+<title>课程添加</title> <
+<title><sitemesh:write property='title' /></title>
 <%@ include file="/layouts/header.jsp"%>
 </head>
 
-<title>课程添加</title>
+
 
 <div class="row">
 	<div class="col-md-2">
@@ -39,18 +40,10 @@
 		<td>上级分类目录</td>
 
 	</tr>
+	<c:set var="index" value="0" scope="request" />
+	<c:set var="level" value="0" scope="request" />
+	<c:import url="_r.jsp" />
 
-	<c:forEach var="Contents" items="${Contents}">
-		<tr>
-			<td>${Contents.id}</td>
-			<td>${Contents.name}</td>
-			<td>${Contents.description}</td>
-			<td>${Contents.parentId}</td>
-			<a href="" class="tablelink"> 更新 &nbsp;</a>
-			<a href="" class="tablelink"> 删除</a>
-			</td>
-		</tr>
-	</c:forEach>
 </table>
 
 
@@ -104,9 +97,12 @@
 									<label for="parentInput">上级目录</label>
 								</div>
 								<div class="col-md-9">
-									<div>
+									<div id="parentChose">
 										<select id="parentInput" name="parentId">
 											<option>选择上级分类目录</option>
+											<c:forEach items="${parentCategory}" var="category">
+                                                    <option value="${category.id}">${category.name}</option>
+                                                </c:forEach>
 										</select>
 									</div>
 								</div>
@@ -215,5 +211,22 @@
 						});
 
 	});
+	
+	$("#parentInput").change(function () {
+        $.getJSON("${ctx}/contents/getNext?id="+$(this).val(), function (data) {
+            if (null !== data && data.length > 0){
+                var selectEle = $("<select id='parentInput' name='parentId' />")
+                $.each(data, function () {
+                    var optionEle = $("<option/>")
+                    optionEle.val(this.id);
+                    optionEle.html(this.name);
+                    optionEle.appendTo(selectEle);
+                })
+                selectEle.appendTo($("#parentChose"));
+                $(this).remove("name");
+                $(this).remove("id");
+            }
+        })
+    })
 </script> </js>
 

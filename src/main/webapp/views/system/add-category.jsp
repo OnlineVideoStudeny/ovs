@@ -10,10 +10,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <head>
+<title>分类管理</title>
 <title><sitemesh:write property='title' /></title>
 <%@ include file="/layouts/header.jsp"%>
 </head>
-<title>分类管理</title>
+
 <body>
 	<div class="row1">
 		<section>
