@@ -72,7 +72,9 @@ public class CoursesController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(Integer id, Model model){
         if (null != id){
-            model.addAttribute("contents",contentsService.findByTopId(id));
+            List list  = contentsService.findByTopId(id);
+            model.addAttribute("contents",list);
+            model.addAttribute("parentContents",list);
         }
         return "courses/add-courses";
     }
