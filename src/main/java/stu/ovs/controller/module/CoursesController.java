@@ -189,6 +189,15 @@ public class CoursesController {
     }
 
     /**
+     * 添加评论
+     * @param comment
+     */
+    @RequestMapping(value = "/comment", method = RequestMethod.POST)
+    public void comment(Comment comment){
+        commentService.add(comment);
+    }
+
+    /**
      * 删除课程目录
      * @param id
      * @return
