@@ -59,16 +59,17 @@ public class UserController {
         }
         return "error";
     }
-
+    
+   
     /**
      * 用户数据更新
      * @param user
      * @return
      */
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
     public String update(User user){
         userService.update(user);
-        return "user/index";
+        return "user/edit";
     }
 
 }

@@ -145,8 +145,10 @@
 								<div class="col-md-9">
 									<div>
 										<select id="contentsInput" name="contentsId">
-											<option>153</option>
-											
+											<option>选择节点</option>
+											<c:forEach items="${parentContents}" var="category">
+                                                    <option value="${category.id}">${category.name}</option>
+                                                </c:forEach>
 										</select>
 									</div>
 								</div>
