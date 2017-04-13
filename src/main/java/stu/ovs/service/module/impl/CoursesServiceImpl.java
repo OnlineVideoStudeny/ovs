@@ -23,7 +23,8 @@ import java.util.Map;
 @Transactional
 public class CoursesServiceImpl implements CoursesService {
 
-	private static Logger logger = LoggerFactory.getLogger(VideoProcessService.class);
+	private static Logger logger = LoggerFactory
+			.getLogger(VideoProcessService.class);
 
 	@Autowired
 	private VideoProcessService videoProcessService;
@@ -33,28 +34,28 @@ public class CoursesServiceImpl implements CoursesService {
 
 	@Autowired
 	private CoursesDao coursesDao;
-	
+
 	/**
 	 * 根据课程ID查找某个课程
 	 */
-    public Courses findOne(Object id) {
-        Courses courses = coursesDao.findById(id);
-        if (null != courses){
-            return courses;
-        }
-        return new Courses();
-    }
+	public Courses findOne(Object id) {
+		Courses courses = coursesDao.findById(id);
+		if (null != courses) {
+			return courses;
+		}
+		return new Courses();
+	}
 
-    public List<Courses> findAll() {
-        return coursesDao.findAll();
-    }
+	public List<Courses> findAll() {
+		return coursesDao.findAll();
+	}
 
 	public void delete(Courses id) {
 
 	}
 
 	public void update(Courses courses) {
-        coursesDao.update(courses);
+		coursesDao.update(courses);
 	}
 
 	public void add(Courses courses) {
@@ -66,24 +67,24 @@ public class CoursesServiceImpl implements CoursesService {
 		coursesDao.addCoursesIndex(arg);
 	}
 
-    @Override
-    public List<Courses> findByCategoryId(Integer id) {
-        if (null != id){
-            return coursesDao.findByCategory(id);
-        }
-        return new ArrayList<>();
-    }
+	@Override
+	public List<Courses> findByCategoryId(Integer id) {
+		if (null != id) {
+			return coursesDao.findByCategory(id);
+		}
+		return new ArrayList<>();
+	}
 
-    @Override
-    public Courses findCourses(Integer id) {
-        if (null != id){
-            Courses courses = (Courses) coursesDao.findByContents(id);
-            if (null != courses){
-                return courses;
-            } else {
-              return new Courses();
-            }
-        }
-        return new Courses();
-    }
+	@Override
+	public Courses findCourses(Integer id) {
+		if (null != id) {
+			Courses courses = (Courses) coursesDao.findByContents(id);
+			if (null != courses) {
+				return courses;
+			} else {
+				return new Courses();
+			}
+		}
+		return new Courses();
+	}
 }

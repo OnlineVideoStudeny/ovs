@@ -38,6 +38,7 @@
 <!-- 显示课程目录 -->
 <table class="table">
 	<tr>
+	    
 		<td>名称</td>
 		<td>描述</td>
 		<td>上级分类目录</td>
@@ -102,7 +103,7 @@
 								<div class="col-md-9">
 									<div id="parentChose">
 										<select id="parentInput" name="parentId">
-											<option>选择上级分类目录</option>
+											<option value="">选择上级分类目录</option>
 											<c:forEach items="${contents}" var="category">
                                                     <option value="${category.id}">${category.name}</option>
                                                 </c:forEach>
