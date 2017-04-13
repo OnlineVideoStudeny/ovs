@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: Developer
@@ -26,8 +27,10 @@
 	</div>
 	<div class="col-md-10">
 		<div>
-			<a href="#coursesCreateModal" role="button" class="btn"
-				data-toggle="modal"> 添加课程 </a>
+            <c:if test="${fn:length(contents) > 0}">
+                <a href="#coursesCreateModal" role="button" class="btn"
+                   data-toggle="modal"> 添加课程 </a>
+            </c:if>
 		</div>
 	</div>
 </div>
@@ -100,7 +103,7 @@
 									<div id="parentChose">
 										<select id="parentInput" name="parentId">
 											<option>选择上级分类目录</option>
-											<c:forEach items="${parentCategory}" var="category">
+											<c:forEach items="${contents}" var="category">
                                                     <option value="${category.id}">${category.name}</option>
                                                 </c:forEach>
 										</select>

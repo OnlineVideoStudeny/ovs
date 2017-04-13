@@ -6,14 +6,14 @@ package stu.ovs.dao.entity;
  */
 public class Contents {
 
-    private Integer id;
-    private String name;
-    private String description;
-    private Integer parentId;
-    private boolean isTop;
-    private Integer topid;
-    private String path;
-    private String contentsType;
+    private Integer id;          //id
+    private String name;         //名称
+    private String description;  //描述
+    private Integer parentId;    //父id
+    private boolean isTop;       //是否是顶级目录
+    private Integer topid;       //顶级目录id
+    private String path;         //分类路径
+    private String contentsType; //目录类型
 
     public Integer getId() {
         return id;

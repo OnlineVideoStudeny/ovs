@@ -20,17 +20,17 @@ public class User implements Serializable{
         this.name  = username;
     }
 
-    private String id;
-    private String name;
-    private String nickName;
-    private String password;
-    private String salt;
-    private String phone;
-    private String email;
-    private String gender;
-    private Date createDate;
-    private Integer age;
-    private String avatars;
+    private String id;          //id
+    private String name;        //名称
+    private String nickName;    //昵称
+    private String password;    //密码
+    private String salt;        //盐
+    private String phone;       //电话
+    private String email;       //电子邮件
+    private String gender;      //性别
+    private Date createDate;    //创建日期
+    private Integer age;        //年龄
+    private String avatars;     //头像
 
     public String getId() {
         return id;

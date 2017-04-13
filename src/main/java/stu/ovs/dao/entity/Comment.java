@@ -8,13 +8,13 @@ import java.util.Date;
  */
 public class Comment {
 
-    private Integer id;
-    private String commentator;
-    private Integer commentTarget;
-    private String content;
-    private Date createDate;
-    private Integer disagree;
-    private Integer agree;
+    private Integer id;            //id
+    private String commentator;    //评论人
+    private Integer commentTarget; //评论目标
+    private String content;        //评论内容
+    private Date createDate;       //评论日期
+    private Integer disagree;      //不赞同
+    private Integer agree;         //赞同
 
     public Integer getId() {
         return id;

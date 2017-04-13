@@ -29,6 +29,12 @@ public class UserController {
         return "user/index";
     }
 
+    /**
+     * 用户添加
+     * @param user
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(User user, Model model){
         if (userService.regiter(user)){
@@ -38,6 +44,11 @@ public class UserController {
         }
     }
 
+    /**
+     * 用户删除
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/delete")
     @ResponseBody
     public String delete(String id){
@@ -49,6 +60,11 @@ public class UserController {
         return "error";
     }
 
+    /**
+     * 用户数据更新
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(User user){
         userService.update(user);

@@ -6,15 +6,15 @@ package stu.ovs.dao.entity;
  */
 public class Courses {
 
-    private Integer id;
-    private String name;
-    private String description;
-    private String img;
-    private Integer contentsId;//内容id
-    private Integer attention;
-    private Integer collect;
-    private Integer disagree;
-    private Integer agree;
+    private Integer id;           //id
+    private String name;          //名称
+    private String description;   //描述
+    private String img;           //图片
+    private Integer contentsId;   //内容id
+    private Integer attention;    //关注数量
+    private Integer collect;      //收藏数量
+    private Integer disagree;     //不赞同
+    private Integer agree;        //赞同
 
     public Integer getId() {
         return id;
