@@ -44,9 +44,9 @@
 		<td>上级分类目录</td>
 
 	</tr>
-	<c:set var="index" value="0" scope="request" />
-	<c:set var="level" value="0" scope="request" />
-	<c:import url="_r.jsp" />
+    <c:set var="index" value="0" scope="request" />
+    <c:set var="level" value="0" scope="request" />
+    <c:import url="_r.jsp" />
 
 </table>
 

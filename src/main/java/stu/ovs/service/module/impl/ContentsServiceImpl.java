@@ -144,7 +144,11 @@ public class ContentsServiceImpl implements ContentsService{
             if (StringUtils.isBlank(contentsParent.getTopId().toString())){
                 contents.setTopId(contentsParent.getParentId());
             } else {
-                contents.setTopId(contentsParent.getTopId());
+                if (contentsParent.isTop()){
+                    contents.setTopId(contentsParent.getId());
+                } else {
+                    contents.setTopId(contentsParent.getTopId());
+                }
             }
         }
         add(contents);
