@@ -3,7 +3,6 @@ package stu.ovs.controller.module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -89,17 +88,6 @@ public class CoursesController {
         }
         model.addAttribute("contents",contentsService.findContents(courses.getId()));
         return "redirect:/courses/add";
-    }
-
-    /**
-     * 获取下一个目录节点的数据
-     * <br/>方法只限于post请求，请求格式为  ovs/courses/next/3
-     * @param id 当前选中的节点id
-     * @return
-     */
-    @RequestMapping(value = "/next/{id}")
-    public Object next(@PathVariable(name = "id") Integer id){
-        return coursesService.findCourses(id);
     }
 
     /**

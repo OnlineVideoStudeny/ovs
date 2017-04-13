@@ -39,8 +39,8 @@
         SELECT c.* FROM contents c WHERE c.top_id = #{id} OR c.id = #{id} AND c.contents_type = #{type}
     </select>
 
-    <select id="findByParentId" parameterType="int" resultMap="BaseResultMap">
-        SELECT c.* FROM contents c WHERE c.parent_id = #{id}
+    <select id="findByParentId" resultMap="BaseResultMap">
+        SELECT c.* FROM contents c WHERE c.parent_id = #{id} AND c.contents_type = #{type}
     </select>
 
     <insert id="save" parameterType="stu.ovs.dao.entity.Contents" useGeneratedKeys="true" keyProperty="id">
