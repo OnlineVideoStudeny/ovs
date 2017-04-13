@@ -78,7 +78,7 @@
 								</div>
 								<div class="col-md-9">
 									<div>
-										<input name="description" id="nameInput"
+										<input name="name" id="nameInput"
 											class="input form-control" />
 									</div>
 								</div>
@@ -102,7 +102,7 @@
 								<div class="col-md-9">
 									<div id="parentChose">
 										<select id="parentInput" name="parentId">
-											<option>选择上级分类目录</option>
+											<option value="">选择上级分类目录</option>
 											<c:forEach items="${contents}" var="category">
                                                     <option value="${category.id}">${category.name}</option>
                                                 </c:forEach>

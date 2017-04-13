@@ -21,7 +21,7 @@ import java.util.Map;
 @Transactional
 public class ContentsServiceImpl implements ContentsService{
 
-    public static String SYSTEM_CATEGRY = "system_category";
+    public static String SYSTEM_CATEGORY = "system_category";
     public static String COURSES_CONTENTS = "courses_contents";
 
     @Autowired
@@ -72,7 +72,7 @@ public class ContentsServiceImpl implements ContentsService{
      */
     @Override
     public List<Map> findCategory() {
-        List<Contents> contentsList = contentsDao.findByContentsType(SYSTEM_CATEGRY);
+        List<Contents> contentsList = contentsDao.findByContentsType(SYSTEM_CATEGORY);
         List<Map> menuList = new ArrayList<Map>();
         for (Contents contents : contentsList){
             if (contents.getParentId() == 0){
@@ -97,7 +97,7 @@ public class ContentsServiceImpl implements ContentsService{
     @Override
     public List<Contents> findNext(Integer id, String type) {
         if (null != id && ( StringUtils.equals(type, ContentsServiceImpl.COURSES_CONTENTS) ||
-                StringUtils.equals(type, ContentsServiceImpl.SYSTEM_CATEGRY))){
+                StringUtils.equals(type, ContentsServiceImpl.SYSTEM_CATEGORY))){
             return contentsDao.findByParentId(id, type);
         }
         return new ArrayList<>();
@@ -111,7 +111,7 @@ public class ContentsServiceImpl implements ContentsService{
 
     @Override
     public List<Contents> findTopCategory() {
-        List<Contents> contentsList = contentsDao.findByParentId(0, ContentsServiceImpl.SYSTEM_CATEGRY);
+        List<Contents> contentsList = contentsDao.findByParentId(0, ContentsServiceImpl.SYSTEM_CATEGORY);
         if (null != contentsList){
             return contentsList;
         }
@@ -136,14 +136,15 @@ public class ContentsServiceImpl implements ContentsService{
             contents.setPath("0|");
             contents.setParentId(0);
             contents.setTop(true);
+            contents.setTopId(0);
         } else {
             Contents contentsParent = (Contents) contentsDao.findById(contents.getParentId());
             contents.setPath(contentsParent.getPath() + contentsParent.getId() + "|");
             contents.setTop(false);
-            if (StringUtils.isBlank(contentsParent.getTopid().toString())){
-                contents.setTopid(contentsParent.getParentId());
+            if (StringUtils.isBlank(contentsParent.getTopId().toString())){
+                contents.setTopId(contentsParent.getParentId());
             } else {
-                contents.setTopid(contentsParent.getTopid());
+                contents.setTopId(contentsParent.getTopId());
             }
         }
         add(contents);

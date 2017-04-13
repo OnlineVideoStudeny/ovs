@@ -10,6 +10,8 @@
 		<result column="parent_id" property="parentId" jdbcType="VARCHAR" />
 		<result column="path" property="path" jdbcType="VARCHAR" />
 		<result column="contents_type" property="contentsType" jdbcType="VARCHAR" />
+        <result column="is_top" property="isTop" jdbcType="TINYINT" />
+        <result column="top_id" property="topId" jdbcType="BIGINT" />
 	</resultMap>
 
     <select id="findById" parameterType="int" resultMap="BaseResultMap">
@@ -44,8 +46,8 @@
     </select>
 
     <insert id="save" parameterType="stu.ovs.dao.entity.Contents" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO contents(name, description, parent_id, path, contents_type)
-        VALUE (#{name}, #{description}, #{parentId}, #{path}, #{contentsType})
+        INSERT INTO contents(name, description, parent_id, path, contents_type, top_id, is_top)
+        VALUE (#{name}, #{description}, #{parentId}, #{path}, #{contentsType}, #{topId}, #{isTop})
     </insert>
 
     <delete id="delete" parameterType="int">

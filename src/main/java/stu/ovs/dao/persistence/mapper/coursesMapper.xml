@@ -10,6 +10,8 @@
         <result column="img" property="img" jdbcType="VARCHAR" />
         <result column="attention" property="attention" jdbcType="BIGINT" />
         <result column="collect" property="collect" jdbcType="BIGINT" />
+        <result column="disagree" property="disagree" jdbcType="BIGINT" />
+        <result column="agree" property="agree" jdbcType="BIGINT" />
 	</resultMap>
 
     <select id="findById" parameterType="int" resultMap="BaseResultMap">

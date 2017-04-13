@@ -70,7 +70,10 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String add(Courses courses, Model model){
+    public String add(Integer id, Model model){
+        if (null != id){
+            model.addAttribute("contents",contentsService.findByTopId(id));
+        }
         return "courses/add-courses";
     }
 
@@ -168,8 +171,13 @@ public class CoursesController {
     public String addContents(Contents contents,Model model){
         contents.setContentsType(ContentsServiceImpl.COURSES_CONTENTS);
         contentsService.addContents(contents);
-        model.addAttribute("contents",contentsService.findByTopId(contents.getTopid()));
-        return "redirect:/courses/add";
+        Integer id;
+        if (contents.isTop()){
+            id = contents.getId();
+        } else {
+            id = contents.getTopId();
+        }
+        return "redirect:/courses/add?id="+id;
     }
 
     /**
