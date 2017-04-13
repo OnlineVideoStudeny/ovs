@@ -140,11 +140,13 @@
 							<div class="row form">
 								<div class="col-md-3 info">
 									<label for="contentsInput">目录节点</label>
+									
 								</div>
 								<div class="col-md-9">
 									<div>
 										<select id="contentsInput" name="contentsId">
 											<option>153</option>
+											
 										</select>
 									</div>
 								</div>
@@ -221,7 +223,7 @@
             if (null !== data && data.length > 0){
                 var selectEle = $("<select id='parentInput' name='parentId' />")
                 $.each(data, function () {
-                    var optionEle = $("<option/>")
+                    var optionEle = $("<option/>");
                     optionEle.val(this.id);
                     optionEle.html(this.name);
                     optionEle.appendTo(selectEle);
