@@ -59,7 +59,7 @@ public class SystemController {
      */
     @RequestMapping(value = "/category/add", method = RequestMethod.POST)
     public String createCategory(Contents contents, Model model){
-        contents.setContentsType(ContentsServiceImpl.SYSTEM_CATEGRY);
+        contents.setContentsType(ContentsServiceImpl.SYSTEM_CATEGORY);
         contentsService.addCategory(contents);
         model.addAttribute("category",contentsService.findCategory());
         return "redirect:/system/category/add";
@@ -73,7 +73,7 @@ public class SystemController {
     @RequestMapping(value = "/getNext", method = RequestMethod.GET)
     @ResponseBody
     public List<Contents> getNext(Integer id){
-        List next = contentsService.findNext(id, ContentsServiceImpl.SYSTEM_CATEGRY);
+        List next = contentsService.findNext(id, ContentsServiceImpl.SYSTEM_CATEGORY);
         if (null != next){
             return next;
         }

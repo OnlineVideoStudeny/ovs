@@ -79,7 +79,7 @@
 								</div>
 								<div class="col-md-9">
 									<div>
-										<input name="description" id="nameInput"
+										<input name="name" id="nameInput"
 											class="input form-control" />
 									</div>
 								</div>

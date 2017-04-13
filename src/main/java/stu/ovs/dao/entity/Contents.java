@@ -11,7 +11,7 @@ public class Contents {
     private String description;  //描述
     private Integer parentId;    //父id
     private boolean isTop;       //是否是顶级目录
-    private Integer topid;       //顶级目录id
+    private Integer topId;       //顶级目录id
     private String path;         //分类路径
     private String contentsType; //目录类型
 
@@ -55,12 +55,12 @@ public class Contents {
         isTop = top;
     }
 
-    public Integer getTopid() {
-        return topid;
+    public Integer getTopId() {
+        return topId;
     }
 
-    public void setTopid(Integer topid) {
-        this.topid = topid;
+    public void setTopId(Integer topId) {
+        this.topId = topId;
     }
 
     public String getPath() {
