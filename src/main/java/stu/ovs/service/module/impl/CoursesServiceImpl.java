@@ -73,4 +73,17 @@ public class CoursesServiceImpl implements CoursesService {
         }
         return new ArrayList<>();
     }
+
+    @Override
+    public Courses findCourses(Integer id) {
+        if (null != id){
+            Courses courses = (Courses) coursesDao.findByContents(id);
+            if (null != courses){
+                return courses;
+            } else {
+              return new Courses();
+            }
+        }
+        return new Courses();
+    }
 }

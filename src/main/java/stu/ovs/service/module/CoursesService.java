@@ -11,4 +11,6 @@ public interface CoursesService extends Service<Courses>{
 
     List<Courses> findByCategoryId(Integer id);
 
+    Courses findCourses(Integer id);
+
 }

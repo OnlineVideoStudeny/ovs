@@ -20,4 +20,6 @@ public interface CoursesDao extends BaseDao<Courses>{
 
     void addCoursesIndex(Map arg);
 
+    Courses findCourses(Integer id);
+
 }

@@ -29,7 +29,9 @@
     </select>
 
     <select id="findByCourses" resultMap="BaseResultMap">
-        SELECT c.* FROM contents c INNER JOIN courses cc ON cc.contents_id = c.id WHERE c.id = #{id} AND c.contents_type = #{type}
+        SELECT c.* FROM contents c RIGHT JOIN ( SELECT cs.* FROM contents cs
+        RIGHT JOIN ( SELECT ci.* FROM courses_index ci
+	      WHERE ci.courses_id = #{id} ) cix ON cix.contents_id = cs.id) csc ON csc.top_id = c.top_id OR c.id = csc.top_id
     </select>
 
     <select id="findByTopId" resultMap="BaseResultMap">

@@ -3,6 +3,7 @@ package stu.ovs.controller.module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -73,9 +74,14 @@ public class CoursesController {
         if (FileUtil.save(file, "c://file")){
             courses.setImg(file.getOriginalFilename());
             coursesService.add(courses);
-            //TODO 查找目录
         }
+        model.addAttribute("contents",contentsService.findContents(courses.getId()));
         return "redirect:/courses/add";
+    }
+
+    @RequestMapping(value = "/next/{id}")
+    public Object next(@PathVariable(name = "id") Integer id){
+        return coursesService.findCourses(id);
     }
 
     /**
@@ -156,7 +162,7 @@ public class CoursesController {
         contents.setContentsType(ContentsServiceImpl.COURSES_CONTENTS);
         contentsService.addContents(contents);
         model.addAttribute("contents",contentsService.findByTopId(contents.getTopid()));
-        return "courses/add-courses";
+        return "redirect:/courses/add";
     }
 
     @RequestMapping(value = "/contents/getNext", method = RequestMethod.GET)

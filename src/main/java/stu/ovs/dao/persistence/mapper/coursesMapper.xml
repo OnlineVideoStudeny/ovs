@@ -16,6 +16,10 @@
         SELECT * FROM courses c WHERE c.id = #{id}
     </select>
 
+    <select id="findCourses" parameterType="int" resultMap="BaseResultMap">
+        SELECT c.* FROM courses c RIGHT JOIN courses_index ci ON ci.courses_id = c.id WHERE ci.contents_id = #{id}
+    </select>
+
     <select id="findByContents" parameterType="int" resultMap="BaseResultMap">
         SELECT * FROM courses c WHERE c.id IN (SELECT courses_id FROM courses_index WHERE contents_id = #{id})
     </select>
