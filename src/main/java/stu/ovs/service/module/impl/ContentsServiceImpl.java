@@ -96,7 +96,11 @@ public class ContentsServiceImpl implements ContentsService{
 
     @Override
     public List<Contents> findNext(Integer id, String type) {
-        return contentsDao.findByParentId(id, type);
+        if (null != id && ( StringUtils.equals(type, ContentsServiceImpl.COURSES_CONTENTS) ||
+                StringUtils.equals(type, ContentsServiceImpl.SYSTEM_CATEGRY))){
+            return contentsDao.findByParentId(id, type);
+        }
+        return new ArrayList<>();
     }
 
     @Override
@@ -131,6 +135,7 @@ public class ContentsServiceImpl implements ContentsService{
         if (null == contents.getParentId()){
             contents.setPath("0|");
             contents.setParentId(0);
+            contents.setTop(true);
         } else {
             Contents contentsParent = (Contents) contentsDao.findById(contents.getParentId());
             contents.setPath(contentsParent.getPath() + contentsParent.getId() + "|");

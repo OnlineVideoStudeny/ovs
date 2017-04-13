@@ -16,6 +16,7 @@ import stu.ovs.service.module.CoursesService;
 import stu.ovs.service.module.impl.ContentsServiceImpl;
 import stu.ovs.util.FileUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -154,8 +155,18 @@ public class CoursesController {
     public String addContents(Contents contents,Model model){
         contents.setContentsType(ContentsServiceImpl.COURSES_CONTENTS);
         contentsService.addContents(contents);
-        model.addAttribute("contents","");
+        model.addAttribute("contents",contentsService.findByTopId(contents.getTopid()));
         return "courses/add-courses";
+    }
+
+    @RequestMapping(value = "/contents/getNext", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Contents> getNext(Integer id){
+        List next = contentsService.findNext(id, ContentsServiceImpl.COURSES_CONTENTS);
+        if (null != next){
+            return next;
+        }
+        return new ArrayList<>();
     }
 
     /**
