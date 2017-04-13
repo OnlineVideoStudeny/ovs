@@ -1,6 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
-<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+
 <%--
   Created by IntelliJ IDEA.
   User: Developer
@@ -9,12 +7,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <head>
 <title><sitemesh:write property='title' /></title>
 <%@ include file="/layouts/header.jsp"%>
 </head>
-
-
 <title>分类管理</title>
 <body>
 	<div class="row1">
@@ -117,8 +116,8 @@
                 var nameInput = $("#nameInput").val();
                 var contentsDescriptionInput = $(
                         "#contentsDescriptionInput").val();
-                if ((nameInput == null || nameInput == "")
-                        && (contentsDescriptionInput == null || contentsDescriptionInput == "")) {
+                if ((nameInput === null || nameInput === "")
+                        && (contentsDescriptionInput === null || contentsDescriptionInput === "")) {
                     alert("名称或描述不能为空");
                 } else {
                     $("#addUserForm").submit();
@@ -128,7 +127,7 @@
 
         $("#parentInput").change(function () {
             $.getJSON("${ctx}/system/getNext?id="+$(this).val(), function (data) {
-                if (null != data && data.length > 0){
+                if (null !== data && data.length > 0){
                     var selectEle = $("<select id='parentInput' name='parentId' />")
                     $.each(data, function () {
                         var optionEle = $("<option/>")
