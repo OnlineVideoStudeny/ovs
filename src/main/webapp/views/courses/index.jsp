@@ -33,8 +33,12 @@
 		<li><a href="#comment" data-toggle="tab">评论</a></li>
 	</ul>
 	<div class="tab-content">
-		<div class="tab-pane active" id="details">测试详情</div>
-		<div class="tab-pane" id="contents">测试目录</div>
+		<div class="tab-pane active" id="details">
+			测试详情
+			 <br />
+			<div class="">视频的详情介绍</div>
+		</div>
+
 
 		<div class="tab-pane" id="contents">
 			测试目录
@@ -53,7 +57,14 @@
 
 		</div>
 
-		<div class="tab-pane" id="comment">测试评论</div>
+		<div class="tab-pane" id="comment">
+			测试评论
+			<br>
+			<div>用户评论</div>
+
+
+		</div>
+
 	</div>
 </div>
 </body>
