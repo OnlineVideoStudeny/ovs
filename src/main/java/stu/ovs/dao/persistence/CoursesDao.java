@@ -22,6 +22,6 @@ public interface CoursesDao extends BaseDao<Courses>{
 
     Courses findCourses(Integer id);
 
-    List<Courses> filter(Courses courses, String sort, Integer size);
+    List<Courses> filter(Courses courses);
 
 }

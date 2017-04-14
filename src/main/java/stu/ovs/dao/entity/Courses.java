@@ -1,5 +1,7 @@
 package stu.ovs.dao.entity;
 
+import java.util.Date;
+
 /**
  * 课程实体
  * Created by Alcott Hawk on 4/2/2017.
@@ -15,6 +17,7 @@ public class Courses {
     private Integer collect;      //收藏数量
     private Integer disagree;     //不赞同
     private Integer agree;        //赞同
+    private Date createDate;      //创建日期
 
     public Courses(){
     }
@@ -89,5 +92,13 @@ public class Courses {
 
     public void setAgree(Integer agree) {
         this.agree = agree;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

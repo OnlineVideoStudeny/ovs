@@ -1,5 +1,6 @@
 package stu.ovs.service.module.impl;
 
+import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,10 +13,7 @@ import stu.ovs.service.module.ContentsService;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.service.module.VideoProcessService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Alcott Hawk on 4/2/2017.
@@ -108,7 +106,14 @@ public class CoursesServiceImpl implements CoursesService {
             if (null == size){
                 size = 10;
             }
-            List list = coursesDao.filter(courses, sort, size);
+            PageHelper.startPage(1,size);
+            List<Courses> list = coursesDao.filter(courses);
+            Collections.sort(list, new Comparator<Courses>() {
+                @Override
+                public int compare(Courses o1, Courses o2) {
+                    return (int) (o1.getCreateDate().getTime() - o2.getCreateDate().getTime());
+                }
+            });
             if (null != list && list.size() > 0){
                 return list;
             } else {

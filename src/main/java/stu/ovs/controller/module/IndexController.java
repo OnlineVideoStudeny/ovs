@@ -32,7 +32,7 @@ public class IndexController {
     public String index(Model model){
         List category = contentsService.findCategory();
         model.addAttribute("categoryList",category);
-        model.addAttribute("newVideo", coursesService.search(new Courses(), "id","",3));
+        model.addAttribute("newVideo", coursesService.search(new Courses(), "createDate","",3));
         model.addAttribute("bestVideo", coursesService.search(new Courses(),"collect", "",3));
         return "index";
     }

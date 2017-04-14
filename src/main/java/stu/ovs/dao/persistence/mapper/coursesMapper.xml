@@ -13,6 +13,7 @@
         <result column="collect" property="collect" jdbcType="BIGINT" />
         <result column="disagree" property="disagree" jdbcType="BIGINT" />
         <result column="agree" property="agree" jdbcType="BIGINT" />
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
 	</resultMap>
 
     <select id="findById" parameterType="int" resultMap="BaseResultMap">
@@ -36,7 +37,16 @@
     </select>
 
     <select id="filter" parameterType="stu.ovs.dao.entity.Courses" resultMap="BaseResultMap">
-        SELECT * FROM courses
+        SELECT c.* FROM courses c WHERE 1 = 1
+        <if test="name != null">
+            AND c.name = #{name}
+        </if>
+        <if test="description != null">
+            AND c.description = #{description}
+        </if>
+        <if test="id != null">
+            AND c.id = #{id}
+        </if>
     </select>
 
     <insert id="save" parameterType="stu.ovs.dao.entity.Courses" useGeneratedKeys="true" keyProperty="id">
