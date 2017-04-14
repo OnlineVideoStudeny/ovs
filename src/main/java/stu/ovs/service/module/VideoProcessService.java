@@ -49,7 +49,7 @@ public class VideoProcessService {
         }
     }
 
-    public String makeScreenCut(String originFileUri, String screenSize,int cutTime) throws Exception {
+    public void makeScreenCut(String originFileUri, String screenSize,int cutTime) throws Exception {
         List<String> cmd = new ArrayList<String>();
         cmd.clear();
         cmd.add(FFMPEG_PATH);
@@ -74,7 +74,6 @@ public class VideoProcessService {
         cmd.add(screenSize);
         cmd.add(originFileUri + ".jpg");
         exec(cmd);
-        return originFileUri + ".jpg";
     }
 
 }

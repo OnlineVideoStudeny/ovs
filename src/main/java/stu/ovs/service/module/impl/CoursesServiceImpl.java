@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import stu.ovs.dao.entity.Courses;
 import stu.ovs.dao.persistence.CoursesDao;
 import stu.ovs.service.module.ContentsService;
@@ -59,19 +60,12 @@ public class CoursesServiceImpl implements CoursesService {
 	}
 
 	public void add(Courses courses) {
-        String imgPath = "";
-        try {
-            imgPath = videoProcessService.makeScreenCut(courses.getImg(), videoProcessService.SCREN_SIZE, videoProcessService.CUT_TIME);
-            courses.setImg(imgPath);
-            coursesDao.save(courses);
-            courses.getId();
-            Map arg = new HashMap();
-            arg.put("coursesId", courses.getId());
-            arg.put("contentsId", courses.getContentsId());
-            coursesDao.addCoursesIndex(arg);
-        } catch (Exception e) {
-            logger.error("生成截图失败："+e.getMessage());
-        }
+        coursesDao.save(courses);
+        courses.getId();
+        Map arg = new HashMap();
+        arg.put("coursesId", courses.getId());
+        arg.put("contentsId", courses.getContentsId());
+        coursesDao.addCoursesIndex(arg);
 	}
 
 	@Override
@@ -119,6 +113,19 @@ public class CoursesServiceImpl implements CoursesService {
             } else {
                 return new ArrayList<>();
             }
+        }
+    }
+
+    @Override
+    public void add(Courses courses, String rootPath, String subDir, MultipartFile file) {
+        try {
+            videoProcessService.makeScreenCut(rootPath + subDir + file.getOriginalFilename(), videoProcessService.SCREN_SIZE, videoProcessService.CUT_TIME);
+            courses.setImg(subDir + file.getOriginalFilename() + ".jpg");
+            courses.setDir(subDir + file.getOriginalFilename());
+            courses.setName(file.getOriginalFilename());
+            add(courses);
+        } catch (Exception e) {
+            logger.error("生成截图失败："+e.getMessage());
         }
     }
 }

@@ -18,6 +18,7 @@ public class Courses {
     private Integer disagree;     //不赞同
     private Integer agree;        //赞同
     private Date createDate;      //创建日期
+    private String dir;           //课程地址
 
     public Courses(){
     }
@@ -100,5 +101,13 @@ public class Courses {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getDir() {
+        return dir;
+    }
+
+    public void setDir(String dir) {
+        this.dir = dir;
     }
 }

@@ -93,11 +93,9 @@ public class CoursesController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addVideo(Courses courses, MultipartFile file, Model model, ServletRequest request){
-        String path = request.getServletContext().getRealPath("/") + CoursesServiceImpl.PATH;
-        if (FileUtil.save(file, path)){
-            courses.setImg(path + file.getOriginalFilename());
-            courses.setName(file.getOriginalFilename());
-            coursesService.add(courses);
+        String path = request.getServletContext().getRealPath("/");
+        if (FileUtil.save(file, path + CoursesServiceImpl.PATH)){
+            coursesService.add(courses,path, CoursesServiceImpl.PATH, file);
             model.addAttribute("contents",contentsService.findContents(courses.getId()));
         }
         Contents contents = contentsService.findContentsWithCourses(courses.getId());

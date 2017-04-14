@@ -14,6 +14,7 @@
         <result column="disagree" property="disagree" jdbcType="BIGINT" />
         <result column="agree" property="agree" jdbcType="BIGINT" />
         <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="dir" property="dir" jdbcType="VARCHAR" />
 	</resultMap>
 
     <select id="findById" parameterType="int" resultMap="BaseResultMap">
@@ -50,8 +51,8 @@
     </select>
 
     <insert id="save" parameterType="stu.ovs.dao.entity.Courses" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO courses(name, description, img, contents_id)
-        VALUE (#{name}, #{description}, #{img}, #{ contentsId});
+        INSERT INTO courses(name, description, img, contents_id, dir)
+        VALUE (#{name}, #{description}, #{img}, #{ contentsId}, #{dir});
     </insert>
 
     <insert id="addCoursesIndex" parameterType="map" useGeneratedKeys="true" keyProperty="id">
