@@ -23,17 +23,13 @@
 		</section>
 
 		<!-- 显示分类 -->
-		<table class="table">
-			<tr>
-			    <!-- <td></td> -->
-				<td>名称</td>
-				<td>描述</td>
-				<td>上级分类目录</td>
-			</tr>
-			<c:set var="index" value="0" scope="request" />
-			<c:set var="level" value="0" scope="request" />
-			<c:import url="_r.jsp" />
-		</table>
+		<section>
+            <ul>
+                <c:set var="index" value="0" scope="request" />
+                <c:set var="level" value="0" scope="request" />
+                <c:import url="_r.jsp" />
+            </ul>
+        </section>
 	</div>
 
 	<div class="modal fade" id="categoryCreateModal" tabindex="-1"
@@ -126,29 +122,48 @@
             })
         })
 
-        $("#parentInput").change(function () {
-            $.getJSON("${ctx}/system/getNext?id="+$(this).val(), function (data) {
-                if (null !== data && data.length > 0){
-                    var selectEle = $("<select id='parentInput' />")
-                    var optionEle = $("<option/>")
-                    optionEle.val("");
-                    optionEle.html("选择下级菜单");
-                    optionEle.appendTo(selectEle);
-                    $.each(data, function () {
-                        var optionEle = $("<option/>")
-                        optionEle.val(this.id);
-                        optionEle.html(this.name);
-                        optionEle.appendTo(selectEle);
-                    })
-                    selectEle.appendTo($("#parentChose"));
+    /*设置上一个有效的节点，并废弃当前无效的设置*/
+        function chapre(obj) {
+            if (null != obj && "undefined" != obj){
+                if (obj.val() != "" && obj != "undefined" || obj.val() == ""){
+                    obj.attr("name","parentId");
+                } else{
+                    bir.prop("name","");
+                    chapre(bir.prev());
                 }
-            })
-            var bir = $(this).prev();
-            if (null != bir && "undefined" != bir){
-                bir.prop("name","");
             }
-            bir.prop("id","");
-            $(this).prop("name","parentId");
+        }
+
+        $("#parentChose").delegate("select", "change", function () {
+            /*若选中节点值无效，择设置上一个有效的节点*/
+            if ($(this).val() == null || $(this).val() == "undefined" || $(this).val() == ""){
+                var bir = $(this).prev();
+                chapre(bir);
+                $(this).prop("name","");
+            } else{
+                $.getJSON("${ctx}/system/getNext?id="+$(this).val(), function (data) {
+                    if (null !== data && data.length > 0){
+                        var selectEle = $("<select id='parentInput' />")
+                        var optionEle = $("<option/>")
+                        optionEle.val("");
+                        optionEle.html("选择下级菜单");
+                        optionEle.appendTo(selectEle);
+                        $.each(data, function () {
+                            var optionEle = $("<option/>")
+                            optionEle.val(this.id);
+                            optionEle.html(this.name);
+                            optionEle.appendTo(selectEle);
+                        })
+                        selectEle.appendTo($("#parentChose"));
+                    }
+                })
+                /*值上一个兄弟节点的name为空，并设置当前节点name可用*/
+                var bir = $(this).prev();
+                if (null != bir && "undefined" != bir || bir.val() == ""){
+                    bir.prop("name","");
+                }
+                $(this).attr("name","parentId");
+            }
         })
     </script>
 </js>

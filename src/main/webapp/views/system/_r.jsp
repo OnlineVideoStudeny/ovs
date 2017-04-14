@@ -10,16 +10,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:forEach var="cur" items="${category}" varStatus="vs">
 	<c:set var="index" value="${index + 1}" scope="request" />
-	<tr>
-		<%-- <td>${cur.id}</td> --%>
-		<td>${cur.name}</td>
-		<td>${cur.description}</td>
-		<td>${cur.parentId}</td>
-	</tr>
-	<c:if test="${fn:length(cur.children) > 0}">
+    <li>${cur.id}:${cur.name}</li>
+    <ul style="padding-left: 50px">
+	    <c:if test="${fn:length(cur.children) > 0}">
 		<c:set var="level" value="${level + 1}" scope="request" />
 		<c:set var="category" value="${cur.children}" scope="request" />
 		<c:import url="_r.jsp" />
 	</c:if>
+    </ul>
 </c:forEach>
 <c:set var="level" value="${level - 1}" scope="request" />

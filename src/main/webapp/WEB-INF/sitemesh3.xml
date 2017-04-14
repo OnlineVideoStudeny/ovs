@@ -7,15 +7,14 @@
 
 	<mapping decorator="/layouts/main.jsp"/>
     <mapping path="/system/*" decorator="/layouts/system-main.jsp" />
-    
-    <mapping path="/courses/*" decorator="/layouts/system-main.jsp" />
+    <mapping path="/courses/add" decorator="/layouts/system-main.jsp" />
 
 	<mapping path="/static/*" exclude="true"/>
     <mapping path="/temp/*" exclude="true"/>
     <mapping path="/login*" exclude="true"/>
     <mapping path="/registered*" exclude="true"/>
     <mapping path="/user/*" exclude="true"/>
-    <mapping path="/system/*" exclude="true"/>
+<!--    <mapping path="/system/*" exclude="true"/>-->
     <!-- <mapping path="/courses/*" exclude="true"/> -->
 
     <content-processor>

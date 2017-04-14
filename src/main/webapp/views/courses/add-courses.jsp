@@ -13,11 +13,7 @@
 <head>
 <title>课程添加</title> <
 <title><sitemesh:write property='title' /></title>
-<%@ include file="/layouts/header.jsp"%>
 </head>
-
-
-
 <div class="row">
 	<div class="col-md-2">
 		<div>
@@ -34,7 +30,6 @@
 		</div>
 	</div>
 </div>
-
 <!-- 显示课程目录 -->
 <table class="table">
 	<tr>
@@ -49,13 +44,6 @@
     <c:import url="_r.jsp" />
 
 </table>
-
-
-<!-- <section>
-    <div style="float: right">
-        <a class="button">添加目录</a>
-    </div>
-</section> -->
 <div class="modal fade" id="contentsCreateModal" tabindex="-1"
 	role="dialog" aria-labelledby="contentsCreateLable" aria-hidden="true">
 	<div class="modal-dialog">

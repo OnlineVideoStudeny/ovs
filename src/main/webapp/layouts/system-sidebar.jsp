@@ -7,78 +7,31 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script>$(document).ready(function(){$(".vertical-nav").verticalnav({speed: 400,align: "left"});});</script>
-<!-- <div style="clear:both;">
-</div>
-<div class="kePublic"> -->
-    <!-- <div class="content">
-        <ul class="vertical-nav dark red">
-            <li><a href="http://www.internetke.com/"></i>服务<span class="submenu-icon"></span></a>
-                <ul>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                </ul>
-            </li>
-            <li><a href="http://www.internetke.com/"></i>产品<span class="submenu-icon"></span></a>
-                <ul>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航<span class="submenu-icon"></span></a>
-                        <ul>
-                            <li><a href="http://www.internetke.com/">三级导航</a></li>
-                            <li><a href="http://www.internetke.com/">三级导航</a></li>
-                            <li><a href="http://www.internetke.com/">三级导航 <span class="submenu-icon"></span></a>
-                                <ul>
-                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                    <li><a href="http://www.internetke.com/">四级导航</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="http://www.internetke.com/">三级导航</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                    <li><a href="http://www.internetke.com/">二级导航</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="clear"></div>
-    <js>
-        <script>
-            $(document).ready(function () {
-                $.getJSON("${ctx}/system/category/get", function(json){
-                    var parent = $(".vertical-nav");
-                    process(json, parent);
-                });
-            })
-
-            function process(json, parentEle) {
-                if (null == json || json.length <= 0){
-                    return;
-                }
-                $.each(json, function (i, v) {
-                    var ue = $("<ul>")
-                    var lie = $("<li/>");
-                    var ae = $("<a/>");
-                    var spane = $("<span/>");
-                    if (v.children.size() > 0){
-                        spane.css("submenu-icon");
-                        lie.appendChild(ae);
-                        lie.appendChild(spane);
-                        process(v.children);
-                        ue.appendChild(lie);
-                    } else {
-                        ae.attr("href","");
-                        lie.appendChild(ae);
-                    }
-                    parentEle.appendChild(lie);
-                });
-            }
-        </script>
-    </js>
-</div> -->
+<ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
+    <li class="active"><a href="#"> <i
+            class="glyphicon glyphicon-th-large"></i> 首页
+    </a></li>
+    <li><a href="#systemSetting" class="nav-header collapsed"
+           data-toggle="collapse"> <i class="glyphicon glyphicon-cog"></i>
+        系统管理 <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+    </a>
+        <ul id="systemSetting" class="nav nav-list collapse secondmenu"
+            style="height: 0px;">
+            <li><a href="#"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-th-list"></i>菜单管理</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>角色管理</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-edit"></i>修改密码</a></li>
+        </ul></li>
+    <li><a href="./plans.html"> <i
+            class="glyphicon glyphicon-credit-card"></i> 视频管理
+    </a></li>
+    <li><a href="./grid.html"> <i
+            class="glyphicon glyphicon-globe"></i> 目录管理
+    </a></li>
+    <li><a href="./charts.html"> <i
+            class="glyphicon glyphicon-calendar"></i> 分类管理
+    </a></li>
+    <li><a href="#"> <i class="glyphicon glyphicon-fire"></i>
+        关于系统
+    </a></li>
+</ul>
