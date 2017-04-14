@@ -59,8 +59,19 @@ public class UserController {
         }
         return "error";
     }
-    
-   
+
+    /**
+     * 用户信息编辑页面
+     * @param id 用户id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/edit",method = RequestMethod.GET)
+    public String edit(String id, Model model){
+        model.addAttribute("user", userService.findOne(id));
+        return "user/edit";
+    }
+
     /**
      * 用户数据更新
      * @param user
