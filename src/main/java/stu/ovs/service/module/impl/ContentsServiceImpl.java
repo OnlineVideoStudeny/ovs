@@ -8,10 +8,7 @@ import stu.ovs.dao.entity.Contents;
 import stu.ovs.dao.persistence.ContentsDao;
 import stu.ovs.service.module.ContentsService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 目录service
@@ -101,6 +98,23 @@ public class ContentsServiceImpl implements ContentsService{
     @Override
     public Contents findContentsWithCourses(Integer id) {
         return contentsDao.findWithCourses(id);
+    }
+
+    @Override
+    public Object findTop(Integer id) {
+        List<Contents> contentsList = contentsDao.findByTopId(id, COURSES_CONTENTS);
+        Iterator<Contents> iterator = contentsList.iterator();
+        Contents contents = new Contents();
+        while (iterator.hasNext()){
+            Contents cont = iterator.next();
+            if (cont.isTop()){
+                contents = cont;
+            }
+        }
+        if (null == contents.getId()){
+            return "null";
+        }
+        return contents;
     }
 
     @Override

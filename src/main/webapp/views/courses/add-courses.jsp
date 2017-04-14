@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
@@ -56,7 +56,6 @@
 			</div>
 			<div class="modal-body content">
 				<div class="row content border">
-
 					<form id="addUserForm" method="post" class="form-horizontal"
 						role="form" action="${ctx}/courses/contents/create">
 						<input name="contentsType" value="courses_contents" type="hidden">
@@ -89,13 +88,13 @@
 									<label for="parentInput">上级目录</label>
 								</div>
 								<div class="col-md-9">
-									<div id="parentChose">
-										<select id="parentInput" name="parentId">
-											<option value="">选择上级分类目录</option>
-											<c:forEach items="${contents}" var="category">
-                                                    <option value="${category.id}">${category.name}</option>
-                                                </c:forEach>
-										</select>
+									<div class="parentChose">
+                                        <c:if test="${isTop != 'isTop'}">
+                                            <select id="parentInput" name="parentId">
+                                                <option value="">选择课程目录</option>
+                                                <option value="${topContents.id}">${topContents.name}</option>
+                                            </select>
+                                        </c:if>
 									</div>
 								</div>
 							</div>
@@ -131,9 +130,9 @@
 									
 								</div>
 								<div class="col-md-9">
-									<div>
+									<div class="parentChose">
 										<select id="contentsInput" name="contentsId">
-											<option>选择节点</option>
+											<option value="">选择节点</option>
 											<c:forEach items="${parentContents}" var="category">
                                                     <option value="${category.id}">${category.name}</option>
                                                 </c:forEach>
@@ -178,51 +177,88 @@
 
 <js> <script type="text/javascript">
 	$(function() {
-		$("#addSubmit")
-				.click(
-						function() {
-							var nameInput = $("#nameInput").val();
-							var contentsDescriptionInput = $(
-									"#contentsDescriptionInput").val();
-							if ((nameInput == null || nameInput == "")
-									&& (contentsDescriptionInput == null || contentsDescriptionInput == "")) {
-								alert("名称和描述不能为空");
-							} else {
-								$("#addUserForm").submit();
-							}
-						});
+		$("#addSubmit").click(function() {
+            var nameInput = $("#nameInput").val();
+            var contentsDescriptionInput = $(
+                    "#contentsDescriptionInput").val();
+            if ((nameInput == null || nameInput == "")
+                    && (contentsDescriptionInput == null || contentsDescriptionInput == "")) {
+                alert("名称和描述不能为空");
+            } else {
+                $("#addUserForm").submit();
+            }
+        });
 
-		$("#editSubmit")
-				.click(
-						function() {
-							var contentsInput = $("#contentsInput").val();
-							var videoDescriptionInput = $(
-									"#videoDescriptionInput").val();
-							if ((contentsInput == null || contentsInput == "")
-									&& (videoDescriptionInput == null || videoDescriptionInput == "")) {
-								alert("目录节点和描述不能为空");
-							} else {
-								$("#addCoursesForm").submit();
-							}
-						});
+		$("#editSubmit").click( function() {
+            var contentsInput = $("#contentsInput").val();
+            var videoDescriptionInput = $(
+                    "#videoDescriptionInput").val();
+            if ((contentsInput == null || contentsInput == "")
+                    && (videoDescriptionInput == null || videoDescriptionInput == "")) {
+                alert("目录节点和描述不能为空");
+            } else {
+                $("#addCoursesForm").submit();
+            }
+        });
 
 	});
-	
-	$("#parentInput").change(function () {
-        $.getJSON("${ctx}/contents/getNext?id="+$(this).val(), function (data) {
-            if (null !== data && data.length > 0){
-                var selectEle = $("<select id='parentInput' name='parentId' />")
-                $.each(data, function () {
-                    var optionEle = $("<option/>");
-                    optionEle.val(this.id);
-                    optionEle.html(this.name);
-                    optionEle.appendTo(selectEle);
-                })
-                selectEle.appendTo($("#parentChose"));
-                $(this).remove("name");
-                $(this).remove("id");
+
+    /*设置上一个有效的节点，并废弃当前无效的设置*/
+    function chapre(obj, idP) {
+        if (null != obj && "undefined" != obj){
+            if (obj.val() != "" && obj != "undefined" || obj.val() == ""){
+                obj.attr("name",idP);
+            } else{
+                var bir = bir.prev();
+                if (bir.length > 0){
+                    chapre(bir,namev);
+                    thv.remove();
+                }
             }
-        })
+        }
+    }
+
+    $(".parentChose").delegate("select", "change", function () {
+        /*若选中节点值无效，择设置上一个有效的节点*/
+        var thv = $(this)
+        var idv = thv.attr("id");
+        var namev = thv.attr("name");
+        if (thv.val() == null || thv.val() == "undefined" || thv.val() == ""){
+            var bir = thv.prev();
+            if (bir.length > 0){
+                chapre(bir,namev);
+                thv.nextAll().remove();
+                thv.remove();
+            }
+        } else{
+            $.getJSON("${ctx}/courses/contents/getNext?id="+$(this).val(), function (data) {
+                if (null !== data && data.length > 0){
+                    var selectEle = $("<select />")
+                    selectEle.attr("id",idv);
+                    var optionEle = $("<option/>")
+                    optionEle.val("");
+                    optionEle.html("选择下级菜单");
+                    optionEle.appendTo(selectEle);
+                    $.each(data, function () {
+                        var optionEle = $("<option/>")
+                        optionEle.val(this.id);
+                        optionEle.html(this.name);
+                        optionEle.appendTo(selectEle);
+                    })
+                    selectEle.appendTo($(".parentChose"));
+                }
+            })
+            /*值上一个兄弟节点的name为空，并设置当前节点name可用*/
+            var bir = $(this).prev();
+            if (null != bir && "undefined" != bir || bir.val() == ""){
+                bir.prop("name","");
+            }
+            if ($(this).attr("id") == "contentsInput"){
+                $(this).attr("name","contentsId");
+            } else{
+                $(this).attr("name","parentId");
+            }
+        }
     })
 </script> </js>
 

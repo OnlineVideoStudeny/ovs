@@ -30,6 +30,8 @@ public interface ContentsService extends Service<Contents>{
      */
     Contents findContentsWithCourses(Integer id);
 
+    Object findTop(Integer id);
+
     /**
      * 获取子节点信息
      * @param id
