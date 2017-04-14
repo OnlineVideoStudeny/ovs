@@ -13,6 +13,9 @@ public class FileUtil {
     public static boolean save(MultipartFile multipartFile, String filePath){
         File file = new File(filePath+multipartFile.getOriginalFilename());
         try {
+            if (!file.getParentFile().exists()){
+                file.mkdirs();
+            }
             multipartFile.transferTo(file);
         } catch (IOException e) {
             return false;

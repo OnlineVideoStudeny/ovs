@@ -18,11 +18,11 @@ public class VideoProcessService {
 
     private String FFMPEG_PATH;
 
-    private String SCREN_SIZE;
+    public String SCREN_SIZE;
 
-    private long CUT_TIME;
+    public int CUT_TIME;
 
-    public void setCUT_TIME(long CUT_TIME) {
+    public void setCUT_TIME(int CUT_TIME) {
         this.CUT_TIME = CUT_TIME;
     }
 

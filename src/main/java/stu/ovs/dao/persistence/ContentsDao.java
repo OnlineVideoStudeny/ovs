@@ -22,4 +22,6 @@ public interface ContentsDao extends BaseDao<Contents>{
 
     List<Contents> findByParentId(Integer id);
 
+    Contents findWithCourses(Integer id);
+
 }

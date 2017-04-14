@@ -14,6 +14,7 @@ import stu.ovs.service.module.CommentService;
 import stu.ovs.service.module.ContentsService;
 import stu.ovs.service.module.CoursesService;
 import stu.ovs.service.module.impl.ContentsServiceImpl;
+import stu.ovs.service.module.impl.CoursesServiceImpl;
 import stu.ovs.util.FileUtil;
 
 import java.util.ArrayList;
@@ -87,12 +88,17 @@ public class CoursesController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addVideo(Courses courses, MultipartFile file, Model model){
-        if (FileUtil.save(file, "c://file")){
-            courses.setImg(file.getOriginalFilename());
+        if (FileUtil.save(file, CoursesServiceImpl.PATH)){
+            courses.setImg(CoursesServiceImpl.PATH + file.getOriginalFilename());
+            courses.setName(file.getOriginalFilename());
             coursesService.add(courses);
+            model.addAttribute("contents",contentsService.findContents(courses.getId()));
         }
-        model.addAttribute("contents",contentsService.findContents(courses.getId()));
-        return "redirect:/courses/add";
+        Contents contents = contentsService.findContentsWithCourses(courses.getId());
+        if (contents.isTop()){
+            return "redirect:/courses/add?id="+contents.getId();
+        }
+        return "redirect:/courses/add?id="+contents.getTopId();
     }
 
     /**

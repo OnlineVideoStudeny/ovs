@@ -28,7 +28,11 @@ public class ContentsServiceImpl implements ContentsService{
     private ContentsDao contentsDao;
 
     public Contents findOne(Object id) {
-        return (Contents) contentsDao.findById(id);
+        Object object = contentsDao.findById(id);
+        if (null != object){
+            return (Contents) object;
+        }
+        return new Contents();
     }
 
     public List<Contents> findAll() {
@@ -92,6 +96,11 @@ public class ContentsServiceImpl implements ContentsService{
     public List<Map> findContents(Integer id) {
         List<Contents> contentsList = contentsDao.findByCourses(id, COURSES_CONTENTS);
         return doProcess(contentsList);
+    }
+
+    @Override
+    public Contents findContentsWithCourses(Integer id) {
+        return contentsDao.findWithCourses(id);
     }
 
     @Override

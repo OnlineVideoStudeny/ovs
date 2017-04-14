@@ -8,6 +8,7 @@
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="description" property="description" jdbcType="VARCHAR" />
         <result column="img" property="img" jdbcType="VARCHAR" />
+        <result column="contents_id" property="contentsId" jdbcType="VARCHAR" />
         <result column="attention" property="attention" jdbcType="BIGINT" />
         <result column="collect" property="collect" jdbcType="BIGINT" />
         <result column="disagree" property="disagree" jdbcType="BIGINT" />
@@ -35,8 +36,8 @@
     </select>
 
     <insert id="save" parameterType="stu.ovs.dao.entity.Courses" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO courses(name, description, img, contents_id, attention, collect)
-        VALUE (#{name}, #{description}, #{img}, #{ contents_id}, #{attention}, #{collect});
+        INSERT INTO courses(name, description, img, contents_id)
+        VALUE (#{name}, #{description}, #{img}, #{ contentsId});
     </insert>
 
     <insert id="addCoursesIndex" parameterType="map" useGeneratedKeys="true" keyProperty="id">

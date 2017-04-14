@@ -129,7 +129,11 @@
         $("#parentInput").change(function () {
             $.getJSON("${ctx}/system/getNext?id="+$(this).val(), function (data) {
                 if (null !== data && data.length > 0){
-                    var selectEle = $("<select id='parentInput' name='parentId' />")
+                    var selectEle = $("<select id='parentInput' />")
+                    var optionEle = $("<option/>")
+                    optionEle.val("");
+                    optionEle.html("选择下级菜单");
+                    optionEle.appendTo(selectEle);
                     $.each(data, function () {
                         var optionEle = $("<option/>")
                         optionEle.val(this.id);
@@ -137,10 +141,14 @@
                         optionEle.appendTo(selectEle);
                     })
                     selectEle.appendTo($("#parentChose"));
-                    $(this).remove("name");
-                    $(this).remove("id");
                 }
             })
+            var bir = $(this).prev();
+            if (null != bir && "undefined" != bir){
+                bir.prop("name","");
+            }
+            bir.prop("id","");
+            $(this).prop("name","parentId");
         })
     </script>
 </js>

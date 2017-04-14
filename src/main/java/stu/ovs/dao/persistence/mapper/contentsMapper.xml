@@ -30,6 +30,10 @@
         SELECT * FROM contents c WHERE c.contents_type = #{type}
     </select>
 
+    <select id="findWithCourses" parameterType="int" resultMap="BaseResultMap">
+        SELECT * FROM contents c RIGHT JOIN courses_index ci ON ci.contents_id = c.id WHERE ci.courses_id = #{id}
+    </select>
+
     <select id="findByCourses" resultMap="BaseResultMap">
         SELECT c.* FROM contents c LEFT JOIN ( SELECT cs.* FROM contents cs
         RIGHT JOIN ( SELECT ci.* FROM courses_index ci
@@ -46,8 +50,16 @@
     </select>
 
     <insert id="save" parameterType="stu.ovs.dao.entity.Contents" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO contents(name, description, parent_id, path, contents_type, top_id, is_top)
-        VALUE (#{name}, #{description}, #{parentId}, #{path}, #{contentsType}, #{topId}, #{isTop})
+        <choose>
+            <when test="topId != null">
+                INSERT INTO contents(name, description, parent_id, path, contents_type, top_id, is_top)
+                VALUE (#{name}, #{description}, #{parentId}, #{path}, #{contentsType}, #{topId}, #{isTop})
+            </when>
+            <otherwise>
+                INSERT INTO contents(name, description, parent_id, path, contents_type)
+                VALUE (#{name}, #{description}, #{parentId}, #{path}, #{contentsType})
+            </otherwise>
+        </choose>
     </insert>
 
     <delete id="delete" parameterType="int">

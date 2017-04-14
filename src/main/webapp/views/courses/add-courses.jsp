@@ -135,7 +135,7 @@
 			<div class="modal-body">
 				<div class="row content border">
 					<form id="addCoursesForm" method="post" class="form-horizontal"
-						role="form" action="${ctx}/courses/add">
+						role="form" action="${ctx}/courses/add" enctype="multipart/form-data">
 						<div class="container-fluid content-item">
 							<div class="row form">
 								<div class="col-md-3 info">

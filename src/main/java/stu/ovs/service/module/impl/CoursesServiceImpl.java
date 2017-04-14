@@ -23,8 +23,9 @@ import java.util.Map;
 @Transactional
 public class CoursesServiceImpl implements CoursesService {
 
-	private static Logger logger = LoggerFactory
-			.getLogger(VideoProcessService.class);
+	private static Logger logger = LoggerFactory.getLogger(VideoProcessService.class);
+
+    public static String PATH = "c://file//";
 
 	@Autowired
 	private VideoProcessService videoProcessService;
@@ -59,6 +60,7 @@ public class CoursesServiceImpl implements CoursesService {
 	}
 
 	public void add(Courses courses) {
+	    videoProcessService.makeScreenCut(courses.getImg(), courses.getImg(),videoProcessService.SCREN_SIZE, videoProcessService.CUT_TIME);
 		coursesDao.save(courses);
 		courses.getId();
 		Map arg = new HashMap();

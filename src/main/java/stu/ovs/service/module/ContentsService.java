@@ -24,6 +24,13 @@ public interface ContentsService extends Service<Contents>{
     List<Map> findContents(Integer id);
 
     /**
+     * 获取目录信息
+     * @param id
+     * @return
+     */
+    Contents findContentsWithCourses(Integer id);
+
+    /**
      * 获取子节点信息
      * @param id
      * @return
