@@ -16,6 +16,9 @@ public class Courses {
     private Integer disagree;     //不赞同
     private Integer agree;        //赞同
 
+    public Courses(){
+    }
+
     public Integer getId() {
         return id;
     }

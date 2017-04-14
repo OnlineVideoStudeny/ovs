@@ -35,6 +35,10 @@
         SELECT * FROM courses
     </select>
 
+    <select id="filter" parameterType="stu.ovs.dao.entity.Courses" resultMap="BaseResultMap">
+        SELECT * FROM courses
+    </select>
+
     <insert id="save" parameterType="stu.ovs.dao.entity.Courses" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO courses(name, description, img, contents_id)
         VALUE (#{name}, #{description}, #{img}, #{ contentsId});

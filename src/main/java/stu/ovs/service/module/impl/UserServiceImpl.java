@@ -34,11 +34,14 @@ public class UserServiceImpl implements UserService{
     }
 
     public User findOne(Object id) {
-        User user = userDao.findById(id.toString());
-        if (null == user){
-            return new User();
+        if (null != id){
+            User user = userDao.findById(id.toString());
+            if (null == user){
+                return new User();
+            }
+            return user;
         }
-        return user;
+        return new User();
     }
 
     public List<User> findAll() {

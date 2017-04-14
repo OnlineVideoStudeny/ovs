@@ -1,5 +1,6 @@
 package stu.ovs.service.module.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class CoursesServiceImpl implements CoursesService {
 
 	private static Logger logger = LoggerFactory.getLogger(VideoProcessService.class);
 
-    public static String PATH = "c://file//";
+    public static String PATH = "/file/";
 
 	@Autowired
 	private VideoProcessService videoProcessService;
@@ -60,13 +61,19 @@ public class CoursesServiceImpl implements CoursesService {
 	}
 
 	public void add(Courses courses) {
-	    videoProcessService.makeScreenCut(courses.getImg(), courses.getImg(),videoProcessService.SCREN_SIZE, videoProcessService.CUT_TIME);
-		coursesDao.save(courses);
-		courses.getId();
-		Map arg = new HashMap();
-		arg.put("coursesId", courses.getId());
-		arg.put("contentsId", courses.getContentsId());
-		coursesDao.addCoursesIndex(arg);
+        String imgPath = "";
+        try {
+            imgPath = videoProcessService.makeScreenCut(courses.getImg(), videoProcessService.SCREN_SIZE, videoProcessService.CUT_TIME);
+            courses.setImg(imgPath);
+            coursesDao.save(courses);
+            courses.getId();
+            Map arg = new HashMap();
+            arg.put("coursesId", courses.getId());
+            arg.put("contentsId", courses.getContentsId());
+            coursesDao.addCoursesIndex(arg);
+        } catch (Exception e) {
+            logger.error("生成截图失败："+e.getMessage());
+        }
 	}
 
 	@Override
@@ -89,4 +96,24 @@ public class CoursesServiceImpl implements CoursesService {
 		}
 		return new Courses();
 	}
+
+    @Override
+    public List<Courses> search(Courses courses, String order, String sort, Integer size) {
+	    if (null == courses){
+	        return coursesDao.findAll();
+        }else {
+            if (StringUtils.isBlank(sort)){
+                sort = "DESC";
+            }
+            if (null == size){
+                size = 10;
+            }
+            List list = coursesDao.filter(courses, sort, size);
+            if (null != list && list.size() > 0){
+                return list;
+            } else {
+                return new ArrayList<>();
+            }
+        }
+    }
 }

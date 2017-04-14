@@ -17,6 +17,7 @@ import stu.ovs.service.module.impl.ContentsServiceImpl;
 import stu.ovs.service.module.impl.CoursesServiceImpl;
 import stu.ovs.util.FileUtil;
 
+import javax.servlet.ServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,9 +88,10 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addVideo(Courses courses, MultipartFile file, Model model){
-        if (FileUtil.save(file, CoursesServiceImpl.PATH)){
-            courses.setImg(CoursesServiceImpl.PATH + file.getOriginalFilename());
+    public String addVideo(Courses courses, MultipartFile file, Model model, ServletRequest request){
+        String path = request.getServletContext().getRealPath("/") + CoursesServiceImpl.PATH;
+        if (FileUtil.save(file, path)){
+            courses.setImg(path + file.getOriginalFilename());
             courses.setName(file.getOriginalFilename());
             coursesService.add(courses);
             model.addAttribute("contents",contentsService.findContents(courses.getId()));

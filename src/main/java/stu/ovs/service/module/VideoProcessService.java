@@ -16,9 +16,10 @@ public class VideoProcessService {
 
     private static Logger logger = LoggerFactory.getLogger(VideoProcessService.class);
 
-    private String FFMPEG_PATH;
+    private static String FFMPEG_PATH;
 
-    public String SCREN_SIZE;
+    public static String SCREN_SIZE;
+
 
     public int CUT_TIME;
 
@@ -48,7 +49,7 @@ public class VideoProcessService {
         }
     }
 
-    public void makeScreenCut(String imageSavePath, String originFileUri, String screenSize,int cutTime) {
+    public String makeScreenCut(String originFileUri, String screenSize,int cutTime) throws Exception {
         List<String> cmd = new ArrayList<String>();
         cmd.clear();
         cmd.add(FFMPEG_PATH);
@@ -71,12 +72,9 @@ public class VideoProcessService {
         cmd.add("2");
         cmd.add("-s");
         cmd.add(screenSize);
-        cmd.add(imageSavePath);
-        try {
-            exec(cmd);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        cmd.add(originFileUri + ".jpg");
+        exec(cmd);
+        return originFileUri + ".jpg";
     }
 
 }

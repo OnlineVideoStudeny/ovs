@@ -13,4 +13,6 @@ public interface CoursesService extends Service<Courses>{
 
     Courses findCourses(Integer id);
 
+    List<Courses> search(Courses courses, String orderBy, String sort, Integer size);
+
 }
