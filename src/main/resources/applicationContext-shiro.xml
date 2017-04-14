@@ -26,6 +26,7 @@
                 /logout = logout
                 /static/** = anon
                 /registered = anon
+                /file/* = anon
                 /user/add = anon
                  /index = anon
                 /** = anon
