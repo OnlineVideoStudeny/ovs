@@ -79,21 +79,21 @@
 									</div>
 								</div>
 							</div>
+                            <c:if test="${isTop != 'isTop'}">
 							<div class="row form">
 								<div class="col-md-3 info">
 									<label for="parentInput">上级目录</label>
 								</div>
 								<div class="col-md-9">
 									<div class="parentChose">
-                                        <c:if test="${isTop != 'isTop'}">
-                                            <select id="parentInput" name="parentId">
-                                                <option value="">选择课程目录</option>
-                                                <option value="${topContents.id}">${topContents.name}</option>
-                                            </select>
-                                        </c:if>
+                                        <select id="parentInput" name="parentId">
+                                            <option value="">选择课程目录</option>
+                                            <option value="${topContents.id}">${topContents.name}</option>
+                                        </select>
 									</div>
 								</div>
 							</div>
+                            </c:if>
 						</div>
 					</form>
 				</div>
@@ -136,6 +136,21 @@
 									</div>
 								</div>
 							</div>
+                            <div class="row form">
+                                <div class="col-md-3 info">
+                                    <label for="parentInput">所属目录</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="parentChose">
+                                        <select id="categoryInput" name="categoryId">
+                                            <option value="0">root</option>
+                                            <c:forEach items="${parentCategory}" var="category">
+                                                <option value="${category.id}">${category.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 							<div class="row form">
 								<div class="col-md-3 info">
 									<label for="videoDescriptionInput">描述</label>
@@ -227,7 +242,14 @@
                 thv.remove();
             }
         } else{
-            $.getJSON("${ctx}/courses/contents/getNext?id="+$(this).val(), function (data) {
+            var url ;
+            if ($(this).attr("id") == "categoryInput"){
+                url = "${ctx}/system/getNext?id="+$(this).val();
+            } else{
+                url = "${ctx}/courses/contents/getNext?id="+$(this).val();
+            }
+            var cur = $(this);
+            $.getJSON(url, function (data) {
                 if (null !== data && data.length > 0){
                     var selectEle = $("<select />")
                     selectEle.attr("id",idv);
@@ -241,9 +263,10 @@
                         optionEle.html(this.name);
                         optionEle.appendTo(selectEle);
                     })
-                    selectEle.appendTo($(".parentChose"));
+                    cur.after(selectEle);
                 }
             })
+            $(this).nextAll().remove();
             /*值上一个兄弟节点的name为空，并设置当前节点name可用*/
             var bir = $(this).prev();
             if (null != bir && "undefined" != bir || bir.val() == ""){
@@ -251,6 +274,8 @@
             }
             if ($(this).attr("id") == "contentsInput"){
                 $(this).attr("name","contentsId");
+            } else if ($(this).attr("id") == "categoryInput"){
+                $(this).attr("name","categoryId");
             } else{
                 $(this).attr("name","parentId");
             }

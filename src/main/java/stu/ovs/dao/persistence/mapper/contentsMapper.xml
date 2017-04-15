@@ -31,7 +31,7 @@
     </select>
 
     <select id="findWithCourses" parameterType="int" resultMap="BaseResultMap">
-        SELECT * FROM contents c RIGHT JOIN courses_index ci ON ci.contents_id = c.id WHERE ci.courses_id = #{id}
+        SELECT c.* FROM contents c RIGHT JOIN courses ci ON ci.contents_id = c.id WHERE ci.id = #{id}
     </select>
 
     <select id="findByCourses" resultMap="BaseResultMap">

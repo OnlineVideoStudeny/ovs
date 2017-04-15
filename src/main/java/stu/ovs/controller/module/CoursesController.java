@@ -82,6 +82,7 @@ public class CoursesController {
         } else {
             model.addAttribute("isTop","isTop");
         }
+        model.addAttribute("parentCategory", contentsService.findTopCategory());
         return "courses/add-courses";
     }
 
@@ -92,11 +93,11 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addVideo(Courses courses, MultipartFile file, Model model, ServletRequest request){
+    public String addVideo(Courses courses, Integer categoryId, MultipartFile file, Model model, ServletRequest request){
         String path = request.getServletContext().getRealPath("/");
         if (FileUtil.save(file, path + CoursesServiceImpl.PATH)){
+            CoursesServiceImpl.CATEGORY_ID = categoryId;
             coursesService.add(courses,path, CoursesServiceImpl.PATH, file);
-            model.addAttribute("contents",contentsService.findContents(courses.getId()));
         }
         Contents contents = contentsService.findContentsWithCourses(courses.getId());
         if (contents.isTop()){
@@ -180,7 +181,7 @@ public class CoursesController {
      * @return
      */
     @RequestMapping(value = "/contents/create", method = RequestMethod.POST)
-    public String addContents(Contents contents,Model model){
+    public String addContents(Contents contents, Model model){
         contents.setContentsType(ContentsServiceImpl.COURSES_CONTENTS);
         contentsService.addContents(contents);
         Integer id;

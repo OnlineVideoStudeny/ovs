@@ -30,7 +30,7 @@
     </select>
 
     <select id="findByCategory" parameterType="int" resultMap="BaseResultMap">
-        SELECT * FROM courses c WHERE c.contents_id = #{id}
+        SELECT c.* FROM courses c RIGHT JOIN courses_index ci ON ci.courses_id = c.id WHERE ci.contents_id = #{id}
     </select>
 
     <select id="findAll" resultMap="BaseResultMap">

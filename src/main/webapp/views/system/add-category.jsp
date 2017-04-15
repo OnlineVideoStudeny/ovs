@@ -157,6 +157,7 @@
                         selectEle.appendTo($("#parentChose"));
                     }
                 })
+                $(this).nextAll().remove();
                 /*值上一个兄弟节点的name为空，并设置当前节点name可用*/
                 var bir = $(this).prev();
                 if (null != bir && "undefined" != bir || bir.val() == ""){

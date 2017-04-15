@@ -27,6 +27,8 @@ public class CoursesServiceImpl implements CoursesService {
 
     public static String PATH = "/file/";
 
+    public static Integer CATEGORY_ID;
+
 	@Autowired
 	private VideoProcessService videoProcessService;
 
@@ -64,7 +66,7 @@ public class CoursesServiceImpl implements CoursesService {
         courses.getId();
         Map arg = new HashMap();
         arg.put("coursesId", courses.getId());
-        arg.put("contentsId", courses.getContentsId());
+        arg.put("contentsId", null != CATEGORY_ID ? CATEGORY_ID : 0);
         coursesDao.addCoursesIndex(arg);
 	}
 
