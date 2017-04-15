@@ -10,16 +10,22 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:forEach var="cur" items="${contents}" varStatus="vs">
     <c:set var="index" value="${index + 1}" scope="request" />
-    <tr>
-        <%-- <td>${cur.id}</td> --%>
-        <td>${cur.name}</td>
-        <td>${cur.description}</td>
-        <td>${cur.parentId}</td>
-    </tr>
+    <li>
+        <c:choose>
+            <c:when test="${fn:length(cur.children) > 0}">
+                <a href="#">${cur.id}:${cur.name}</a>
+            </c:when>
+            <c:otherwise>
+                <a href="#">${cur.name}</a><span><a href="#" onclick="del(${cur.id})">&#8195;<i class="icon-trash"> 删除</i></a></span>
+            </c:otherwise>
+        </c:choose>
+    </li>
     <c:if test="${fn:length(cur.children) > 0}">
         <c:set var="level" value="${level + 1}" scope="request" />
         <c:set var="contents" value="${cur.children}" scope="request" />
-        <c:import url="_r.jsp" />
+        <ul style="padding-left: 45px">
+            <c:import url="_r.jsp" />
+        </ul>
     </c:if>
 </c:forEach>
 <c:set var="level" value="${level - 1}" scope="request" />

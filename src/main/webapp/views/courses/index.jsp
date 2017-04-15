@@ -19,12 +19,7 @@
 </head>
 
 <div class="row">
-	<video height="400" width="500" controls="controls">
-		<%-- <c:forEach items="${contents}" var="category">
-			<option value="${category.id}">${category.img}</option>
-		</c:forEach> --%>
-		<source src="${ctx}/static/mp4/0_1.mp4">
-	</video>
+	<video height="400" width="500" src="${ctx}${courses.dir}" controls="controls"/>
 </div>
 <div class="row">
 	<ul class="nav nav-tabs">
@@ -34,33 +29,33 @@
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="details">
-			测试详情
-			 <br />
-			<div class="">视频的详情介绍</div>
+			<details>
+                ${courses.description}
+            </details>
 		</div>
 
 
 		<div class="tab-pane" id="contents">
-			测试目录
+			<label>目录</label>
 			<div>
-				<table class="table">
-					<tr>
-						<td>名称</td>
-					</tr>
-					<c:set var="index" value="0" scope="request" />
-					<c:set var="level" value="0" scope="request" />
-					<c:import url="_r.jsp" />
-
-				</table>
+                <%--<ul class="tree">
+                    <c:set var="index" value="0" scope="request" />
+                    <c:set var="level" value="0" scope="request" />
+                    <c:import url="_r.jsp" />
+                </ul>--%>
 			</div>
-
-
 		</div>
 
 		<div class="tab-pane" id="comment">
-			测试评论
+            <label>用户评论</label>
 			<br>
-			<div>用户评论</div>
+			<div>
+                <c:forEach items="${comment}" var="com">
+                    <label>
+                            ${com.content}
+                    </label>
+                </c:forEach>
+            </div>
 
 
 		</div>

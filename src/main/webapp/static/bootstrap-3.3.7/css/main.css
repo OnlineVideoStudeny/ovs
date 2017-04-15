@@ -42,3 +42,21 @@ border-color: #ffffff;
 	margin-left:200px;
 	font-size:30px;
 }
+ul.tree li, ul.tree ul {
+    font-size: medium;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    color: rgba(16, 55, 48, 0.94);
+    display: list-item;
+}
+.content-box{
+    border: 0.8px solid rgba(159, 184, 147, 0.88);
+    padding: 0 10px 10px 10px;
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+a, a:hover{
+    text-decoration: none !important;
+}
+span{
+    color: #10333e;
+}

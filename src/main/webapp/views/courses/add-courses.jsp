@@ -17,33 +17,29 @@
 <div class="row">
 	<div class="col-md-2">
 		<div>
-			<a href="#contentsCreateModal" role="button" class="btn"
-				data-toggle="modal"> 添加目录 </a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contentsCreateModal">
+                添加目录
+            </button>
 		</div>
 	</div>
 	<div class="col-md-10">
 		<div>
             <c:if test="${fn:length(contents) > 0}">
-                <a href="#coursesCreateModal" role="button" class="btn"
-                   data-toggle="modal"> 添加课程 </a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#coursesCreateModal">
+                    添加课程
+                </button>
             </c:if>
 		</div>
 	</div>
 </div>
 <!-- 显示课程目录 -->
-<table class="table">
-	<tr>
-	    
-		<td>名称</td>
-		<td>描述</td>
-		<td>上级分类目录</td>
-
-	</tr>
-    <c:set var="index" value="0" scope="request" />
-    <c:set var="level" value="0" scope="request" />
-    <c:import url="_r.jsp" />
-
-</table>
+<section class="content-box">
+    <ul class="tree">
+        <c:set var="index" value="0" scope="request" />
+        <c:set var="level" value="0" scope="request" />
+        <c:import url="_r.jsp" />
+    </ul>
+</section>
 <div class="modal fade" id="contentsCreateModal" tabindex="-1"
 	role="dialog" aria-labelledby="contentsCreateLable" aria-hidden="true">
 	<div class="modal-dialog">

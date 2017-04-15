@@ -9,7 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <title>首页</title>
-
 <body>
     <div class="row">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -56,39 +55,16 @@
             <h3>热门课程</h3>
         </div>
         <div>
-            <span>
-                <a href="#" class="">
-                    <img src="${ctx}/static/images/regis.jpg">
-                <label class="">
-                    description
-                </label>
-                </a>
+            <c:forEach items="${bestVideo}" var="video">
+                <span>
+                    <a href="${ctx}/courses/index?id=${video.id}" class="">
+                        <img src="${ctx}${video.img}">
+                        <label class="">
+                                ${video.description}
+                        </label>
+                    </a>
             </span>
-            
-            <span>
-                <a href="#">
-                    <img src="${ctx}/static/images/regis.jpg">
-                <label>
-                    description
-                </label>
-                </a>
-            </span>
-            <span>
-                <a href="#">
-                    <img src="${ctx}/static/images/regis.jpg">
-                <label>
-                    description
-                </label>
-                </a>
-            </span>
-             <span>
-                <a href="#">
-                    <img src="${ctx}/static/images/regis.jpg">
-                <label>
-                    description
-                </label>
-                </a>
-            </span>
+            </c:forEach>
         </div>
     </div>
     <div class="row">
@@ -97,30 +73,16 @@
             <h3>最新课程</h3>
         </div>
         <div>
-            <span>
-                <a href="#">
-                    <img src="${ctx}/static/images/regis.jpg">
-                <label>
-                    description
-                </label>
-                </a>
-            </span>
-            <span>
-                <a href="#">
-                    <img src="${ctx}/static/images/regis.jpg">
-                <label>
-                    description
-                </label>
-                </a>
-            </span>
-            <span>
-                <a href="#">
-                    <img src="${ctx}/static/images/regis.jpg">
-                <label>
-                    description
-                </label>
-                </a>
-            </span>
+            <c:forEach items="${newVideo}" var="video">
+                <span>
+                    <a href="${ctx}/courses/index?id=${video.id}" class="">
+                        <img src="${ctx}${video.img}">
+                        <label class="">
+                                ${video.description}
+                        </label>
+                    </a>
+                </span>
+            </c:forEach>
         </div>
     </div>
 <js>

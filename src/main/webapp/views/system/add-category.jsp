@@ -14,17 +14,17 @@
 <title><sitemesh:write property='title' /></title>
 <%@ include file="/layouts/header.jsp"%>
 </head>
-
 <body>
 	<div class="row1">
 		<section>
-			<a href="#categoryCreateModal" role="button" class="btn"
-				data-toggle="modal"> 添加分类 </a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoryCreateModal">
+                添加分类
+            </button>
 		</section>
 
 		<!-- 显示分类 -->
-		<section>
-            <ul>
+		<section class="content-box">
+            <ul class="tree">
                 <c:set var="index" value="0" scope="request" />
                 <c:set var="level" value="0" scope="request" />
                 <c:import url="_r.jsp" />
@@ -165,6 +165,10 @@
                 $(this).attr("name","parentId");
             }
         })
+
+        function del(id) {
+            alert(id);
+        }
     </script>
 </js>
 </html>
