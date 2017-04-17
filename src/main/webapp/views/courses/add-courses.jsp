@@ -293,6 +293,7 @@
 	}) */
 	 
 	function del(data) {
+		alert(data);
 		$.post("${ctx}/courses/contents/delete?id=" + data),
 		function() {
 			alert("ok");
