@@ -17,19 +17,18 @@
 <body>
 	<div class="row1">
 		<section>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoryCreateModal">
-                添加分类
-            </button>
+			<button type="button" class="btn btn-primary" data-toggle="modal"
+				data-target="#categoryCreateModal">添加分类</button>
 		</section>
 
 		<!-- 显示分类 -->
 		<section class="content-box">
-            <ul class="tree">
-                <c:set var="index" value="0" scope="request" />
-                <c:set var="level" value="0" scope="request" />
-                <c:import url="_r.jsp" />
-            </ul>
-        </section>
+			<ul class="tree">
+				<c:set var="index" value="0" scope="request" />
+				<c:set var="level" value="0" scope="request" />
+				<c:import url="_r.jsp" />
+			</ul>
+		</section>
 	</div>
 
 	<div class="modal fade" id="categoryCreateModal" tabindex="-1"
@@ -78,9 +77,9 @@
 										<div id="parentChose">
 											<select id="parentInput" name="parentId">
 												<option value="">选择上级分类目录</option>
-                                                <c:forEach items="${parentCategory}" var="category">
-                                                    <option value="${category.id}">${category.name}</option>
-                                                </c:forEach>
+												<c:forEach items="${parentCategory}" var="category">
+													<option value="${category.id}">${category.name}</option>
+												</c:forEach>
 											</select>
 										</div>
 									</div>
@@ -100,76 +99,102 @@
 
 
 </body>
-<js>
-    <script type="text/javascript">
-
+<js> <script type="text/javascript">
 	/* function getTree() {
 	 return data;
 	}
 	$('#tree').treeview({data: getTree()}); */
 
-        $(function() {
-            $("#addSubmit").click(function() {
-                var nameInput = $("#nameInput").val();
-                var contentsDescriptionInput = $(
-                        "#contentsDescriptionInput").val();
-                if ((nameInput === null || nameInput === "")
-                        && (contentsDescriptionInput === null || contentsDescriptionInput === "")) {
-                    alert("名称或描述不能为空");
-                } else {
-                    $("#addUserForm").submit();
-                }
-            })
+	$(function() {
+		$("#addSubmit")
+				.click(
+						function() {
+							var nameInput = $("#nameInput").val();
+							var contentsDescriptionInput = $(
+									"#contentsDescriptionInput").val();
+							if ((nameInput === null || nameInput === "")
+									&& (contentsDescriptionInput === null || contentsDescriptionInput === "")) {
+								alert("名称或描述不能为空");
+							} else {
+								$("#addUserForm").submit();
+							}
+						})
+	})
+
+	/*设置上一个有效的节点，并废弃当前无效的设置*/
+	function chapre(obj) {
+		if (null != obj && "undefined" != obj) {
+			if (obj.val() != "" && obj != "undefined" || obj.val() == "") {
+				obj.attr("name", "parentId");
+			} else {
+				bir.prop("name", "");
+				chapre(bir.prev());
+			}
+		}
+	}
+
+	$("#parentChose")
+			.delegate(
+					"select",
+					"change",
+					function() {
+						/*若选中节点值无效，择设置上一个有效的节点*/
+						if ($(this).val() == null
+								|| $(this).val() == "undefined"
+								|| $(this).val() == "") {
+							var bir = $(this).prev();
+							chapre(bir);
+							$(this).prop("name", "");
+						} else {
+							$
+									.getJSON(
+											"${ctx}/system/getNext?id="
+													+ $(this).val(),
+											function(data) {
+												if (null !== data
+														&& data.length > 0) {
+													var selectEle = $("<select id='parentInput' />")
+													var optionEle = $("<option/>")
+													optionEle.val("");
+													optionEle.html("选择下级菜单");
+													optionEle
+															.appendTo(selectEle);
+													$
+															.each(
+																	data,
+																	function() {
+																		var optionEle = $("<option/>")
+																		optionEle
+																				.val(this.id);
+																		optionEle
+																				.html(this.name);
+																		optionEle
+																				.appendTo(selectEle);
+																	})
+													selectEle
+															.appendTo($("#parentChose"));
+												}
+											})
+							$(this).nextAll().remove();
+							/*值上一个兄弟节点的name为空，并设置当前节点name可用*/
+							var bir = $(this).prev();
+							if (null != bir && "undefined" != bir
+									|| bir.val() == "") {
+								bir.prop("name", "");
+							}
+							$(this).attr("name", "parentId");
+						}
+					})
+
+	function del(id) {
+		alert(id);
+	}
+        
+	/*删除分类*/
+	function del(data) {
+		$.post("${ctx}/system/category/delete?id=" + data,function (data) {
+            alert(data);
         })
-
-    /*设置上一个有效的节点，并废弃当前无效的设置*/
-        function chapre(obj) {
-            if (null != obj && "undefined" != obj){
-                if (obj.val() != "" && obj != "undefined" || obj.val() == ""){
-                    obj.attr("name","parentId");
-                } else{
-                    bir.prop("name","");
-                    chapre(bir.prev());
-                }
-            }
-        }
-
-        $("#parentChose").delegate("select", "change", function () {
-            /*若选中节点值无效，择设置上一个有效的节点*/
-            if ($(this).val() == null || $(this).val() == "undefined" || $(this).val() == ""){
-                var bir = $(this).prev();
-                chapre(bir);
-                $(this).prop("name","");
-            } else{
-                $.getJSON("${ctx}/system/getNext?id="+$(this).val(), function (data) {
-                    if (null !== data && data.length > 0){
-                        var selectEle = $("<select id='parentInput' />")
-                        var optionEle = $("<option/>")
-                        optionEle.val("");
-                        optionEle.html("选择下级菜单");
-                        optionEle.appendTo(selectEle);
-                        $.each(data, function () {
-                            var optionEle = $("<option/>")
-                            optionEle.val(this.id);
-                            optionEle.html(this.name);
-                            optionEle.appendTo(selectEle);
-                        })
-                        selectEle.appendTo($("#parentChose"));
-                    }
-                })
-                $(this).nextAll().remove();
-                /*值上一个兄弟节点的name为空，并设置当前节点name可用*/
-                var bir = $(this).prev();
-                if (null != bir && "undefined" != bir || bir.val() == ""){
-                    bir.prop("name","");
-                }
-                $(this).attr("name","parentId");
-            }
-        })
-
-        function del(id) {
-            alert(id);
-        }
-    </script>
-</js>
+	}
+</script> </js>
 </html>
