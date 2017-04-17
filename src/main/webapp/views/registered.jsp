@@ -82,23 +82,20 @@ input {
 	msg = (String) request.getAttribute("msg");
 %>
 <body>
-
 	<div id="regis">
 		<h3>欢迎注册</h3>
-		<form action="${ctx}/login" method="post" onsubmit="return regis();">
-			<input type="text" id="name" name="nickname" placeholder="用户名" /> <span
-				id="userPmg"></span> <br> <br> <input type="password"
-				id="password" name="password" placeholder="密码" /> <span id="pwd"></span><br>
-			<br> <input type="password" id="repwd" name="repeatPassword"
-				placeholder="确认密码" /> <span id="pwdmeg"></span><br> <br>
+		<form action="${ctx}/user/add" method="post" onsubmit="return regis();">
+			<input type="text" id="name" name="nickName" placeholder="用户名" />
+            <span id="userPmg"></span> <br> <br>
+            <input type="password" id="password" name="password" placeholder="密码" />
+            <span id="pwd"></span><br><br>
+            <input type="password" id="repwd" name="repeatPassword" placeholder="确认密码" />
+            <span id="pwdmeg"></span><br> <br>
 			<input type="submit" class="reg" value="注册"> <br>
 		</form>
 		</table>
 	</div>
-
 </body>
-
-
 <js> <script type="text/javascript">
 	function regis() {
 		document.getElementById("userPmg").innerHTML = "";

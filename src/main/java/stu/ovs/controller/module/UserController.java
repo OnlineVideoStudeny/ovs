@@ -38,7 +38,7 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(User user, Model model){
         if (userService.regiter(user)){
-            return "redirect:index";
+            return "redirect:/index";
         } else {
             return "redirect:/registered";
         }
