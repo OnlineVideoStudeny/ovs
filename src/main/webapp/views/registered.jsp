@@ -20,9 +20,9 @@ body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
 	margin: 0;
-	background:url('${ctx}/static/images/regis.jpg');
-	background-repeat:no-repeat;
-	background-size:100%;
+	background: url('${ctx}/static/images/regis.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 #regis {
@@ -84,15 +84,14 @@ input {
 <body>
 
 	<div id="regis">
-	<h3>欢迎注册</h3>
-		<form action="${ctx}/user/add" method="post" onsubmit="return regis();">
-			<input type="text" id="username" name="nickName" placeholder="用户名"/> <span
-				id="userPmg"></span> <br> <br>
-			<input type="password"
-				id="password" name="password" placeholder="密码"/> <span id="pwd"></span><br><br>
-			<input type="password" id="repwd" name="repeatPassword" placeholder="确认密码"/> <span
-				id="pwdmeg"></span><br> <br> <input type="submit"
-				class="reg" value="注册"> <br>
+		<h3>欢迎注册</h3>
+		<form action="${ctx}/login" method="post" onsubmit="return regis();">
+			<input type="text" id="name" name="nickname" placeholder="用户名" /> <span
+				id="userPmg"></span> <br> <br> <input type="password"
+				id="password" name="password" placeholder="密码" /> <span id="pwd"></span><br>
+			<br> <input type="password" id="repwd" name="repeatPassword"
+				placeholder="确认密码" /> <span id="pwdmeg"></span><br> <br>
+			<input type="submit" class="reg" value="注册"> <br>
 		</form>
 		</table>
 	</div>
@@ -100,21 +99,21 @@ input {
 </body>
 
 
-<script type="text/javascript">
+<js> <script type="text/javascript">
 	function regis() {
-		document.getElementById("umeg").innerHTML = "";
+		document.getElementById("userPmg").innerHTML = "";
 		document.getElementById("pwd").innerHTML = "";
 		document.getElementById("pwdmeg").innerHTML = "";
 		var flag = true;
-		var username = document.getElementById("username").value;
-		if (username == "") {
-			document.getElementById("umeg").innerHTML = "用户名不能为空";
+		var name = document.getElementById("name").value;
+		if (name == "" || name == null) {
+			document.getElementById("userPmg").innerHTML = "用户名不能为空";
 			flag = false;
 
 		}
 
 		var password = document.getElementById("password").value;
-		if (password == "") {
+		if (password == "" || password == null) {
 			document.getElementById("pwd").innerHTML = "密码不能为空";
 			flag = false;
 
@@ -130,5 +129,5 @@ input {
 		return flag;
 
 	}
-</script>
+</script> </js>
 </html>

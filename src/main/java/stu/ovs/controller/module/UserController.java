@@ -32,7 +32,7 @@ public class UserController {
     /**
      * 用户添加
      * @param user
-     * @param model
+     * @param modeln 
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)

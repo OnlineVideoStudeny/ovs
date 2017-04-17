@@ -18,8 +18,17 @@
 <%@ include file="/layouts/header.jsp"%>
 </head>
 
+
+<section class="content-box">
+	<ul class="tree">
+		<c:set var="index" value="0" scope="request" />
+		<c:set var="level" value="0" scope="request" />
+		<c:import url="_r.jsp" />
+	</ul>
+</section>
 <div class="row">
-	<video height="400" width="500" src="${ctx}${courses.dir}" controls="controls"/>
+	<video height="400" width="500" src="${ctx}${courses.dir}"
+		controls="controls" />
 </div>
 <div class="row">
 	<ul class="nav nav-tabs">
@@ -29,33 +38,34 @@
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="details">
-			<details>
-                ${courses.description}
-            </details>
+			<details> ${courses.description}
+			</details>
 		</div>
 
 
 		<div class="tab-pane" id="contents">
 			<label>目录</label>
 			<div>
-                <%--<ul class="tree">
-                    <c:set var="index" value="0" scope="request" />
-                    <c:set var="level" value="0" scope="request" />
-                    <c:import url="_r.jsp" />
-                </ul>--%>
+				 <c:forEach items="${parentContents}" var="category">
+                <span>
+                    <a href="${ctx}/courses/index?id=${category.id}" class="">
+                     <img src="${ctx}${category.img}">
+                        <label class="">
+                                ${category.name}
+                        </label>
+                    </a>
+                </span>
+            </c:forEach>
 			</div>
 		</div>
 
 		<div class="tab-pane" id="comment">
-            <label>用户评论</label>
-			<br>
+			<label>用户评论</label> <br>
 			<div>
-                <c:forEach items="${comment}" var="com">
-                    <label>
-                            ${com.content}
-                    </label>
-                </c:forEach>
-            </div>
+				<c:forEach items="${comment}" var="com">
+					<label> ${com.content} </label>
+				</c:forEach>
+			</div>
 
 
 		</div>

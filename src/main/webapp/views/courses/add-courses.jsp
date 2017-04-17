@@ -38,6 +38,8 @@
 		<c:import url="_r.jsp" />
 	</ul>
 </section>
+
+
 <div class="modal fade" id="contentsCreateModal" tabindex="-1"
 	role="dialog" aria-labelledby="contentsCreateLable" aria-hidden="true">
 	<div class="modal-dialog">

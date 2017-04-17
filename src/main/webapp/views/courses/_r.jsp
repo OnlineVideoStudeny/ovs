@@ -16,7 +16,7 @@
                 <a href="#">${cur.id}:${cur.name}</a>
             </c:when>
             <c:otherwise>
-                <a href="#">${cur.name}</a><span><a href="javascript:;" onclick="del(${cur.id})">&#8195;<i class="icon-trash" id="delete"> 删除</i></a></span>
+                <a href="#">${cur.name}</a><span><a href="javascript:;" onclick="del(${cur.id})">&#8195;<i class="icon-trash" id="delete"> 删除</i></a></span>                
             </c:otherwise>
         </c:choose>
     </li>

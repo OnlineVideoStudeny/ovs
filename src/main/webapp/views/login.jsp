@@ -92,8 +92,8 @@ margin-left:50px;
 	%>
 	<div id="login">
 		<h3>欢迎登陆跟谁学视频网站</h3>
-		<form action="${ctx}/login" method="post" onsubmit="return check();">
-			<input type="text" id="username" name="username" placeholder="用户名" /><br>
+		<form action="${ctx}/index" method="post" onsubmit="return check();">
+			<input type="text" id="name" name="nickname" placeholder="用户名" /><br>
 			<span id="userPmg"></span><br> <br> <input type="password"
 				id="password" name="password" placeholder="密码" /> <br><span id="pwd"></span><br>
 			<br> <input type="submit" class="sub" value="登陆"> <br>
@@ -106,8 +106,8 @@ margin-left:50px;
 		var flag = true;
 		//根据输入框的id属性获得输入框的内容
 		document.getElementById("userPmg").innerHTML == "";
-		var username = document.getElementById("username").value;
-		if (username == "" || username == null) {
+		var name = document.getElementById("name").value;
+		if (name == "" || name == null) {
 			document.getElementById("userPmg").innerHTML = "<font color='red'>*用户名不能为空！</font>";
 			flag = false;
 
