@@ -35,7 +35,7 @@
     </insert>
 
     <delete id="delete" parameterType="int">
-        DELETE FROM comment u WHERE u.id = #{id}
+        DELETE FROM comment WHERE id = #{id}
     </delete>
 
     <update id="update" parameterType="stu.ovs.dao.entity.Comment">

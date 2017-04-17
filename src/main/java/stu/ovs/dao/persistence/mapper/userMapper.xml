@@ -39,7 +39,7 @@
     </insert>
 
     <delete id="delete" parameterType="string">
-        DELETE FROM user u WHERE u.id = #{id}
+        DELETE FROM user WHERE id = #{id}
     </delete>
 
     <update id="update" parameterType="stu.ovs.dao.entity.User">

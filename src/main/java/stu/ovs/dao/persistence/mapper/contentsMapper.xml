@@ -63,7 +63,7 @@
     </insert>
 
     <delete id="delete" parameterType="int">
-        DELETE FROM contents u WHERE u.id = #{id}
+        DELETE FROM contents WHERE id = #{id}
     </delete>
 
     <update id="update" parameterType="stu.ovs.dao.entity.Contents">

@@ -39,7 +39,8 @@ public class ContentsServiceImpl implements ContentsService{
     @Override
     public Object delete(Integer id) {
         Contents target = (Contents) contentsDao.findById(id);
-        if ( null != contentsDao.findByParentId(target.getId())){
+        List<Contents> contents = contentsDao.findByParentId(target.getId());
+        if (contents.size() > 0 && null != contents){
             return false;
         } else {
             contentsDao.delete(id);

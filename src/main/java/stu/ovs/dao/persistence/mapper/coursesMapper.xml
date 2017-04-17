@@ -61,7 +61,7 @@
     </insert>
 
     <delete id="delete" parameterType="string">
-        DELETE FROM courses u WHERE u.id = #{id}
+        DELETE FROM courses WHERE id = #{id}
     </delete>
 
     <update id="update" parameterType="stu.ovs.dao.entity.Courses">

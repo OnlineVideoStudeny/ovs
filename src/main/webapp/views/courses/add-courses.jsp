@@ -284,22 +284,11 @@
 		}
 	})
 
-	/*  $("#delete").click(function(id) {
-	
-	$.post("${ctx}/courses/contents/delete?id=" + id), function() {
-		alert ("ok");
-	}
-
-	}) */
-	 
 	function del(data) {
-		alert(data);
-		$.post("${ctx}/courses/contents/delete?id=" + data),
-		function() {
-			alert("ok");
-		}
-
-	} 
+		$.post("${ctx}/courses/contents/delete?id=" + data,function (data) {
+            alert(data);
+        })
+	}
 </script> </js>
 
 

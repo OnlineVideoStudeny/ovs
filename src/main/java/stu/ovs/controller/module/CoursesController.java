@@ -227,9 +227,8 @@ public class CoursesController {
     @ResponseBody
     public Object deleteContents(Integer id){
         Courses courses = coursesService.findOne(id);
-        if (null != courses){
-            contentsService.delete(id);
-            return "ok";
+        if (null == courses.getId()){
+            return contentsService.delete(id);
         }
         return "error";
     }
