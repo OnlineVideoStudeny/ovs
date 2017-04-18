@@ -56,11 +56,11 @@
                             <li><a href="#" class="navbar-div-1"><b>欢迎<shiro:principal/>登陆</b></a></li>
 						</div>
 						<div >
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
+							<li class="dropdown"><a href="#" class="navbar-div-1"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">个人中心 <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">个人信息修改</a></li>
+									<li><a href="${ctx}/user/edit">个人信息修改</a></li>
 									
 								</ul></li>
 						</div>

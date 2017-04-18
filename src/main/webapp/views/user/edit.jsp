@@ -38,11 +38,11 @@
 					</select>
 				</div>
 				<div >
-					<label> 电话： </label> <input name="phone" id="phone">
+					<label class="info"> 电话： </label> <input name="phone" id="phone">
 				</div>
 			</fieldset>
 			<div>
-				<button type="submit" id="editsSubmit">修改</button>
+				<button type="submit" id="editsSubmit" >修改</button>
 			</div>
 		</form>
 </div>
