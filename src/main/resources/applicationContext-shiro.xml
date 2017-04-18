@@ -29,7 +29,7 @@
                 /file/* = anon
                 /user/add = anon
                  /index = anon
-                /** = anon
+                /** = user
             </value>
         </property>
     </bean>

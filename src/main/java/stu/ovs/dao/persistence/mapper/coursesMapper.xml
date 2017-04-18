@@ -65,7 +65,7 @@
     </delete>
 
     <update id="update" parameterType="stu.ovs.dao.entity.Courses">
-        UPDATE courses SET name = #{name}, description = #{description}, img = #{img}, attention = #{attention}, collect = #{collect}
+        UPDATE courses SET name = #{name}, description = #{description}, img = #{img}, attention = #{attention}, collect = #{collect} WHERE  id = #{id}
     </update>
 
 </mapper>
