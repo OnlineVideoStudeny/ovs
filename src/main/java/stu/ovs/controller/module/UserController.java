@@ -1,5 +1,6 @@
 package stu.ovs.controller.module;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import stu.ovs.dao.entity.User;
+import stu.ovs.service.ShiroUser;
 import stu.ovs.service.module.UserService;
 
 /**
@@ -67,8 +69,10 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/edit",method = RequestMethod.GET)
-    public String edit(String id, Model model){
-        model.addAttribute("user", userService.findOne(id));
+    public String edit(String id, Model model){;
+        Object object = SecurityUtils.getSubject().getPrincipal();
+        ShiroUser shiroUser = (ShiroUser) object;
+        model.addAttribute("user", userService.findOne(shiroUser.id));
         return "user/edit";
     }
 

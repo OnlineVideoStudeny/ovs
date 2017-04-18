@@ -43,8 +43,29 @@
     </delete>
 
     <update id="update" parameterType="stu.ovs.dao.entity.User">
-        UPDATE user SET name = #{name}, nick_name = #{nickName}, password = #{password}, salt = #{salt}, phone = #{phone}, email = #{email},
-                        gender = #{gender}, age = #{age}, avatars = #{avatars}
+        UPDATE user SET
+        <if test="name != null">
+            name = #{name},
+        </if>
+        <if test="nickName != null">
+            nick_name = #{nickName},
+        </if>
+        <if test="phone != null">
+            phone = #{phone},
+        </if>
+        <if test="email != null">
+            email = #{email},
+        </if>
+        <if test="gender != null">
+            gender = #{gender},
+        </if>
+        <if test="age != null">
+            age = #{age},
+        </if>
+        <if test="avatars != null">
+            avatars = #{avatars}
+        </if>
+        password = #{password} WHERE id = #{id}
     </update>
 
 </mapper>

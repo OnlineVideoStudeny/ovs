@@ -1,6 +1,7 @@
 package stu.ovs.service.module.impl;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.codec.Hex;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.slf4j.Logger;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import stu.ovs.dao.entity.User;
 import stu.ovs.dao.persistence.UserDao;
+import stu.ovs.service.ShiroUser;
 import stu.ovs.service.module.UserService;
 import stu.ovs.service.module.VideoProcessService;
 import stu.ovs.util.EncryptUtil;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -53,6 +56,9 @@ public class UserServiceImpl implements UserService{
     }
 
     public void update(User user) {
+        ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+        user.setPassword(findOne(shiroUser.id).getPassword());
+        user.setId(shiroUser.id);
         userDao.update(user);
     }
 
